@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <font
+        app:font="@font/refinery_clarika_geo_regular"
+        app:fontStyle="normal" />
+    <font
+        app:font="@font/the_refinery_clarika_geo_italic"
+        app:fontStyle="italic" />
+
+
+</font-family>

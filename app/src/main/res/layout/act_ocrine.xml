@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mc.mcmodules.viewmodel.OCRINEViewmodel" />
+
+        <variable
+            name="mainView"
+            type="com.mc.mcmodules.view.ActOCRINE" />
+
+
+    </data>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:cardUseCompatPadding="true"
+                tools:cardBackgroundColor="@android:color/white"
+                tools:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <SurfaceView
+                android:id="@+id/surfaceView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+
+
+            <TextView
+                android:id="@+id/txtCara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="14dp"
+                android:text="@string/frente"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="20dp"
+                android:tint="@color/white"
+                android:visibility="gone"
+                android:contentDescription="@string/captura_de_info_ine"
+                app:srcCompat="@drawable/ic_save"
+                app:addClickListener="@{mainView.listenerbtnGuardar}"
+                tools:ignore="RelativeOverlap" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/imgIne"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_toStartOf="@+id/btnGuardar"
+                app:srcCompat="@drawable/ic_ine"
+                app:addClickListener="@{mainView.listenerImgIne}"
+                android:contentDescription="@string/captura_de_info_ine"
+                tools:ignore="RelativeOverlap" />
+
+
+
+
+        </RelativeLayout>
+
+        <include layout="@layout/bottom_sheet_campos_ine"
+            android:id="@+id/lyBottomSheet"/>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</layout>

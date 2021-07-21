@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="colorPrimary">#005ca4</color>
+    <color name="text">@color/colorPrimary</color>
+    <color name="colorPrimaryTrans">#80074E8C</color>
+    <color name="colorPrimaryTrans2">#29074E8C</color>
+    <color name="colorPrimaryDark">#053a7f</color>
+    <color name="colorAccent">#0294be</color>
+
+    <color name="colorPrimaryLight">#0294be</color>
+    <color name="blackMask">#80135187</color>
+    <color name="transparentAlertButtons">#4D135187</color>
+    <color name="blackAlpha">@color/blackMask</color>
+
+    <!-- Colores de Contact Center -->
+    <color name="colorNegocios">#F44336</color>
+    <color name="colorTelefonos">#009688</color>
+    <color name="colorDirecciones">#FF9800</color>
+    <color name="colorCorreos">#3F51B5</color>
+
+    <!-- Custom Alert-->
+    <color name="colorTitle">#191A57</color>
+    <color name="colorText">#615e5e</color>
+    <color name="colorDividers">#AFAEAE</color>
+    <color name="colorTextTitles">#5b5b5f</color>
+    <color name="backgroundToolbar">#EEEFEF</color>
+    <color name="black">#4B4343</color>
+
+    <color name="transparente">#00FFFFFF</color>
+    <color name="white">#ffffff</color>
+    <color name="white2">#BEBCBC</color>
+    <color name="error">#B93839</color>
+    <color name="success">#19AA39</color>
+    <color name="yellow">#B5A837</color>
+
+    <color name="blackDefault">#808080</color>
+    <color name="blackDefaulBold">#636060</color>
+    <color name="blackDefaultTenue">#DAD7D7</color>
+    <color name="blackDark">#000000</color>
+
+
+    <color name="backgroud">#ffffff</color>
+    <color name="backgroud_post">#ffffff</color>
+    <color name="backgroud_toolbar">#ffffff</color>
+    <color name="backgroud_ic_toolbar">#02ffffff</color>
+    <color name="gris">#C4BFBF</color>
+
+</resources>

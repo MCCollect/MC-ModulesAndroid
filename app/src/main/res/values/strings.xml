@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">MCModules</string>
+
+    <string name="nombreS">NOMBRE: </string>
+    <string name="edadS">EDAD: </string>
+    <string name="sexoS">SEXO: </string>
+    <string name="sexo">Sexo </string>
+    <string name="clave_de_elector">CLAVE DE ELECTOR: </string>
+    <string name="curp">CURP:</string>
+    <string name="curp2">CURP </string>
+    <string name="seccion">SECCION: </string>
+    <string name="emision">EMISION: </string>
+    <string name="vigencia">VIGENCIA: </string>
+    <string name="localidad">LOCALIDAD: </string>
+    <string name="colonia2">COLONIA: </string>
+    <string name="frente">Frente</string>
+    <string name="ValidarINE">Validar INE</string>
+    <string name="domicilio">DOMICILIO:</string>
+    <string name="escaneo_de_informaci_n_ine">Escaneo de información INE</string>
+    <string name="captura_de_info_ine">captura de info ine</string>
+    <string name="en_progreso">En progreso…</string>
+    <string name="escaneo_listo">"Escaneo Listo (Verifica la información)"</string>
+    <string name="es_correcto">¡Es correcto!</string>
+    <string name="verificar_informaci_n_con_ine">Verificar información con INE</string>
+    <string name="info_local">Info. Local</string>
+    <string name="campos">Campos</string>
+    <string name="info_ine">Info. INE</string>
+    <string name="nombre">Nombre</string>
+    <string name="validar_datos">Validar Datos</string>
+    <string name="init_scan">Iniciar Escaneo</string>
+    <string name="domicilio2">Domicilio</string>
+    <string name="estado3">Estado</string>
+    <string name="nunicipio3">Municipio</string>
+    <string name="rfc2">RFC</string>
+
+    <string name="fecha_nac">Fecha de nacimiento:</string>
+
+    <string name="estado2">ESTADO:</string>
+    <string name="tipo_ine">Tipo INE:</string>
+    <string name="ocr">OCR:</string>
+    <string name="codigo_qr">CODIGO QR:</string>
+    <string name="codeini">codeini</string>
+
+    <string name="municipio2">Delegación o Municipio:</string>
+    <string name="emisi_n">EMISIÓN</string>
+    <string name="clave">CLAVE</string>
+    <string name="captura">Captura</string>
+</resources>
