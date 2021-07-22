@@ -84,16 +84,3 @@ dependencies {
 
 
 }
-
-afterEvaluate {
-    publishing{
-        publications{
-            release(MavenPublication){
-                from components.release
-                groupId = 'com.mc.modules'
-                artifactId = 'scan_ine'
-                version = '1.0.0'
-            }
-        }
-    }
-}
