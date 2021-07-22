@@ -58,11 +58,11 @@ class OCRINEViewmodel : ViewModel() {
     private var _liveCurp: MutableLiveData<String> = MutableLiveData()
     val liveCurp: LiveData<String> get() = _liveCurp
 
-    private var _liveEmision: MutableLiveData<String> = MutableLiveData()
+    /*private var _liveEmision: MutableLiveData<String> = MutableLiveData()
     val liveEmision: LiveData<String> get() = _liveEmision
 
     private var _liveTipoIne: MutableLiveData<String> = MutableLiveData()
-    val liveTipoIne: LiveData<String> get() = _liveTipoIne
+    val liveTipoIne: LiveData<String> get() = _liveTipoIne*/
 
     private var _liveEstado: MutableLiveData<String> = MutableLiveData()
     val liveEstado: LiveData<String> get() = _liveEstado
@@ -87,8 +87,8 @@ class OCRINEViewmodel : ViewModel() {
         _liveSexo.value = ""
         _liveClaveLector.value = ""
         _liveCurp.value = ""
-        _liveEmision.value = ""
-        _liveTipoIne.value = ""
+        /*_liveEmision.value = ""
+        _liveTipoIne.value = ""*/
         _liveTotalCampos.value = 0
         _liveEstado.value = ""
         _liveMunicipio.value = ""
@@ -126,14 +126,14 @@ class OCRINEViewmodel : ViewModel() {
                 FIELD_CURP -> {
                     _liveCurp.postValue(value)
                 }
-
+/*
                 FIELD_EMISION -> {
                     _liveEmision.postValue(value)
                 }
 
                 FIELD_TIPO_INE -> {
                     _liveTipoIne.postValue(value)
-                }
+                }*/
 
                 FIELD_ESTADO -> {
                     _liveEstado.postValue(value)
@@ -359,7 +359,7 @@ class OCRINEViewmodel : ViewModel() {
             }
 
 
-            if (_liveTipoIne.value.equals("")) {
+            /*if (_liveTipoIne.value.equals("")) {
                 println("Buscando tipo ine")
 
 
@@ -402,7 +402,7 @@ class OCRINEViewmodel : ViewModel() {
                     _liveEmision.postValue("")
                 }
 
-            }
+            }*/
 
 
 

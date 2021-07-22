@@ -86,6 +86,7 @@
                 android:backgroundTint="@color/colorPrimary"
                 android:layout_toStartOf="@+id/btnGuardar"
                 app:srcCompat="@drawable/ic_ine"
+                android:visibility="gone"
                 app:addClickListener="@{mainView.listenerImgIne}"
                 android:contentDescription="@string/captura_de_info_ine"
                 tools:ignore="RelativeOverlap" />

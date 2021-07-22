@@ -725,7 +725,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         })
 
 
-        selfViewModel.liveEmision.observe(this, { emision ->
+        /*selfViewModel.liveEmision.observe(this, { emision ->
 
             with(binding.lyBottomSheet) {
 
@@ -773,7 +773,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             }
 
 
-        })
+        })*/
 
         selfViewModel.liveEstado.observe(this, { estado ->
 
@@ -845,7 +845,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
 
             println("Contador para la transicion : $contador")
-            if (contador == 12) {
+            if (contador == 10) {
 
                 transition.startTransition(500)
                 binding.lyBottomSheet.progressScan.visibility = View.GONE
