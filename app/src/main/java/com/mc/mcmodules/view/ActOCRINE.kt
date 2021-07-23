@@ -852,6 +852,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
                     if(noDataEsMuCo){
                         inputEstado.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
 
                 }
@@ -883,6 +884,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
                     if(noDataEsMuCo){
                         inputMunicipio.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
 
                 }
@@ -912,6 +914,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     progressLocalidad.visibility = View.VISIBLE
                     if(noDataEsMuCo){
                         inputColonia.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
 
                 }
@@ -934,6 +937,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                 binding.lyBottomSheet.labelScan.text = getString(R.string.escaneo_listo)
                 sheetBehaviorIne.state = BottomSheetBehavior.STATE_EXPANDED
                 binding.lyBottomSheet.btnCompararInfo.visibility = View.VISIBLE
+                binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.GONE
 
             } else {
                 binding.lyBottomSheet.btnCompararInfo.visibility = View.GONE
