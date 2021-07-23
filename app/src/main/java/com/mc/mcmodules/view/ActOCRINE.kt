@@ -57,9 +57,14 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
 
     private var flagCodigo = true
-
+    private var noDataEsMuCo = false;
     private var intEmision = 0
     private var typeOCR = 0
+
+    private lateinit var timer: Timer
+    private val noDelay = 8000L
+    private val everySeconds = 8000L
+    private lateinit var timerTask: TimerTask
 
 
     val listenerImgIne = View.OnClickListener {
@@ -446,6 +451,26 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         handleResult(selfViewModel.getInfoINE())
     }
 
+    val onclickSetValuesCaptured = View.OnClickListener {
+
+        if(binding.lyBottomSheet.inputEstado.visibility == View.VISIBLE){
+            selfViewModel.setValueEstado(binding.lyBottomSheet.txtCapEstado.text.toString())
+
+        }
+
+        if(binding.lyBottomSheet.inputMunicipio.visibility == View.VISIBLE){
+            selfViewModel.setValueMunicipio(binding.lyBottomSheet.txtCapMunicipio.text.toString())
+
+        }
+
+
+        if(binding.lyBottomSheet.inputColonia.visibility == View.VISIBLE){
+            selfViewModel.setValueColonia(binding.lyBottomSheet.txtCapColonia.text.toString())
+
+        }
+
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -457,6 +482,38 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         setOCR_Manual()
         initObservers()
         startCameraSource()
+        initCountCamposManual()
+
+
+    }
+
+    private fun initCountCamposManual() {
+
+        timerTask = object : TimerTask() {
+            override fun run() {
+                if (selfViewModel.isEsMuCoScanned()) {
+
+                    runOnUiThread {
+                        binding.lyBottomSheet.contentIngresoManual.visibility = View.GONE
+                    }
+
+
+                } else {
+                    runOnUiThread {
+                        binding.lyBottomSheet.contentIngresoManual.visibility = View.VISIBLE
+                        sheetBehaviorIne.state = BottomSheetBehavior.STATE_EXPANDED
+                        noDataEsMuCo = true
+                    }
+
+                }
+            }
+        }
+
+
+        timer = Timer()
+
+
+        timer.schedule(timerTask, noDelay)
 
 
     }
@@ -471,8 +528,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
     private fun startCameraSource() {
         //Create the TextRecognizer
         val textRecognizer = TextRecognizer.Builder(applicationContext).build()
-
-        textRecognizer
 
         if (!textRecognizer.isOperational) {
             Toast.makeText(
@@ -785,9 +840,19 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     progressEstado.visibility = View.GONE
                     selfViewModel.aumentarContador()
 
+                    if(noDataEsMuCo){
+
+                        inputEstado.visibility = View.GONE
+                    }
+
+
                 } else {
                     txtEstado.text = ""
                     progressEstado.visibility = View.VISIBLE
+
+                    if(noDataEsMuCo){
+                        inputEstado.visibility = View.VISIBLE
+                    }
 
                 }
 
@@ -806,10 +871,19 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtMunicipio.text = municipio
                     progressMunicipio.visibility = View.GONE
                     selfViewModel.aumentarContador()
+                    if(noDataEsMuCo){
+                        inputMunicipio.visibility = View.GONE
+                    }
+
+
 
                 } else {
                     txtMunicipio.text = ""
                     progressMunicipio.visibility = View.VISIBLE
+
+                    if(noDataEsMuCo){
+                        inputMunicipio.visibility = View.VISIBLE
+                    }
 
                 }
 
@@ -828,9 +902,17 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     progressLocalidad.visibility = View.GONE
                     selfViewModel.aumentarContador()
 
+                    if(noDataEsMuCo){
+                        inputColonia.visibility = View.GONE
+                    }
+
+
                 } else {
                     txtLocalidad.text = ""
                     progressLocalidad.visibility = View.VISIBLE
+                    if(noDataEsMuCo){
+                        inputColonia.visibility = View.VISIBLE
+                    }
 
                 }
 
@@ -985,6 +1067,13 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         setResult(RESULT_OK, intentRegreso)
         this.finish()
 
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
+        timer.purge()
 
     }
 

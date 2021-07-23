@@ -377,8 +377,8 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickEstado}"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:addClickListener="@{mainView.onclickEstado}" />
 
             <ProgressBar
                 android:id="@+id/progressMunicipio"
@@ -409,14 +409,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtEstado"
+                android:layout_marginStart="3dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/ttMunicipio"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginStart="3dp"
                 android:textSize="12sp"
-                app:addClickListener="@{mainView.onclickMunicipio}"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:addClickListener="@{mainView.onclickMunicipio}" />
 
             <ProgressBar
                 android:id="@+id/progressSeccion"
@@ -471,9 +471,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/progressLocalidad"
                 android:text="@string/colonia2"
-
-                android:textSize="12sp"
                 android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
                 android:visibility="visible" />
 
             <TextView
@@ -481,15 +480,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtMunicipio"
+                android:layout_marginStart="3dp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/ttLocalidad"
                 android:textColor="@color/colorPrimary"
-                android:layout_marginStart="3dp"
                 android:textSize="12sp"
 
-                app:addClickListener="@{mainView.onclickColonia}"
                 android:textStyle="bold"
-                android:visibility="visible" />
+                android:visibility="visible"
+                app:addClickListener="@{mainView.onclickColonia}" />
 
             <ProgressBar
                 android:id="@+id/progressEmision"
@@ -523,8 +522,8 @@
                 android:layout_toEndOf="@+id/ttEmision"
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp"
-                android:visibility="gone"
                 android:textStyle="bold"
+                android:visibility="gone"
                 app:addClickListener="@{mainView.onclickEmision}" />
 
             <ProgressBar
@@ -673,12 +672,124 @@
                 android:visibility="gone"
                 app:addClickListener="@{mainView.listenerCodQr}" />
 
+            <RelativeLayout
+                android:visibility="gone"
+                android:id="@+id/contentIngresoManual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtCodQR">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEstado"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:errorTextAppearance="@style/error">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCapEstado"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/estado2"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="100"
+                        android:padding="7dp"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputMunicipio"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputEstado"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:errorTextAppearance="@style/error">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCapMunicipio"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/municipio2"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="100"
+                        android:padding="7dp"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputColonia"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inputMunicipio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:errorTextAppearance="@style/error">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtCapColonia"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/colonia2"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="100"
+                        android:padding="7dp"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnSetValuesCaptured"
+                    style="@style/Widget.AppCompat.Button.Colored2"
+                    android:layout_width="135dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/inputColonia"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/establecer"
+                    android:textAllCaps="false"
+                    android:textColor="#FFF"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickSetValuesCaptured}" />
+            </RelativeLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etOCR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCodQR"
+                android:layout_below="@+id/contentIngresoManual"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
@@ -692,10 +803,10 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/ocr"
                     android:imeOptions="actionUnspecified"
+                    android:importantForAutofill="no"
                     android:inputType="number"
                     android:maxLength="13"
-                    android:textSize="12sp"
-                    android:importantForAutofill="no" />
+                    android:textSize="12sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

@@ -78,7 +78,6 @@ class OCRINEViewmodel : ViewModel() {
     private var _liveTotalCampos: MutableLiveData<Int> = MutableLiveData()
     val liveTotalCampos: LiveData<Int> get() = _liveTotalCampos
 
-
     init {
         _liveNombre.value = ""
         _liveDomicilio.value = ""
@@ -94,8 +93,6 @@ class OCRINEViewmodel : ViewModel() {
         _liveMunicipio.value = ""
         _liveColonia.value = ""
     }
-
-
 
 
     fun updateCampo(field: Int, value: String) {
@@ -421,6 +418,7 @@ class OCRINEViewmodel : ViewModel() {
                     println("Estado $estado")
 
                     _liveEstado.postValue(estado)
+
                 } else {
                     _liveEstado.postValue("")
                 }
@@ -490,6 +488,40 @@ class OCRINEViewmodel : ViewModel() {
         )
 
     }
+
+    fun isEsMuCoScanned(): Boolean {
+
+        return !_liveEstado.value.equals("") && !_liveMunicipio.value.equals("") && !_liveColonia.value.equals(
+            ""
+        )
+
+    }
+
+
+    fun setValueEstado(estado: String) {
+
+        if (estado.isNotEmpty()) {
+            _liveEstado.postValue(estado)
+        }
+    }
+
+    fun setValueMunicipio(municipio: String) {
+
+
+        if (municipio.isNotEmpty()) {
+            _liveMunicipio.postValue(municipio)
+        }
+
+    }
+
+    fun setValueColonia(colonia: String) {
+
+        if (colonia.isNotEmpty()) {
+
+            _liveColonia.postValue(colonia)
+        }
+    }
+
 
     @Synchronized
     fun disminuirContador() {

@@ -41,8 +41,9 @@
     <string name="codigo_qr">CODIGO QR:</string>
     <string name="codeini">codeini</string>
 
-    <string name="municipio2">Delegación o Municipio:</string>
+    <string name="municipio2">DELEGACIÓN O MUNICIPIO:</string>
     <string name="emisi_n">EMISIÓN</string>
     <string name="clave">CLAVE</string>
     <string name="captura">Captura</string>
+    <string name="establecer">Establecer</string>
 </resources>
