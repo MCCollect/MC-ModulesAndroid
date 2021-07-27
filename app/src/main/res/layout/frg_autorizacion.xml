@@ -129,7 +129,7 @@
                         android:layout_marginBottom="10dp"
                         android:hint="@string/ingreso_de_nip"
                         android:inputType="numberDecimal"
-                        android:maxLength="5"
+                        android:maxLength="4"
                         android:padding="7dp"
                         android:text=""
                         android:textSize="16sp" />
