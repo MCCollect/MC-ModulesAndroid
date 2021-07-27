@@ -1,10 +1,13 @@
 package com.mc.mcmodules.view.pinhc.activity
 
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
+import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActPinHcBinding
 import com.mc.mcmodules.model.classes.DataInfoAutorizacion
@@ -16,6 +19,10 @@ import com.mc.mcmodules.viewmodel.pinhc.PinHCViewmodel
 
 
 class ActPinHC : AppCompatActivity() {
+
+    companion object {
+        const val CODIGO_OK_HC_DATA: Int = 201
+    }
 
 
     private lateinit var selfViewModel: PinHCViewmodel
@@ -171,4 +178,6 @@ class ActPinHC : AppCompatActivity() {
 
 
     }
+
+
 }

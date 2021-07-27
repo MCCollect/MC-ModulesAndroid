@@ -1,14 +1,18 @@
 package com.mc.mcmodules.view.pinhc.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.badoualy.stepperindicator.StepperIndicator
+import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.FrgAutorizacionBinding
 import com.mc.mcmodules.model.classes.DataInfoAutorizacion
@@ -19,7 +23,7 @@ class FrgAutorizacion(
     private val viewPager: ViewPager2,
     private val stepsView: StepperIndicator,
     private val dataInfoAutorizacion: DataInfoAutorizacion
-) : Fragment() {
+) : Fragment(), ActivityResultHandler {
 
     private lateinit var selfViewModel: AutorizacionViewmodel
     private lateinit var binding: FrgAutorizacionBinding
@@ -92,12 +96,14 @@ class FrgAutorizacion(
 
     }
 
-    private fun validateFields() {
 
-    }
 
-    fun lockFields(){
+    override fun handleResult(parcelable: Parcelable) {
 
+        val intentRegreso = Intent()
+        intentRegreso.putExtra("result_object", parcelable)
+        requireActivity().setResult(AppCompatActivity.RESULT_OK, intentRegreso)
+        requireActivity().finish()
     }
 
 

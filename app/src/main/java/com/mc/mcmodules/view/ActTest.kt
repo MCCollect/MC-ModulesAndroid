@@ -2,14 +2,12 @@ package com.mc.mcmodules.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
-import com.mc.mcmodules.model.classes.DataInfoAutorizacion
-import com.mc.mcmodules.model.classes.DataInfoDomicilio
-import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.model.classes.*
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
+import java.util.*
 
 
 @Suppress("DEPRECATION")
@@ -63,5 +61,30 @@ class ActTest : AppCompatActivity() {
         startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
 
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                ActOCRINE.CODIGO_OK_INE_DATA -> {
+                    val info: InfoINE? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        InfoINE("N/F", "", "", "", "", "", "", "")
+                    }
+                  //tarea a realizar
+                }
+
+                ActPinHC.CODIGO_OK_HC_DATA -> {
+                    val pinRequest: PINRequest? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        PINRequest(0, "Fail")
+                    }
+                    //tarea a realizar
+                }
+            }
+        }
     }
 }

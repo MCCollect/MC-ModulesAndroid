@@ -88,6 +88,10 @@
     </string>
     <string name="autorizo">Autorizo</string>
     <string name="ingreso_de_nip">Ingreso de NIP:</string>
+    <string name="todo">TODO</string>
+    <string name="titulo">Titulo</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="visitar">VISITAR</string>
 
 
 </resources>
