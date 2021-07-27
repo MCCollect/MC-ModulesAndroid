@@ -4,10 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
-import com.mc.mcmodules.model.classes.*
+import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
-import java.util.*
 
 
 @Suppress("DEPRECATION")
@@ -17,7 +16,7 @@ class ActTest : AppCompatActivity() {
         setContentView(R.layout.act_test)
 
         val intent = Intent(this, ActPinHC::class.java)
-        //startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
+
         intent.putExtra(
             "data_solicitante", DataInfoSolicitante(
                 "Erick",
@@ -27,7 +26,15 @@ class ActTest : AppCompatActivity() {
                 "Soltero",
                 "RACE960730HDFMRR00",
                 "30/07/1996",
-                arrayListOf(false, false, false, false, false, false, false) //puedes poner un arreglo vacio no se bloqueara nada
+                arrayListOf(
+                    false,
+                    false,
+                    false,
+                    true,
+                    true,
+                    true,
+                    true
+                ) //puedes poner un arreglo vacio no se bloqueara nada
             )
         )
 
@@ -42,7 +49,17 @@ class ActTest : AppCompatActivity() {
                 "tlahuac",
                 "cdmx",
                 "CDMX",
-                arrayListOf(false, false, false, false, false, false, false, false, false)//puedes poner un arreglo vacio no se bloqueara nada
+                arrayListOf(
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    true
+                )//puedes poner un arreglo vacio no se bloqueara nada
             )
         )
 
@@ -53,13 +70,16 @@ class ActTest : AppCompatActivity() {
                 getString(R.string.text1_aceptocondiciones),
                 getString(R.string.text2_aceptocondiciones),
                 getString(R.string.text3_aceptocondiciones),
-                "www.isvalidcondiciones/http",
-                "www.isvalidnip/http"
+                "https://www.facebook.com/",
+                "api/CirculoCredito/pin",
+                "https://dev.mcnoc.mx/WsMovilAlternativaSur/",
+                "ALTERNATIVASUR",
+                "INTEGRANTE"
 
             )
         )
-        startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
-
+        startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
+        //startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
 
     }
 
@@ -73,7 +93,7 @@ class ActTest : AppCompatActivity() {
                     } else {
                         InfoINE("N/F", "", "", "", "", "", "", "")
                     }
-                  //tarea a realizar
+                    //tarea a realizar
                 }
 
                 ActPinHC.CODIGO_OK_HC_DATA -> {
@@ -83,6 +103,7 @@ class ActTest : AppCompatActivity() {
                         PINRequest(0, "Fail")
                     }
                     //tarea a realizar
+                    println("Resultado del PIN (${pinRequest?.PIN}): ${pinRequest?.RESULT}")
                 }
             }
         }

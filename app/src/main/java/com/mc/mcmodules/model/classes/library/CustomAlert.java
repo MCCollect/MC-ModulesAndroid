@@ -1,12 +1,15 @@
-package com.mc.mcmodules.model.classes;
+package com.mc.mcmodules.model.classes.library;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +66,11 @@ public class CustomAlert {
         return view.findViewById(R.id.Content);
     }
 
-    public void ajustar(final int height) {
+    public void ajustar(final Activity act) {
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        act.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        final int heightPantalla = metrics.heightPixels;
 
         final RelativeLayout layout = view.findViewById(R.id.relativeInfo);
         final ViewGroup.LayoutParams params = layout.getLayoutParams();
@@ -72,20 +79,21 @@ public class CustomAlert {
         vto.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             public boolean onPreDraw() {
                 layout.getViewTreeObserver().removeOnPreDrawListener(this);
-                int finalHeight = layout.getMeasuredHeight();
-                //Log.i(TAG, "Size display: " + height);
-                //Log.i(TAG, "Size layout_domicilio_visitado:  " + finalHeight);
+                int heightVista = layout.getMeasuredHeight();
 
-                if ((finalHeight + 250) > (height - 100)) {
-                    //Log.i(TAG, "RECORTAR LAYOUT");
-                    params.height = height - 400;
+                System.out.println("Tamaño de la pantalla : " + heightPantalla);
+                System.out.println("Tamaño de la vista : " + heightVista);
+
+
+                if (heightVista > (heightPantalla * .5)) {
+                    Log.i(TAG, "RECORTAR LAYOUT");
+                    params.height =  heightVista - ((int)(heightVista * .3));
                     layout.setLayoutParams(params);
                 }
                 return true;
             }
         });
     }
-
     public void setTypeCustom(Drawable icon, String title, String text) {
         view.findViewById(R.id.circleView).setBackgroundResource(R.drawable.circle_alert);
         ((ImageView) view.findViewById(R.id.circleView)).setImageDrawable(icon);
@@ -193,6 +201,7 @@ public class CustomAlert {
         view.findViewById(R.id.viewVertical).setVisibility(View.GONE);
         view.findViewById(R.id.buttonRight).setVisibility(View.GONE);
         view.findViewById(R.id.circleView).setBackgroundResource(R.drawable.circle_alert);
+        ((ImageView) view.findViewById(R.id.circleView)).setImageDrawable(null);
     }
 
     public void setTypeProgress(String title) {

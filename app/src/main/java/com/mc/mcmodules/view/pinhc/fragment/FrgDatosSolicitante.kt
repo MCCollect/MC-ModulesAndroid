@@ -19,7 +19,7 @@ import com.badoualy.stepperindicator.StepperIndicator
 import com.google.android.material.textfield.TextInputLayout
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.FrgDatosSolicitanteBinding
-import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.model.classes.data.DataInfoSolicitante
 import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.viewmodel.pinhc.DatosSolicitanteViewmodel
 import com.tapadoo.alerter.Alerter
@@ -96,6 +96,21 @@ class FrgDatosSolicitante(
             next.setOnClickListener {
 
                 if (validateFields()) {
+
+
+                    selfViewModel.setDataSolicitante(
+                        DataInfoSolicitante(
+                            etNombre.text.toString(),
+                            etPaterno.text.toString(),
+                            etMaterno.text.toString(),
+                            etsexo.text.toString(),
+                            etEstadoCivil.text.toString(),
+                            etCURP.text.toString(),
+                            etFechaNac.text.toString(),
+                            selfViewModel.liveDatosSolicitante.value?.LOCK_FIELDS ?: ArrayList()
+                        )
+                    )
+
                     viewPager.setCurrentItem(1, true)
                     it.postDelayed({
                         stepsView.currentStep = 1

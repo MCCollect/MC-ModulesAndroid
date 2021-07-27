@@ -57,13 +57,12 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
 
     private var flagCodigo = true
-    private var noDataEsMuCo = false;
+    private var noDataEsMuCo = false
     private var intEmision = 0
     private var typeOCR = 0
 
     private lateinit var timer: Timer
     private val noDelay = 8000L
-    private val everySeconds = 8000L
     private lateinit var timerTask: TimerTask
 
 

@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.badoualy.stepperindicator.StepperIndicator
-import com.mc.mcmodules.model.classes.DataInfoAutorizacion
-import com.mc.mcmodules.model.classes.DataInfoDomicilio
-import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.model.classes.data.DataInfoAutorizacion
+import com.mc.mcmodules.model.classes.data.DataInfoDomicilio
+import com.mc.mcmodules.model.classes.data.DataInfoSolicitante
 import com.mc.mcmodules.view.pinhc.fragment.FrgAutorizacion
 import com.mc.mcmodules.view.pinhc.fragment.FrgDatosSolicitante
 import com.mc.mcmodules.view.pinhc.fragment.FrgDomicilio

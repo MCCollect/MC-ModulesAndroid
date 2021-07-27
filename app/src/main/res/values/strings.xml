@@ -92,6 +92,7 @@
     <string name="titulo">Titulo</string>
     <string name="cancelar">CANCELAR</string>
     <string name="visitar">VISITAR</string>
+    <string name="validar_nip">Validar NIP</string>
 
 
 </resources>

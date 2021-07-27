@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.vision.text.TextBlock
-import com.mc.mcmodules.model.classes.InfoINE
+import com.mc.mcmodules.model.classes.data.InfoINE
 import com.mc.mcmodules.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

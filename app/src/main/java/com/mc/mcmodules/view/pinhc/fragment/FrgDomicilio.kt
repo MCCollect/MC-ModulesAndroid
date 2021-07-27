@@ -12,7 +12,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.badoualy.stepperindicator.StepperIndicator
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.FrgDomicilioBinding
-import com.mc.mcmodules.model.classes.DataInfoDomicilio
+import com.mc.mcmodules.model.classes.data.DataInfoDomicilio
+import com.mc.mcmodules.model.classes.data.DataInfoSolicitante
 import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.viewmodel.pinhc.DomicilioViewmodel
 import com.tapadoo.alerter.Alerter
@@ -63,6 +64,26 @@ class FrgDomicilio(
 
 
                 if (validateFields()) {
+
+
+                    selfViewModel.setDataDomicilio(
+                        DataInfoDomicilio(
+                            etCalle.text.toString(),
+                            etNoInt.text.toString(),
+                            etNoExt.text.toString(),
+                            etCP.text.toString(),
+                            etCelular.text.toString(),
+                            etColonia.text.toString(),
+                            etMunicipio.text.toString(),
+                            etCiudad.text.toString(),
+                            etEstado.text.toString(),
+                            selfViewModel.liveDatosDomicilio.value?.LOCK_FIELDS ?: ArrayList()
+                        )
+                    )
+
+
+
+
                     viewPager.setCurrentItem(2, true)
                     it.postDelayed({
                         stepsView.currentStep = 2

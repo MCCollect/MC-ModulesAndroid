@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
-    android:background="@color/transparente">
+    android:layout_marginHorizontal="@dimen/dimen_30"
+    android:background="@drawable/back_ronded_alert"
+    android:backgroundTint="@color/backgroud">
 
     <LinearLayout
         android:id="@+id/linearUp"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/transparente"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_alert"
+        android:elevation="@dimen/dimen_1"
         android:orientation="horizontal" />
 
     <RelativeLayout
@@ -20,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearUp"
-        android:background="@drawable/back_redondeado">
+        android:background="@drawable/back_redondeado"
+        android:backgroundTint="@color/backgroud">
 
         <CheckBox
             android:id="@+id/selectAll"
@@ -28,7 +30,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:buttonTint="@color/text"
             android:text="@string/todo"
+            android:textColor="@color/text"
             android:visibility="gone" />
 
         <ImageView
@@ -39,19 +43,19 @@
             android:layout_alignParentTop="true"
             android:visibility="gone"
             app:srcCompat="@drawable/ic_up"
-            app:tint="@color/colorAccent"
-            android:contentDescription="@string/contentdescription" />
+            app:tint="@color/colorPrimary"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/dimen_6"
+            android:background="@drawable/ic_close"
+            android:backgroundTint="@color/text"
             android:visibility="visible"
-            app:srcCompat="@drawable/ic_close"
-            app:tint="@color/colorAccent"
-            android:contentDescription="@string/contentdescription" />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/titulo"
@@ -60,8 +64,9 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:text="@string/titulo"
-            android:textColor="@color/colorTitle"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/text_20"
+            android:textStyle="bold"
             tools:ignore="RelativeOverlap" />
 
         <TextView
@@ -70,10 +75,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/titulo"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/dimen_10"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/text" />
 
         <ScrollView
             android:id="@+id/scrollView"
@@ -81,12 +86,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/text"
             android:adjustViewBounds="true"
-            android:background="@color/white">
+            android:background="@color/backgroud">
 
             <LinearLayout
                 android:id="@+id/Content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/backgroud"
                 android:orientation="vertical" />
         </ScrollView>
     </RelativeLayout>
@@ -96,63 +102,67 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/relativeInfo"
-        android:background="@color/colorPrimaryDark" />
+        android:background="@color/transparente" />
 
     <LinearLayout
         android:id="@+id/linearButtons"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="@dimen/dimen_36"
         android:layout_below="@+id/view"
         android:layout_centerInParent="true"
-        android:background="@drawable/back_redondeado_bottom"
-        android:orientation="horizontal">
+        android:layout_marginVertical="@dimen/dimen_16"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/dimen_30">
 
         <Button
             android:id="@+id/buttonLeft"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/back_alert"
+            android:background="@drawable/button_corners_reload"
             android:gravity="center"
-            android:text="@string/cancelar"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12" />
 
         <View
             android:id="@+id/viewVertical"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimaryDark" />
+            android:layout_width="@dimen/dimen_6"
+            android:layout_height="match_parent" />
 
         <Button
             android:id="@+id/buttonRight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/back_alert"
+            android:background="@drawable/button_corners_reload"
             android:gravity="center"
-            android:text="@string/visitar"
-            android:textColor="@color/colorAccent" />
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/circleView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/dimen_64"
+        android:layout_height="@dimen/dimen_64"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="@dimen/dimen_18"
         android:background="@drawable/circle_alert"
-        android:padding="10dp"
+        android:elevation="@dimen/dimen_2"
+        android:padding="@dimen/dimen_10"
         app:tint="@color/white"
-        android:contentDescription="@string/contentdescription" />
+        tools:ignore="ContentDescription" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/circleView"
+        android:layout_alignBottom="@+id/circleView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginBottom="@dimen/dimen_8"
+        android:elevation="@dimen/dimen_4"
         android:theme="@style/CircularProgress"
         android:visibility="gone" />
-
 </RelativeLayout>

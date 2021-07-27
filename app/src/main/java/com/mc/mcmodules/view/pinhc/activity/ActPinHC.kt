@@ -1,18 +1,15 @@
 package com.mc.mcmodules.view.pinhc.activity
 
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
-import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActPinHcBinding
-import com.mc.mcmodules.model.classes.DataInfoAutorizacion
-import com.mc.mcmodules.model.classes.DataInfoDomicilio
-import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.model.classes.data.DataInfoAutorizacion
+import com.mc.mcmodules.model.classes.data.DataInfoDomicilio
+import com.mc.mcmodules.model.classes.data.DataInfoSolicitante
 import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.view.adapters.pinhc.PagerFragmentAdapter
 import com.mc.mcmodules.viewmodel.pinhc.PinHCViewmodel
@@ -112,11 +109,11 @@ class ActPinHC : AppCompatActivity() {
             } else {
                 if (Utils.checkURL(dataautorizacion.URL_CONDICIONES)) {
 
-                    if (Utils.checkURL(dataautorizacion.URL_NIP)) {
+                    if (Utils.checkURL(dataautorizacion.URL_BASE)) {
                         this.dataautorizacion = dataautorizacion
                         setDataIntent()
                     } else {
-                        throw java.lang.Exception("La URL del NIP no es válida")
+                        throw java.lang.Exception("La URL BASE no es válida")
                     }
 
 

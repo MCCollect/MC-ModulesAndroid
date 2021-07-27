@@ -1,4 +1,4 @@
-package com.mc.mcmodules.model.classes
+package com.mc.mcmodules.model.classes.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -12,4 +12,7 @@ class DataInfoAutorizacion(
     var TEXT4_PARRAFO2: String,
     var URL_CONDICIONES: String,
     var URL_NIP: String,
+    var URL_BASE: String,
+    var USUARIO: String,
+    var INTEGRANTE: String,
 ) : Parcelable
