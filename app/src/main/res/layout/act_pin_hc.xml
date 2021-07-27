@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mc.mcmodules.viewmodel.pinhc.PinHCViewmodel" />
+
+        <variable
+            name="mainView"
+            type="com.mc.mcmodules.view.pinhc.activity.ActPinHC" />
+
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/redounded_corners_background">
+
+        <RelativeLayout
+            android:id="@+id/titleAndSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logoCirculoCredito"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:contentDescription="@string/contentdescription"
+                android:src="@drawable/ic_circulo_credito" />
+
+
+            <com.badoualy.stepperindicator.StepperIndicator
+                android:id="@+id/stepsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logoCirculoCredito"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:stpi_animDuration="500"
+                app:stpi_showDoneIcon="true"
+                app:stpi_stepCount="3" />
+
+
+            <TextView
+                android:id="@+id/txtPasoActual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/stepsView"
+                android:layout_alignStart="@+id/stepsView"
+                android:layout_alignEnd="@+id/stepsView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/datos_solicitante"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="24sp" />
+
+        </RelativeLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/titleAndSteps"
+            android:padding="10dp" />
+
+    </RelativeLayout>
+
+</layout>

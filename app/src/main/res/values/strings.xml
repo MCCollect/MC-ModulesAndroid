@@ -5,6 +5,7 @@
     <string name="edadS">EDAD: </string>
     <string name="sexoS">SEXO: </string>
     <string name="sexo">Sexo </string>
+    <string name="sexo2">Sexo: </string>
     <string name="clave_de_elector">CLAVE DE ELECTOR: </string>
     <string name="curp">CURP:</string>
     <string name="curp2">CURP </string>
@@ -46,4 +47,47 @@
     <string name="clave">CLAVE</string>
     <string name="captura">Captura</string>
     <string name="establecer">Establecer</string>
+    <string name="paso_actual">Paso actual</string>
+    <string name="contentdescription">contentDescription</string>
+    <string name="datos_solicitante">Datos solicitante</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nombre_s">Nombre(s):</string>
+    <string name="apellido_paterno">Apellido Paterno:</string>
+    <string name="apellido_materno">Apellido Materno:</string>
+    <string name="estado_civil">Estado Civil:</string>
+    <string name="curp3">CURP:</string>
+    <string name="fecha_de_nacimiento">Fecha de nacimiento:</string>
+    <string name="siguiente"><![CDATA[Siguiente ->]]></string>
+    <string name="anterior"><![CDATA[<- Anterior]]></string>
+    <string name="calle">Calle:</string>
+    <string name="no_interior">No. Interior:</string>
+    <string name="no_exterior">No. Exterior:</string>
+    <string name="c_digo_postal">Código Postal:</string>
+    <string name="tel_fono_celular">Teléfono Celular:</string>
+    <string name="colonia">Colonia:</string>
+    <string name="municipio">Municipio:</string>
+    <string name="ciudad">Ciudad:</string>
+    <string name="estado">Estado:</string>
+    <string name="autorizacion_y_consultas">Terminos y Condiciones y Autorización de Consultas</string>
+    <string name="acepto_condiciones">
+        <Data><![CDATA[Acepto <font color=\'#0000FF\'><u>Términos y Condiciones</u></font> y cláusula de medios electrónicos tales como NIP]]> </Data>
+    </string>
+
+
+    <string name="text1_aceptocondiciones">
+        <Data><![CDATA[Autorización para solicitar Reportes de Crédito]]> </Data>
+    </string>
+
+    <string name="text2_aceptocondiciones">
+         <Data><![CDATA[Autorizo expresamente a (<font color=\'#0000FF\'>Alternativa Sur</font>), para que lleve acabo investigaciones sobre mi comportamiento Crediticio en las Sociedades de  Información Crediticia (SIC) que estime conveniente.
+        Conozco la naturaleza y alcance de la información que se solicitará, del uso que se le dará y que se prodrán realizar consultas periódicas de mi historial crediticio.]]> </Data>
+    </string>
+
+    <string name="text3_aceptocondiciones">
+          <Data><![CDATA[Consiento que esta autorización tenga un a vigencia de 3 años contados a partir de hoy, y en su caso mientras mantengamos relación jurídica.Acepto que este documento quede bajo propiedad de (<font color=\'#0000FF\'>Alternativa Sur</font>) para efectos de control y cumplimiento del artículo 28 de la LRSIC.]]> </Data>
+    </string>
+    <string name="autorizo">Autorizo</string>
+    <string name="ingreso_de_nip">Ingreso de NIP:</string>
+
+
 </resources>

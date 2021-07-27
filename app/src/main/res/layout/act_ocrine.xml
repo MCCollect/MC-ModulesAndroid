@@ -7,11 +7,11 @@
 
         <variable
             name="viewModel"
-            type="com.mc.mcmodules.viewmodel.OCRINEViewmodel" />
+            type="com.mc.mcmodules.viewmodel.scanine.OCRINEViewmodel" />
 
         <variable
             name="mainView"
-            type="com.mc.mcmodules.view.ActOCRINE" />
+            type="com.mc.mcmodules.view.scanine.ActOCRINE" />
 
 
     </data>

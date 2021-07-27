@@ -1,4 +1,4 @@
-package com.mc.mcmodules.view
+package com.mc.mcmodules.view.scanine
 
 import android.content.Intent
 import android.os.Bundle

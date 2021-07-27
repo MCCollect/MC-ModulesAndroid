@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".view.ActWebView">
+    tools:context=".view.scanine.ActWebView">
 
     <LinearLayout
         android:id="@+id/linearBtn"

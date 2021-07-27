@@ -7,25 +7,25 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-    <!--Quitar el theme android:theme="@style/AppTheme.NoActionBar"-->
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".view.pinhc.activity.ActPinHC"></activity>
         <activity android:name=".view.ActTest">
-
-            <!--<intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-
+            </intent-filter>
         </activity>
         <activity
-            android:name=".view.ActScanCodes"
+            android:name=".view.scanine.ActScanCodes"
             android:configChanges="screenSize|orientation" />
         <activity
-            android:name=".view.ActOCRINE"
+            android:name=".view.scanine.ActOCRINE"
             android:configChanges="screenSize|orientation" />
     </application>
 

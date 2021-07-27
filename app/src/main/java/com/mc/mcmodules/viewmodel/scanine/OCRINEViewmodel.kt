@@ -1,4 +1,4 @@
-package com.mc.mcmodules.viewmodel
+package com.mc.mcmodules.viewmodel.scanine
 
 import android.util.SparseArray
 import androidx.lifecycle.LiveData

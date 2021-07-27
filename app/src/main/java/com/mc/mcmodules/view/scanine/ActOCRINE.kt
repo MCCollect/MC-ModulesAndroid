@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.mc.mcmodules.view
+package com.mc.mcmodules.view.scanine
 
 import android.Manifest
 import android.content.Intent
@@ -30,7 +30,7 @@ import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.Utils.Utils
 import com.mc.mcmodules.databinding.ActOcrineBinding
-import com.mc.mcmodules.viewmodel.OCRINEViewmodel
+import com.mc.mcmodules.viewmodel.scanine.OCRINEViewmodel
 import com.tapadoo.alerter.Alerter
 import java.io.IOException
 import java.net.MalformedURLException

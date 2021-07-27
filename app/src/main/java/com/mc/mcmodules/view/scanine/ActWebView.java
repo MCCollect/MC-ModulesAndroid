@@ -1,4 +1,4 @@
-package com.mc.mcmodules.view;
+package com.mc.mcmodules.view.scanine;
 
 import android.annotation.SuppressLint;
 import android.content.ClipData;
