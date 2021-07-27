@@ -55,8 +55,8 @@ class ActTest : AppCompatActivity() {
                 getString(R.string.text1_aceptocondiciones),
                 getString(R.string.text2_aceptocondiciones),
                 getString(R.string.text3_aceptocondiciones),
-                "5514181916",
-                "Santaana poniente"
+                "www.isvalidcondiciones/http",
+                "www.isvalidnip/http"
 
             )
         )

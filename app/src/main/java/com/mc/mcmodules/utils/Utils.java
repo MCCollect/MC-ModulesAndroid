@@ -7,8 +7,11 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.URLUtil;
 
 import androidx.annotation.NonNull;
 import androidx.core.text.HtmlCompat;
@@ -18,7 +21,9 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.net.URL;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class Utils {
 
@@ -66,6 +71,26 @@ public class Utils {
             return true;
         }
 
+    }
+
+    public static boolean checkURL(CharSequence input) {
+        if (TextUtils.isEmpty(input)) {
+            return false;
+        }
+        Pattern URL_PATTERN = Patterns.WEB_URL;
+        boolean isURL = URL_PATTERN.matcher(input).matches();
+        if (!isURL) {
+            String urlString = input + "";
+            if (URLUtil.isNetworkUrl(urlString)) {
+                try {
+                    new URL(urlString);
+                    isURL = true;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return isURL;
     }
 
 

@@ -10,6 +10,7 @@ import com.mc.mcmodules.databinding.ActPinHcBinding
 import com.mc.mcmodules.model.classes.DataInfoAutorizacion
 import com.mc.mcmodules.model.classes.DataInfoDomicilio
 import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.view.adapters.pinhc.PagerFragmentAdapter
 import com.mc.mcmodules.viewmodel.pinhc.PinHCViewmodel
 
@@ -102,8 +103,20 @@ class ActPinHC : AppCompatActivity() {
             if (dataautorizacion == null) {
                 throw java.lang.Exception("Los datos de la verificación son obligatorios")
             } else {
-                this.dataautorizacion = dataautorizacion
-                setDataIntent()
+                if (Utils.checkURL(dataautorizacion.URL_CONDICIONES)) {
+
+                    if (Utils.checkURL(dataautorizacion.URL_NIP)) {
+                        this.dataautorizacion = dataautorizacion
+                        setDataIntent()
+                    } else {
+                        throw java.lang.Exception("La URL del NIP no es válida")
+                    }
+
+
+                } else {
+                    throw java.lang.Exception("La URL de las condiciones no es válida")
+
+                }
             }
 
 
@@ -130,7 +143,7 @@ class ActPinHC : AppCompatActivity() {
                 "",
                 "",
                 "",
-                arrayListOf(true,true,true,true,true,true,true)
+                arrayListOf(true, true, true, true, true, true, true)
             )
         }
 
@@ -152,7 +165,7 @@ class ActPinHC : AppCompatActivity() {
                 "",
                 "",
                 "",
-                arrayListOf(true,true,true,true,true,true,true,true,true)
+                arrayListOf(true, true, true, true, true, true, true, true, true)
             )
         }
 
