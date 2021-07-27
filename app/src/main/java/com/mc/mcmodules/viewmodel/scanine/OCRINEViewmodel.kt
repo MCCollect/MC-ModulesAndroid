@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.android.gms.vision.text.TextBlock
 import com.mc.mcmodules.model.classes.InfoINE
+import com.mc.mcmodules.utils.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.text.ParseException
@@ -538,6 +539,7 @@ class OCRINEViewmodel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+        Utils.freeMemory()
         println("Termino el LifeCicle del ActOCRINE")
     }
 

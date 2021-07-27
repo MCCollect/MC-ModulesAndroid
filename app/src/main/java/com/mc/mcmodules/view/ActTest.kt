@@ -20,41 +20,47 @@ class ActTest : AppCompatActivity() {
 
         val intent = Intent(this, ActPinHC::class.java)
         //startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
-        intent.putExtra("data_solicitante",DataInfoSolicitante(
-            "Erick",
-            "Ramos",
-            "Cruz",
-            "H",
-            "Soltero",
-            "RACE960730HDFMRR00",
-            "30/07/1996"
-        ))
+        intent.putExtra(
+            "data_solicitante", DataInfoSolicitante(
+                "Erick",
+                "Ramos",
+                "Cruz",
+                "H",
+                "Soltero",
+                "RACE960730HDFMRR00",
+                "30/07/1996",
+                arrayListOf(false, false, false, false, false, false, false) //puedes poner un arreglo vacio no se bloqueara nada
+            )
+        )
 
-        intent.putExtra("data_domicilio",DataInfoDomicilio(
-            "Avenida Tlahuac",
-            "6122",
-            "No. 4",
-            "13300",
-            "5514181916",
-            "Santaana poniente",
-            "tlahuac",
-            "cdmx",
-            "CDMX"
-        ))
+        intent.putExtra(
+            "data_domicilio", DataInfoDomicilio(
+                "Avenida Tlahuac",
+                "6122",
+                "No. 4",
+                "13300",
+                "5514181916",
+                "Santaana poniente",
+                "tlahuac",
+                "cdmx",
+                "CDMX",
+                arrayListOf(false, false, false, false, false, false, false, false, false)//puedes poner un arreglo vacio no se bloqueara nada
+            )
+        )
 
 
-        intent.putExtra("data_autorizacion", DataInfoAutorizacion(
-            getString(R.string.acepto_condiciones),
-            getString(R.string.text1_aceptocondiciones),
-            getString(R.string.text2_aceptocondiciones),
-            getString(R.string.text3_aceptocondiciones),
-            "5514181916",
-            "Santaana poniente"
+        intent.putExtra(
+            "data_autorizacion", DataInfoAutorizacion(
+                getString(R.string.acepto_condiciones),
+                getString(R.string.text1_aceptocondiciones),
+                getString(R.string.text2_aceptocondiciones),
+                getString(R.string.text3_aceptocondiciones),
+                "5514181916",
+                "Santaana poniente"
 
-        ))
+            )
+        )
         startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
-
-
 
 
     }

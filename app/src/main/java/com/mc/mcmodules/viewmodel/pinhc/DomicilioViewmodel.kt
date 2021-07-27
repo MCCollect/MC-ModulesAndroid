@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mc.mcmodules.model.classes.DataInfoDomicilio
+import com.mc.mcmodules.utils.Utils
 
 class DomicilioViewmodel:ViewModel() {
 
@@ -36,7 +37,8 @@ class DomicilioViewmodel:ViewModel() {
             "",
             "",
             "",
-            ""
+            "",
+            arrayListOf(true,true,true,true,true,true,true,true,true)
         )
     }
 
@@ -58,6 +60,7 @@ class DomicilioViewmodel:ViewModel() {
     override fun onCleared() {
         super.onCleared()
         domicilioViewmodel = null
+        Utils.freeMemory()
         println("Termino el lifeCicle de FrgDomicilio ")
     }
 }

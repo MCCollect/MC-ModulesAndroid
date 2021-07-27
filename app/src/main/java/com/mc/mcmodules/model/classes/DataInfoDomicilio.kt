@@ -13,5 +13,6 @@ class DataInfoDomicilio(
     var COLONIA: String,
     var MUNICIPIO: String,
     var CIUDAD: String,
-    var ESTADO: String
+    var ESTADO: String,
+    var LOCK_FIELDS: ArrayList<Boolean>
 ) : Parcelable

@@ -28,7 +28,7 @@ import com.google.android.gms.vision.text.TextRecognizer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
-import com.mc.mcmodules.Utils.Utils
+import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.databinding.ActOcrineBinding
 import com.mc.mcmodules.viewmodel.scanine.OCRINEViewmodel
 import com.tapadoo.alerter.Alerter

@@ -18,7 +18,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.mc.mcmodules.R;
-import com.mc.mcmodules.Utils.Utils;
+import com.mc.mcmodules.utils.Utils;
 
 import java.io.ByteArrayOutputStream;
 

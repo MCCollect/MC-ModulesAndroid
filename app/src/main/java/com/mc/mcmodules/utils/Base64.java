@@ -1,4 +1,4 @@
-package com.mc.mcmodules.Utils;
+package com.mc.mcmodules.utils;
 
 class Base64 {
 

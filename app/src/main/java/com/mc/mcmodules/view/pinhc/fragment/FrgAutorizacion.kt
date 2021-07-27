@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.text.HtmlCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +12,7 @@ import com.badoualy.stepperindicator.StepperIndicator
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.FrgAutorizacionBinding
 import com.mc.mcmodules.model.classes.DataInfoAutorizacion
+import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.viewmodel.pinhc.AutorizacionViewmodel
 
 class FrgAutorizacion(
@@ -79,32 +79,24 @@ class FrgAutorizacion(
 
             with(binding) {
 
-                txtAcepterminos.text = HtmlCompat.fromHtml(
-                    dataInfoAutorizacion.TEXT1_CHECKBOX,
-                    HtmlCompat.FROM_HTML_MODE_COMPACT
-                )
-                text1.text = HtmlCompat.fromHtml(
-                    dataInfoAutorizacion.TEXT2_TITLE,
-                    HtmlCompat.FROM_HTML_MODE_COMPACT
-                )
-
-
-                text2.text = HtmlCompat.fromHtml(
-                    dataInfoAutorizacion.TEXT3_PARRAFO1,
-                    HtmlCompat.FROM_HTML_MODE_COMPACT
-                )
-
-                text3.text =HtmlCompat.fromHtml(
-                    dataInfoAutorizacion.TEXT4_PARRAFO2,
-                    HtmlCompat.FROM_HTML_MODE_COMPACT
-                )
-
+                txtAcepterminos.text = Utils.fromHtml(dataInfoAutorizacion.TEXT1_CHECKBOX)
+                text1.text = Utils.fromHtml(dataInfoAutorizacion.TEXT2_TITLE)
+                text2.text = Utils.fromHtml(dataInfoAutorizacion.TEXT3_PARRAFO1)
+                text3.text = Utils.fromHtml(dataInfoAutorizacion.TEXT4_PARRAFO2)
 
 
             }
 
 
         })
+
+    }
+
+    private fun validateFields() {
+
+    }
+
+    fun lockFields(){
 
     }
 

@@ -12,5 +12,6 @@ class DataInfoSolicitante(
     var SEXO: String,
     var ESTADO_CIVIL: String,
     var CURP: String,
-    var FECHA_NAC: String
+    var FECHA_NAC: String,
+    var LOCK_FIELDS: ArrayList<Boolean>
 ) : Parcelable

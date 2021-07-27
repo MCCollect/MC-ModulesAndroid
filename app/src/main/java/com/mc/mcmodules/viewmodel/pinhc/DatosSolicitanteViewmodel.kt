@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mc.mcmodules.model.classes.DataInfoSolicitante
+import com.mc.mcmodules.utils.Utils
 
 class DatosSolicitanteViewmodel : ViewModel() {
 
@@ -34,7 +35,8 @@ class DatosSolicitanteViewmodel : ViewModel() {
             "",
             "",
             "",
-            ""
+            "",
+            arrayListOf(true,true,true,true,true,true,true)
         )
     }
 
@@ -51,6 +53,7 @@ class DatosSolicitanteViewmodel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         datosSolicitanteViewmodel = null
+        Utils.freeMemory()
         println("Termino el lifeCicle de FrgDatosSolicitante ")
     }
 

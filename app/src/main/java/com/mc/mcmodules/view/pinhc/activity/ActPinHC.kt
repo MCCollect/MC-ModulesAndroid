@@ -129,7 +129,8 @@ class ActPinHC : AppCompatActivity() {
                 "",
                 "",
                 "",
-                ""
+                "",
+                arrayListOf(true,true,true,true,true,true,true)
             )
         }
 
@@ -150,7 +151,8 @@ class ActPinHC : AppCompatActivity() {
                 "",
                 "",
                 "",
-                ""
+                "",
+                arrayListOf(true,true,true,true,true,true,true,true,true)
             )
         }
 

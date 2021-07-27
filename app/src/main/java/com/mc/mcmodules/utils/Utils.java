@@ -1,53 +1,34 @@
-package com.mc.mcmodules.Utils;
+package com.mc.mcmodules.utils;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.location.Location;
 import android.os.Build;
-import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.core.text.HtmlCompat;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class Utils {
 
 
-
     public static Spanned fromHtml(String html) {
-        Spanned result;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            result = Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY);
-        } else {
-            result = Html.fromHtml(html);
-        }
-        return result;
+
+        return HtmlCompat.fromHtml(
+                html,
+                HtmlCompat.FROM_HTML_MODE_COMPACT
+        );
     }
 
     public static void snackbar(View view, String message, int length) {
@@ -72,6 +53,21 @@ public class Utils {
             return null;
         }
     }
+
+
+    public static boolean checkField(@NotNull TextInputLayout inputLayout) {
+        inputLayout.setError(null);
+
+        if (Objects.requireNonNull(inputLayout.getEditText()).getText().toString().equals("")) {
+            inputLayout.setError("Campo obligatorio");
+            return false;
+
+        } else {
+            return true;
+        }
+
+    }
+
 
     public static void freeMemory() {
 

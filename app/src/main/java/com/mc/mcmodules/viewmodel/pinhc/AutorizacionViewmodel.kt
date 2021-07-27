@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mc.mcmodules.model.classes.DataInfoAutorizacion
+import com.mc.mcmodules.utils.Utils
 
 class AutorizacionViewmodel:ViewModel() {
 
@@ -53,6 +54,7 @@ class AutorizacionViewmodel:ViewModel() {
     override fun onCleared() {
         super.onCleared()
         autorizacionViewmodel = null
+        Utils.freeMemory()
         println("Termino el lifeCicle de FrgAutorizacion ")
     }
 
