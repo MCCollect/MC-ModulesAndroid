@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    //id 'com.android.library'
+    //id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        applicationId "com.mc.modules"
+        //applicationId "com.mc.modules"
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -95,7 +95,7 @@ dependencies {
 
 
 }
-/*
+
 afterEvaluate {
     publishing{
         publications{
@@ -107,4 +107,4 @@ afterEvaluate {
             }
         }
     }
-}*/
+}
