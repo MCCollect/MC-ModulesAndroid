@@ -63,7 +63,7 @@ class AutorizacionViewmodel : ViewModel() {
     private var _liveRequestService: MutableLiveData<String> = MutableLiveData()
     val liveRequestService: LiveData<String> get() = _liveRequestService
 
-    var pin: Int = 8974
+    var pin: Int = 1234
 
     init {
         _liveDatosAutorizacion.value = DataInfoAutorizacion(
@@ -79,15 +79,6 @@ class AutorizacionViewmodel : ViewModel() {
         )
 
         _liveRequestService.value = "N/C"
-
-        val random = Random()
-        val strPin = (String.format("%04d", random.nextInt(10000)))
-
-        pin = if (strPin.length < 4) {
-            5613
-        } else {
-            strPin.toInt()
-        }
 
 
         val interceptor = HttpLoggingInterceptor()
@@ -160,19 +151,47 @@ class AutorizacionViewmodel : ViewModel() {
                         if (response.isSuccessful) {
                             println("Respondio bien el servicio de pin")
 
-                            viewModelScope.launch(Dispatchers.Main) {
-                                alert.setCancelable(true)
-                                alert.btnLeft.visibility = View.VISIBLE
-                                alert.setTypeSuccess(
-                                    "¡Listo!",
-                                    "Se ha enviado un SMS con tu NIP",
-                                    "Aceptar"
-                                )
-                                alert.btnLeft.setOnClickListener {
-                                    alert.close()
+                            val postNIP = response.body()
+
+
+                            if (postNIP?.Informacion?.size ?: 0 > 0) {
+
+                                pin = postNIP?.Informacion?.get(0)?.Pin ?: 1234
+                                viewModelScope.launch(Dispatchers.Main) {
+                                    alert.setCancelable(true)
+                                    alert.btnLeft.visibility = View.VISIBLE
+                                    alert.setTypeSuccess(
+                                        "¡Listo!",
+                                        "Se ha enviado un SMS con tu NIP",
+                                        "Aceptar"
+                                    )
+                                    alert.btnLeft.setOnClickListener {
+                                        alert.close()
+                                    }
+
+                                    _liveRequestService.postValue("OK")
                                 }
+
+                            } else {
+
+                                println("El servidor ha mandado un error!")
+
+                                viewModelScope.launch(Dispatchers.Main) {
+                                    alert.setCancelable(true)
+                                    alert.btnLeft.visibility = View.VISIBLE
+                                    alert.setTypeError(
+                                        "¡Upss!",
+                                        "Ocurrio un error al enviar el NIP, intentalo de nuevo",
+                                        "Aceptar"
+                                    )
+                                    alert.btnLeft.setOnClickListener {
+                                        alert.close()
+                                    }
+                                    _liveRequestService.postValue("ERROR")
+                                }
+
                             }
-                            _liveRequestService.postValue("OK")
+
 
                         } else {
                             println("El servidor ha mandado un error!")

@@ -10,4 +10,5 @@ data class PostPIN(
 ){
 
     lateinit var Estatus: String
+    lateinit var Informacion: ArrayList<InfoObject>
 }
