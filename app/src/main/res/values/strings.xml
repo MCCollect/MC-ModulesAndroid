@@ -94,5 +94,11 @@
     <string name="visitar">VISITAR</string>
     <string name="validar_nip">Validar NIP</string>
 
+    <string name="ok">Listo</string>
+    <string name="clear">Limpiar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="enter_signature">Ingresa la firma</string>
+    <string name="aceptar_firma">Aceptar Firma</string>
+
 
 </resources>

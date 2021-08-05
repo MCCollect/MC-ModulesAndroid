@@ -50,5 +50,6 @@
     <color name="backgroud_toolbar">#ffffff</color>
     <color name="backgroud_ic_toolbar">#02ffffff</color>
     <color name="gris">#C4BFBF</color>
+    <color name="colorWhite">#fff</color>
 
 </resources>

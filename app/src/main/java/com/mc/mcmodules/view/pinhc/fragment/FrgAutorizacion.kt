@@ -1,6 +1,7 @@
 package com.mc.mcmodules.view.pinhc.fragment
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Parcelable
 import android.view.LayoutInflater
@@ -21,20 +22,20 @@ import com.mc.mcmodules.model.classes.data.DataInfoAutorizacion
 import com.mc.mcmodules.model.classes.data.PINRequest
 import com.mc.mcmodules.model.classes.library.CustomAlert
 import com.mc.mcmodules.model.classes.webmodels.PostPIN
+import com.mc.mcmodules.model.interfaces.OnSignedCaptureListener
 import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.view.pinhc.activity.ActLoadURL
-import com.mc.mcmodules.view.scanine.ActOCRINE
-import com.mc.mcmodules.view.scanine.ActScanCodes
 import com.mc.mcmodules.viewmodel.pinhc.AutorizacionViewmodel
 import com.mc.mcmodules.viewmodel.pinhc.DatosSolicitanteViewmodel
 import com.mc.mcmodules.viewmodel.pinhc.DomicilioViewmodel
 import com.tapadoo.alerter.Alerter
+import java.io.FileOutputStream
 
 class FrgAutorizacion(
     private val viewPager: ViewPager2,
     private val stepsView: StepperIndicator,
     private val dataInfoAutorizacion: DataInfoAutorizacion
-) : Fragment(), ActivityResultHandler {
+) : Fragment(), ActivityResultHandler, OnSignedCaptureListener {
 
     private lateinit var selfViewModel: AutorizacionViewmodel
     private lateinit var binding: FrgAutorizacionBinding
@@ -71,6 +72,15 @@ class FrgAutorizacion(
 
     private fun initListeners() {
         with(binding) {
+
+            btnCaptureFirma.setOnClickListener {
+                showDialog()
+            }
+
+            btnAceptarFirma.setOnClickListener {
+                println("acepto por firma")
+                handleResult(PINRequest(-1000, "OK",dataInfoAutorizacion.PATH_FIRMA))
+            }
 
 
             txtAcepterminos.setOnClickListener {
@@ -113,7 +123,7 @@ class FrgAutorizacion(
 
                     if (binding.etNIP.text.toString() == selfViewModel.pin.toString()) {
 
-                        handleResult(PINRequest(selfViewModel.pin, "OK"))
+                        handleResult(PINRequest(selfViewModel.pin, "OK",""))
 
                     } else {
                         showAlerter(
@@ -233,12 +243,32 @@ class FrgAutorizacion(
     }
 
 
+    private fun showDialog() {
+        val dialogFragment = SignatureDialogFragment(this)
+        dialogFragment.show(requireActivity().supportFragmentManager, "signature")
+    }
+
     override fun handleResult(parcelable: Parcelable) {
 
         val intentRegreso = Intent()
         intentRegreso.putExtra("result_object", parcelable)
         requireActivity().setResult(AppCompatActivity.RESULT_OK, intentRegreso)
         requireActivity().finish()
+    }
+
+    override fun onSignatureCaptured(bitmap: Bitmap, fileUri: String) {
+        binding.imgFirma.setImageBitmap(null)
+        binding.imgFirma.setImageBitmap(bitmap)
+        binding.imgFirma.visibility = View.VISIBLE
+        binding.btnAceptarFirma.visibility = View.VISIBLE
+
+        println("PathFirma:${dataInfoAutorizacion.PATH_FIRMA}")
+
+        FileOutputStream(this.dataInfoAutorizacion.PATH_FIRMA).use { out ->
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+        }
+
+
     }
 
 

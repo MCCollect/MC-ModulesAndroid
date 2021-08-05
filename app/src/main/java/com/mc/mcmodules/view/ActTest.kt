@@ -1,19 +1,27 @@
 package com.mc.mcmodules.view
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
+import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
+import java.io.File
 
 
 @Suppress("DEPRECATION")
 class ActTest : AppCompatActivity() {
+
+
+    private lateinit var binding: ActTestBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.act_test)
+        initContentView()
 
         val intent = Intent(this, ActPinHC::class.java)
 
@@ -74,7 +82,8 @@ class ActTest : AppCompatActivity() {
                 "api/CirculoCredito/pin",
                 "https://dev.mcnoc.mx/WsMovilAlternativaSur/",
                 "ALTERNATIVASUR",
-                "INTEGRANTE"
+                "INTEGRANTE",
+                filesDir.path+"/firma.jpg"
 
             )
         )
@@ -100,12 +109,34 @@ class ActTest : AppCompatActivity() {
                     val pinRequest: PINRequest? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else {
-                        PINRequest(0, "Fail")
+                        PINRequest(0, "Fail", "")
                     }
                     //tarea a realizar
                     println("Resultado del PIN (${pinRequest?.PIN}): ${pinRequest?.RESULT}")
+
+                    if (pinRequest?.PIN == -1000) {
+
+                        val image = File(pinRequest.FIRMA)
+                        val bmOptions = BitmapFactory.Options()
+                        var bitmap = BitmapFactory.decodeFile(image.absolutePath, bmOptions)
+                        bitmap = Bitmap.createScaledBitmap(
+                            bitmap!!,
+                            200,
+                            200,
+                            true
+                        )
+                        binding.imgFirmaTest.setImageBitmap(bitmap)
+                    }
                 }
             }
         }
     }
+
+    private fun initContentView() {
+        binding = ActTestBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = this
+        val view = binding.root
+        setContentView(view)
+    }
+
 }
