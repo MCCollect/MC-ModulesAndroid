@@ -79,7 +79,23 @@ class FrgAutorizacion(
 
             btnAceptarFirma.setOnClickListener {
                 println("acepto por firma")
-                handleResult(PINRequest(-1000, "OK",dataInfoAutorizacion.PATH_FIRMA))
+                if (cbAceptTerminos.isChecked) {
+
+                    handleResult(PINRequest(-1000, "OK", dataInfoAutorizacion.PATH_FIRMA))
+                } else {
+
+
+                    showAlerter(
+                        R.drawable.ic_close,
+                        "No has aceptado los términos",
+                        "acepta los terminos para poder continuar",
+                        R.color.error
+                    )
+
+
+                }
+
+
             }
 
 
@@ -123,7 +139,7 @@ class FrgAutorizacion(
 
                     if (binding.etNIP.text.toString() == selfViewModel.pin.toString()) {
 
-                        handleResult(PINRequest(selfViewModel.pin, "OK",""))
+                        handleResult(PINRequest(selfViewModel.pin, "OK", ""))
 
                     } else {
                         showAlerter(

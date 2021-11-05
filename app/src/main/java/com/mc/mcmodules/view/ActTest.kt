@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
+import com.mc.mcmodules.model.classes.library.OCR
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
 import java.io.File
+import java.util.regex.Pattern
 
 
 @Suppress("DEPRECATION")
@@ -24,6 +26,8 @@ class ActTest : AppCompatActivity() {
         initContentView()
 
         val intent = Intent(this, ActPinHC::class.java)
+
+
 
         intent.putExtra(
             "data_solicitante", DataInfoSolicitante(
@@ -90,8 +94,16 @@ class ActTest : AppCompatActivity() {
         startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
         //startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
 
-    }
 
+        val ocr = OCR(this)
+        //ocr.loadBitmap(BitmapFactory.decodeResource(resources, R.drawable.text_example))
+        //ocr.loadString("curp : race960730hdfmrr00")
+        ocr.loadString("xcvcxvxcv vkfhn54mndamnbasd (race960730hdfmrr00)fsdkl f ñlsdflk hfsdjklh sdf")
+        //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
+        binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)
+
+    }
+/*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
@@ -131,7 +143,7 @@ class ActTest : AppCompatActivity() {
             }
         }
     }
-
+*/
     private fun initContentView() {
         binding = ActTestBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
