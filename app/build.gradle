@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    //id 'com.android.library'
+    //id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -94,7 +94,7 @@ dependencies {
 
 
 }
-/*
+
 afterEvaluate {
     publishing{
         publications{
@@ -106,4 +106,4 @@ afterEvaluate {
             }
         }
     }
-}*/
+}
