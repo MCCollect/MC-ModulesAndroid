@@ -13,5 +13,8 @@ class InfoINE(
     var MUNICIPIO: String,
     var COLONIA: String,
     var SEXO: String,
-    var RFC: String
+    var RFC: String,
+    var EMISION: String,
+    var CLAVE_ELECTOR: String,
+    var VIGENCIA: String
 ) : Parcelable

@@ -99,6 +99,7 @@
     <string name="cancel">Cancelar</string>
     <string name="enter_signature">Ingresa la firma</string>
     <string name="aceptar_firma">Aceptar Firma</string>
+    <string name="vigencia2">VIGENCIA:</string>
 
 
 </resources>

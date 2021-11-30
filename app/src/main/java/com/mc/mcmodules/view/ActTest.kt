@@ -4,6 +4,8 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
@@ -25,10 +27,9 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActPinHC::class.java)
+        val intent = Intent(this, ActOCRINE::class.java)
 
-
-
+/*
         intent.putExtra(
             "data_solicitante", DataInfoSolicitante(
                 "Erick",
@@ -90,20 +91,20 @@ class ActTest : AppCompatActivity() {
                 filesDir.path+"/firma.jpg"
 
             )
-        )
-        startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
-        //startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
-
+        )*/
+        //startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
+        startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
+/*
 
         val ocr = OCR(this)
         //ocr.loadBitmap(BitmapFactory.decodeResource(resources, R.drawable.text_example))
         //ocr.loadString("curp : race960730hdfmrr00")
         ocr.loadString("xcvcxvxcv vkfhn54mndamnbasd (race960730hdfmrr00)fsdkl f ñlsdflk hfsdjklh sdf")
         //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
-        binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)
+        binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)*/
 
     }
-/*
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
@@ -112,7 +113,7 @@ class ActTest : AppCompatActivity() {
                     val info: InfoINE? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else {
-                        InfoINE("N/F", "", "", "", "", "", "", "")
+                        InfoINE("N/F", "", "", "", "", "", "", "","","","")
                     }
                     //tarea a realizar
                 }
@@ -143,7 +144,7 @@ class ActTest : AppCompatActivity() {
             }
         }
     }
-*/
+
     private fun initContentView() {
         binding = ActTestBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this

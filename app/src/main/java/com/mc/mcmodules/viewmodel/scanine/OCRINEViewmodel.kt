@@ -34,6 +34,7 @@ class OCRINEViewmodel : ViewModel() {
         const val FIELD_ESTADO = 10
         const val FIELD_MUNICIPIO = 11
         const val FIELD_COLONIA = 12
+        const val FIELD_VIGENCIA = 13
 
     }
 
@@ -59,9 +60,12 @@ class OCRINEViewmodel : ViewModel() {
     private var _liveCurp: MutableLiveData<String> = MutableLiveData()
     val liveCurp: LiveData<String> get() = _liveCurp
 
-    /*private var _liveEmision: MutableLiveData<String> = MutableLiveData()
+    private var _liveEmision: MutableLiveData<String> = MutableLiveData()
     val liveEmision: LiveData<String> get() = _liveEmision
 
+    private var _liveVigencia: MutableLiveData<String> = MutableLiveData()
+    val liveVigencia: LiveData<String> get() = _liveVigencia
+/*
     private var _liveTipoIne: MutableLiveData<String> = MutableLiveData()
     val liveTipoIne: LiveData<String> get() = _liveTipoIne*/
 
@@ -87,12 +91,13 @@ class OCRINEViewmodel : ViewModel() {
         _liveSexo.value = ""
         _liveClaveLector.value = ""
         _liveCurp.value = ""
-        /*_liveEmision.value = ""
-        _liveTipoIne.value = ""*/
+        _liveEmision.value = ""
+        /*_liveTipoIne.value = ""*/
         _liveTotalCampos.value = 0
         _liveEstado.value = ""
         _liveMunicipio.value = ""
         _liveColonia.value = ""
+        _liveVigencia.value = ""
     }
 
 
@@ -124,11 +129,11 @@ class OCRINEViewmodel : ViewModel() {
                 FIELD_CURP -> {
                     _liveCurp.postValue(value)
                 }
-/*
+
                 FIELD_EMISION -> {
                     _liveEmision.postValue(value)
                 }
-
+/*
                 FIELD_TIPO_INE -> {
                     _liveTipoIne.postValue(value)
                 }*/
@@ -143,6 +148,10 @@ class OCRINEViewmodel : ViewModel() {
 
                 FIELD_COLONIA -> {
                     _liveColonia.postValue(value)
+                }
+
+                FIELD_VIGENCIA -> {
+                    _liveVigencia.postValue(value)
                 }
             }
 
@@ -375,7 +384,7 @@ class OCRINEViewmodel : ViewModel() {
 
 
             }
-
+*/
 
             if (_liveEmision.value.equals("")) {
                 println("Buscando emision")
@@ -400,7 +409,27 @@ class OCRINEViewmodel : ViewModel() {
                     _liveEmision.postValue("")
                 }
 
-            }*/
+            }
+
+            if (_liveVigencia.value.equals("")) {
+                println("Buscando emision")
+
+                val patternTipo = Pattern.compile(".VIGENCIA\\s*(\\d{4})")
+
+
+                val matcherTipo =
+                    patternTipo.matcher(stringDetetions)
+
+                if (matcherTipo.find()) {
+                    val typeINE = matcherTipo.group(1)?.uppercase(Locale.getDefault())
+
+                    _liveVigencia.postValue(typeINE.toString())
+                } else {
+                    _liveVigencia.postValue("")
+                }
+
+            }
+
 
 
 
@@ -486,15 +515,20 @@ class OCRINEViewmodel : ViewModel() {
             _liveColonia.value.toString(),
             _liveSexo.value.toString(),
             _liveCurp.value.toString().substring(0, 10),
+            _liveEmision.value.toString(),
+            _liveClaveLector.value.toString(),
+            _liveVigencia.value.toString()
         )
 
     }
 
     fun isEsMuCoScanned(): Boolean {
 
-        return !_liveEstado.value.equals("") && !_liveMunicipio.value.equals("") && !_liveColonia.value.equals(
-            ""
-        )
+        return !_liveEstado.value.equals("") &&
+                !_liveMunicipio.value.equals("") &&
+                !_liveColonia.value.equals("") &&
+                !_liveEmision.value.equals("") &&
+                !_liveVigencia.value.equals("")
 
     }
 
@@ -522,6 +556,26 @@ class OCRINEViewmodel : ViewModel() {
             _liveColonia.postValue(colonia)
         }
     }
+
+
+    fun setValueEmision(emision: String) {
+
+        if (emision.isNotEmpty()) {
+
+            _liveEmision.postValue(emision)
+        }
+    }
+
+    fun setValueVigencia(vigencia: String) {
+
+        if (vigencia.isNotEmpty()) {
+
+            _liveVigencia.postValue(vigencia)
+        }
+    }
+
+
+
 
 
     @Synchronized

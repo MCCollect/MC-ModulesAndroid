@@ -62,7 +62,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
     private var typeOCR = 0
 
     private lateinit var timer: Timer
-    private val noDelay = 8000L
+    private val noDelay = 12000L
     private lateinit var timerTask: TimerTask
 
 
@@ -376,6 +376,22 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     }
 
+    val onclickVigencia = View.OnClickListener {
+
+
+        with(binding) {
+
+            with(lyBottomSheet) {
+                progressVigencia.visibility = View.VISIBLE
+                txtVigencia.text = ""
+            }
+        }
+
+        selfViewModel.updateCampo(OCRINEViewmodel.FIELD_VIGENCIA, "")
+        disminurContador()
+
+    }
+
 
     val onclickTipoIne = View.OnClickListener {
 
@@ -465,6 +481,16 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
         if(binding.lyBottomSheet.inputColonia.visibility == View.VISIBLE){
             selfViewModel.setValueColonia(binding.lyBottomSheet.txtCapColonia.text.toString())
+
+        }
+
+        if(binding.lyBottomSheet.inputEmision.visibility == View.VISIBLE){
+            selfViewModel.setValueEmision(binding.lyBottomSheet.txtCapEmision.text.toString())
+
+        }
+
+        if(binding.lyBottomSheet.inputVigencia.visibility == View.VISIBLE){
+            selfViewModel.setValueVigencia(binding.lyBottomSheet.txtCapVigencia.text.toString())
 
         }
 
@@ -779,7 +805,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         })
 
 
-        /*selfViewModel.liveEmision.observe(this, { emision ->
+        selfViewModel.liveEmision.observe(this, { emision ->
 
             with(binding.lyBottomSheet) {
 
@@ -796,9 +822,20 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                         0
                     }
 
+                    if(noDataEsMuCo){
+
+                        inputEmision.visibility = View.GONE
+                    }
+
+
                 } else {
                     txtEmision.text = ""
                     progressEmision.visibility = View.VISIBLE
+
+                    if(noDataEsMuCo){
+                        inputEmision.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
 
                 }
 
@@ -808,6 +845,40 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         })
 
 
+        selfViewModel.liveVigencia.observe(this, { vigencia ->
+
+            with(binding.lyBottomSheet) {
+
+
+                if (vigencia.isNotEmpty()) {
+                    txtVigencia.text = vigencia
+                    progressVigencia.visibility = View.GONE
+                    selfViewModel.aumentarContador()
+
+
+                    if(noDataEsMuCo){
+
+                        inputVigencia.visibility = View.GONE
+                    }
+
+
+                } else {
+                    txtVigencia.text = ""
+                    progressVigencia.visibility = View.VISIBLE
+
+                    if(noDataEsMuCo){
+                        inputVigencia.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
+
+                }
+
+            }
+
+
+        })
+
+/*
         selfViewModel.liveTipoIne.observe(this, { tipoIne ->
 
             with(binding.lyBottomSheet) {
@@ -929,7 +1000,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
 
             println("Contador para la transicion : $contador")
-            if (contador == 10) {
+            if (contador == 12) {
 
                 transition.startTransition(500)
                 binding.lyBottomSheet.progressScan.visibility = View.GONE
