@@ -15,5 +15,6 @@ class DataInfoAutorizacion(
     var URL_BASE: String,
     var USUARIO: String,
     var INTEGRANTE: String,
-    var PATH_FIRMA: String
+    var PATH_FIRMA: String,
+    var TELEFONO: String
 ) : Parcelable

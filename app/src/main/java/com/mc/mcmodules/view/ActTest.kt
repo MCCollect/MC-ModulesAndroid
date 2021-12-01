@@ -11,6 +11,7 @@ import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.model.classes.library.OCR
+import com.mc.mcmodules.view.firmae.ActPinE
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
 import java.io.File
@@ -27,7 +28,7 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActOCRINE::class.java)
+        val intent = Intent(this, ActPinE::class.java)
 
 /*
         intent.putExtra(
@@ -76,7 +77,7 @@ class ActTest : AppCompatActivity() {
             )
         )
 
-
+*/
         intent.putExtra(
             "data_autorizacion", DataInfoAutorizacion(
                 getString(R.string.acepto_condiciones),
@@ -88,12 +89,13 @@ class ActTest : AppCompatActivity() {
                 "https://dev.mcnoc.mx/WsMovilAlternativaSur/",
                 "ALTERNATIVASUR",
                 "INTEGRANTE",
-                filesDir.path+"/firma.jpg"
+                filesDir.path+"/firma.jpg",
+                "5576897654"
 
             )
-        )*/
+        )
         //startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
-        startActivityForResult(intent, ActOCRINE.CODIGO_OK_INE_DATA)
+        startActivityForResult(intent, ActPinE.CODIGO_OK_E_DATA)
 /*
 
         val ocr = OCR(this)

@@ -1,4 +1,4 @@
-package com.mc.mcmodules.viewmodel.pinhc
+package com.mc.mcmodules.viewmodel.firmae
 
 import android.annotation.SuppressLint
 import android.view.View
@@ -26,22 +26,21 @@ import java.security.KeyManagementException
 import java.security.NoSuchAlgorithmException
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
-import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
-class AutorizacionViewmodel : ViewModel() {
+class AutorizacionEViewmodel : ViewModel() {
 
     companion object {
-        private var autorizacionViewmodel: AutorizacionViewmodel? = null
+        private var autorizacionViewmodel: AutorizacionEViewmodel? = null
 
         @Synchronized
-        fun getInstance(): AutorizacionViewmodel? {
+        fun getInstance(): AutorizacionEViewmodel? {
 
             if (autorizacionViewmodel == null) {
-                throw java.lang.Exception("No hay instancia creada de este viewModel(AutorizacionViewmodel)")
+                throw java.lang.Exception("No hay instancia creada de este viewModel(AutorizacionEViewmodel)")
 
             }
             return autorizacionViewmodel
@@ -128,8 +127,8 @@ class AutorizacionViewmodel : ViewModel() {
     }
 
 
-    fun setInstanceCompanionViewModel(autorizacionViewmodel: AutorizacionViewmodel) {
-        AutorizacionViewmodel.autorizacionViewmodel = autorizacionViewmodel
+    fun setInstanceCompanionViewModel(autorizacionViewmodel: AutorizacionEViewmodel) {
+        Companion.autorizacionViewmodel = autorizacionViewmodel
     }
 
     fun postNip(postPIN: PostPIN, alert: CustomAlert) {

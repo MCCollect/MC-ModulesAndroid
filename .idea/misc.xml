@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_ocrine.xml" value="0.3234375" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_pin_e.xml" value="0.234375" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_pin_hc.xml" value="0.234375" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_test.xml" value="0.16927083333333334" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/bottom_sheet_campos_ine.xml" value="0.3234375" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_autorizacion.xml" value="0.2171875" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_autorizacione.xml" value="0.2171875" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_domicilio.xml" value="0.3138888888888889" />
       </map>
     </option>

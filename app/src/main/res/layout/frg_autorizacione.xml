@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.mc.mcmodules.viewmodel.firmae.AutorizacionEViewmodel" />
+
+        <variable
+            name="mainView"
+            type="com.mc.mcmodules.view.firmae.FrgAutorizacionE" />
+
+
+    </data>
+
+
+    <RelativeLayout
+
+        android:id="@+id/contentFields"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/prev"
+            android:layout_alignParentTop="true">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/cbAceptTerminos"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="?android:attr/listChoiceIndicatorMultiple"
+                    android:button="@null" />
+
+                <TextView
+                    android:id="@+id/txtAcepterminos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/cbAceptTerminos"
+                    android:layout_alignBottom="@+id/cbAceptTerminos"
+                    android:layout_toEndOf="@+id/cbAceptTerminos"
+                    android:gravity="center"
+                    android:textAlignment="textStart"
+                    tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtAcepterminos"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="130dp"
+                    android:gravity="center"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blackDark"
+                    tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/text2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blackDark"
+                    tools:ignore="RtlCompat" />
+
+
+                <TextView
+                    android:id="@+id/text3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/blackDark"
+                    tools:ignore="RtlCompat" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAutorizo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/autorizo"
+                    android:textAllCaps="false" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inNIP"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btnAutorizo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@+id/btnCaptureFirma"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:errorTextAppearance="@style/error">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNIP"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/ingreso_de_nip"
+                        android:inputType="numberDecimal"
+                        android:maxLength="4"
+                        android:padding="7dp"
+                        android:text=""
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/btnCaptureFirma"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/btnAutorizo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="29dp"
+                    android:background="@drawable/ic_firma"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:contentDescription="@string/contentdescription"
+                    android:padding="10dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnValidarNIP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/inNIP"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/validar_nip"
+                    android:textAllCaps="false"
+                    android:visibility="gone" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAceptarFirma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imgFirma"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/aceptar_firma"
+                    android:textAllCaps="false"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgFirma"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_below="@+id/btnValidarNIP"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/contentdescription"
+                    android:visibility="gone" />
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+
+
+
+    </RelativeLayout>
+
+
+</layout>
+
