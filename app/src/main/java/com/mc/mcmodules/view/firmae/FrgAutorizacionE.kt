@@ -213,6 +213,42 @@ class FrgAutorizacionE(
 
     private fun initObservers() {
 
+        selfViewModel.liveIsOkPin.observe(requireActivity(), { isOk ->
+
+            with(binding) {
+
+                if (isOk){
+                    btnCaptureFirma.visibility = View.GONE
+                }else{
+                    btnCaptureFirma.visibility = View.VISIBLE
+                }
+
+
+
+            }
+
+
+        })
+
+        selfViewModel.liveIsOkFirma.observe(requireActivity(), { isOk ->
+
+            with(binding) {
+
+                if (isOk){
+                    btnAutorizo.visibility = View.GONE
+                    inNIP.visibility = View.GONE
+                }else{
+                    btnAutorizo.visibility = View.VISIBLE
+                    inNIP.visibility = View.VISIBLE
+                }
+
+
+
+            }
+
+
+        })
+
         selfViewModel.liveDatosAutorizacion.observe(requireActivity(), { dataInfoAutorizacion ->
 
 
@@ -271,6 +307,8 @@ class FrgAutorizacionE(
         FileOutputStream(this.dataInfoAutorizacion.PATH_FIRMA).use { out ->
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
         }
+
+        selfViewModel.setIsOkFirma(true)
 
 
     }

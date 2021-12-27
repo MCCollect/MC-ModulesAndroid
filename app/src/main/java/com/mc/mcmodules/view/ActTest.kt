@@ -28,9 +28,9 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActPinE::class.java)
+        val intent = Intent(this, ActPinHC::class.java)
 
-/*
+
         intent.putExtra(
             "data_solicitante", DataInfoSolicitante(
                 "Erick",
@@ -77,7 +77,7 @@ class ActTest : AppCompatActivity() {
             )
         )
 
-*/
+
         intent.putExtra(
             "data_autorizacion", DataInfoAutorizacion(
                 getString(R.string.acepto_condiciones),
@@ -94,8 +94,8 @@ class ActTest : AppCompatActivity() {
 
             )
         )
-        //startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
-        startActivityForResult(intent, ActPinE.CODIGO_OK_E_DATA)
+        startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
+        //startActivityForResult(intent, ActPinE.CODIGO_OK_E_DATA)
 /*
 
         val ocr = OCR(this)

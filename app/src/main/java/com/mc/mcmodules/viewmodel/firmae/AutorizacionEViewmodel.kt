@@ -64,6 +64,12 @@ class AutorizacionEViewmodel : ViewModel() {
 
     var pin: Int = 1234
 
+    private var _liveIsOkPin: MutableLiveData<Boolean> = MutableLiveData()
+    val liveIsOkPin: LiveData<Boolean> get() = _liveIsOkPin
+
+    private var _liveIsOkFirma: MutableLiveData<Boolean> = MutableLiveData()
+    val liveIsOkFirma: LiveData<Boolean> get() = _liveIsOkFirma
+
     init {
         _liveDatosAutorizacion.value = DataInfoAutorizacion(
             "",
@@ -80,6 +86,8 @@ class AutorizacionEViewmodel : ViewModel() {
         )
 
         _liveRequestService.value = "N/C"
+        _liveIsOkFirma.value = false
+        _liveIsOkPin.value = false
 
 
         val interceptor = HttpLoggingInterceptor()
@@ -171,6 +179,7 @@ class AutorizacionEViewmodel : ViewModel() {
                                     }
 
                                     _liveRequestService.postValue("OK")
+                                    _liveIsOkPin.postValue(true)
                                 }
 
                             } else {
@@ -244,6 +253,12 @@ class AutorizacionEViewmodel : ViewModel() {
 
         }
 
+
+    }
+
+    fun setIsOkFirma (isOk:Boolean){
+
+        _liveIsOkFirma.postValue(isOk)
 
     }
 
