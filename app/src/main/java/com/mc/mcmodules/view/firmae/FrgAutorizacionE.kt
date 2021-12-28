@@ -176,7 +176,7 @@ class FrgAutorizacionE(
 
         alert.setTypeWarning(
             "¿Enviar mensaje?",
-            "Se enviara un mensaje con tu NIP al celular ${dataInfoAutorizacion.TELEFONO} ",
+            "Se enviara un mensaje con tu NIP al celular ${dataInfoAutorizacion.TELEFONO}, si no lo recibes puedes volver a intentar enviarlo ",
             "Cancelar",
             "Aceptar"
         )

@@ -187,7 +187,7 @@ class FrgAutorizacion(
 
         alert.setTypeWarning(
             "¿Enviar mensaje?",
-            "Se enviara un mensaje con tu NIP al celular ${DomicilioViewmodel.getInstance()?.liveDatosDomicilio?.value?.TEL_CELULAR ?: "5555555555"} ",
+            "Se enviara un mensaje con tu NIP al celular ${DomicilioViewmodel.getInstance()?.liveDatosDomicilio?.value?.TEL_CELULAR ?: "5555555555"}, si no lo recibes puedes volver a intentar enviarlo",
             "Cancelar",
             "Aceptar"
         )
