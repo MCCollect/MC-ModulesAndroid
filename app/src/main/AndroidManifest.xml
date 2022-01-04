@@ -43,6 +43,8 @@
         <activity
             android:name=".view.firmae.ActPinE"
             android:configChanges="screenSize|orientation" />
+        <activity android:name=".view.camera.activity.ActCam" />
+        <activity android:name=".view.camera.activity.ActEditorBitmap" />
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.model.classes.library.OCR
+import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.firmae.ActPinE
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
@@ -28,8 +29,8 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActPinHC::class.java)
-
+        val intent = Intent(this, ActCam::class.java)
+/*
 
         intent.putExtra(
             "data_solicitante", DataInfoSolicitante(
@@ -93,8 +94,8 @@ class ActTest : AppCompatActivity() {
                 "5576897654"
 
             )
-        )
-        startActivityForResult(intent, ActPinHC.CODIGO_OK_HC_DATA)
+        )*/
+        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
         //startActivityForResult(intent, ActPinE.CODIGO_OK_E_DATA)
 /*
 
@@ -119,7 +120,6 @@ class ActTest : AppCompatActivity() {
                     }
                     //tarea a realizar
                 }
-
                 ActPinHC.CODIGO_OK_HC_DATA -> {
                     val pinRequest: PINRequest? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
@@ -142,6 +142,26 @@ class ActTest : AppCompatActivity() {
                         )
                         binding.imgFirmaTest.setImageBitmap(bitmap)
                     }
+                }
+                ActCam.CODIGO_OK_CAMERA -> {
+                    val fileImage: DataCamera? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        DataCamera("not_found_path")
+                    }
+
+                    val image = File(fileImage?.PATH!!)
+                    val bmOptions = BitmapFactory.Options()
+                    var bitmap = BitmapFactory.decodeFile(image.absolutePath, bmOptions)
+                    bitmap = Bitmap.createScaledBitmap(
+                        bitmap!!,
+                        200,
+                        200,
+                        true
+                    )
+                    binding.imgFirmaTest.setImageBitmap(bitmap)
+
+
                 }
             }
         }
