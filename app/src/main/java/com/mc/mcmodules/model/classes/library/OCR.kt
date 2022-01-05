@@ -31,6 +31,7 @@ class OCR(
             for (i in 0 until items.size()) {
                 val item = items.valueAt(i) as TextBlock
                 strBuilder.append(item.value)
+                strBuilder.append("\n")
             }
 
 

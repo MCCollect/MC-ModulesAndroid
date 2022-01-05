@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".view.scancfe.ActOCRCFE">
+
+            <ImageView
+                android:id="@+id/imgReciboCFE"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginEnd="@dimen/dimen_20"
+                android:layout_marginBottom="@dimen/dimen_20"
+                android:background="@color/success"
+                android:contentDescription="@string/contentdescription"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+<!--            <ImageView
+                android:id="@+id/imgcamara"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:contentDescription="@string/contentdescription"
+                android:src="@drawable/ic_camera"
+                app:layout_constraintStart_toStartOf="@id/imgReciboCFE"
+                app:layout_constraintTop_toTopOf="@id/imgReciboCFE" />-->
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_margin="@dimen/dimen_10"
+                android:id="@+id/RecyclerPrueba"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/imgReciboCFE" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RecyclerFormCFE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RecyclerPrueba"
+                />
+            <Button
+                android:id="@+id/btnGuardarInfoCFE"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_20"
+                android:backgroundTint="@color/success"
+                android:text="guardar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RecyclerFormCFE"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</layout>

@@ -4,19 +4,14 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
-import com.mc.mcmodules.model.classes.library.OCR
 import com.mc.mcmodules.view.camera.activity.ActCam
-import com.mc.mcmodules.view.firmae.ActPinE
+import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
 import java.io.File
-import java.util.regex.Pattern
 
 
 @Suppress("DEPRECATION")
@@ -28,8 +23,14 @@ class ActTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
+//        val intent = Intent(this, ActCam::class.java)
+        val intent = Intent(this, ActOCRDocs::class.java)
+        intent.putExtra("data_docs", DataDocs(
+            arrayListOf(),arrayListOf(
+                "NOMBRE", "DIRECCION",
+                "NO. DE SERVICIO","RMU","LIMITE DE PAGO","CORTE A PARTIR","TARIFA","NO. MEDIDOR","MULTIPLICADOR","PERIODO FACTURADO")
+        ))
 
-        val intent = Intent(this, ActCam::class.java)
 /*
 
         intent.putExtra(
@@ -95,8 +96,8 @@ class ActTest : AppCompatActivity() {
 
             )
         )*/
-        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
-        //startActivityForResult(intent, ActPinE.CODIGO_OK_E_DATA)
+//        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
+        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_CFE)
 /*
 
         val ocr = OCR(this)
@@ -116,7 +117,7 @@ class ActTest : AppCompatActivity() {
                     val info: InfoINE? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else {
-                        InfoINE("N/F", "", "", "", "", "", "", "","","","")
+                        InfoINE("N/F", "", "", "", "", "", "", "", "", "", "")
                     }
                     //tarea a realizar
                 }
@@ -162,6 +163,20 @@ class ActTest : AppCompatActivity() {
                     binding.imgFirmaTest.setImageBitmap(bitmap)
 
 
+                }
+                ActOCRDocs.CODIGO_OK_CFE -> {
+                    val info: DataDocs? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        DataDocs(arrayListOf(), arrayListOf())
+                    }
+                    //tarea a realizar
+                    /*        println("Resultado del Data (${info?.camposCFE}")
+
+                            binding.text.setText("${info?.camposCFE}")*/
+                    info?.camposDocScaneado?.forEachIndexed { index, itemScanner ->
+                        println("Respuesta ${index}: " + itemScanner)
+                    }
                 }
             }
         }

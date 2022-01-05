@@ -41,6 +41,9 @@
             android:name=".view.scanine.ActOCRINE"
             android:configChanges="screenSize|orientation" />
         <activity
+            android:name=".view.escanergenerico.activity.ActOCRDocs"
+            android:configChanges="screenSize|orientation" />
+        <activity
             android:name=".view.firmae.ActPinE"
             android:configChanges="screenSize|orientation" />
         <activity android:name=".view.camera.activity.ActCam" />
