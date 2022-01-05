@@ -102,6 +102,7 @@
     <string name="vigencia2">VIGENCIA:</string>
     <string name="color_actual">Color actual</string>
     <string name="item">ITEM</string>
+    <string name="terminar">Terminar</string>
 
 
 </resources>

@@ -26,9 +26,12 @@ class ActTest : AppCompatActivity() {
 //        val intent = Intent(this, ActCam::class.java)
         val intent = Intent(this, ActOCRDocs::class.java)
         intent.putExtra("data_docs", DataDocs(
-            arrayListOf(),arrayListOf(
-                "NOMBRE", "DIRECCION",
-                "NO. DE SERVICIO","RMU","LIMITE DE PAGO","CORTE A PARTIR","TARIFA","NO. MEDIDOR","MULTIPLICADOR","PERIODO FACTURADO")
+            arrayListOf(),
+            arrayListOf(
+                "NOMBRE",
+                "DIRECCION",
+                "NO. DE SERVICIO",
+                "RMU","LIMITE DE PAGO","CORTE A PARTIR","TARIFA","NO. MEDIDOR","MULTIPLICADOR","PERIODO FACTURADO")
         ))
 
 /*
@@ -97,7 +100,7 @@ class ActTest : AppCompatActivity() {
             )
         )*/
 //        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
-        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_CFE)
+        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
 /*
 
         val ocr = OCR(this)
@@ -164,7 +167,7 @@ class ActTest : AppCompatActivity() {
 
 
                 }
-                ActOCRDocs.CODIGO_OK_CFE -> {
+                ActOCRDocs.CODIGO_OK_SCANDOCS -> {
                     val info: DataDocs? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else {

@@ -28,7 +28,7 @@ import java.io.File
 
 open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
     companion object {
-        const val CODIGO_OK_CFE: Int = 137
+        const val CODIGO_OK_SCANDOCS: Int = 137
     }
 
     private lateinit var binding: ActOcrcfeBinding
@@ -55,13 +55,13 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
 
     /*Metodos al inicar la vista*/
     private fun initContentView() {
-/*        binding.imgcamara.setOnClickListener {
+        binding.imgcamara.setOnClickListener {
             val intent = Intent(this, ActCam::class.java)
             startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
-        }*/
+        }
         val layoutManager = LinearLayoutManager(this)
         binding.RecyclerFormCFE.layoutManager = layoutManager
-        var listaInicial: ArrayList<ItemScanner> = getListaEtiquetas()
+        val listaInicial: ArrayList<ItemScanner> = getListaEtiquetas()
         val adapter = adapterFormDocs(listaInicial, R.layout.view_item_cfe, this)
         binding.RecyclerFormCFE.adapter = adapter
 

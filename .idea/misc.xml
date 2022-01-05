@@ -3,13 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/drawable/bg_tv_recycle_cfe.xml" value="0.1" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/layout/act_ocrcfe.xml" value="0.18" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/layout/act_test.xml" value="0.1578125" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/layout/form_cfe.xml" value="0.2465277777777778" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/layout/recycler_view_item.xml" value="0.29444444444444445" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/layout/view_item_cfe.xml" value="0.25" />
-        <entry key="..\:/Users/USUARIO/Documents/PROYECTOMODULES/MC-ModulesAndroid/app/src/main/res/menu/menu_cfe.xml" value="0.1" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/drawable/baseline_edit.xml" value="0.2453125" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/drawable/baseline_redo.xml" value="0.2453125" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/drawable/baseline_save.xml" value="0.2453125" />
@@ -22,6 +15,7 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/drawable/redounded_top_corners_white.xml" value="0.2453125" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_cam.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_editor_bitmap.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_ocrcfe.xml" value="0.23177083333333334" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_ocrine.xml" value="0.3234375" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_pin_e.xml" value="0.234375" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/act_pin_hc.xml" value="0.234375" />
@@ -31,6 +25,8 @@
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_autorizacion.xml" value="0.2171875" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_autorizacione.xml" value="0.2171875" />
         <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/frg_domicilio.xml" value="0.3138888888888889" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/recycler_view_item.xml" value="0.23177083333333334" />
+        <entry key="..\:/Users/Usuario/AndroidStudioProjects/MCModules/app/src/main/res/layout/view_item_cfe.xml" value="0.23177083333333334" />
       </map>
     </option>
   </component>
