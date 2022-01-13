@@ -17,12 +17,10 @@ import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.model.classes.data.DataDocs
 import com.mc.mcmodules.model.classes.data.DataCamera
-import com.mc.mcmodules.model.classes.data.DataInfoAutorizacion
 import com.mc.mcmodules.model.classes.data.ItemScanner
-import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.adapter.AdapterOCRLista
-import com.mc.mcmodules.view.escanergenerico.adapter.adapterFormDocs
+import com.mc.mcmodules.view.escanergenerico.adapter.AdapterFormDocs
 import com.mc.mcmodules.viewmodel.escanergenerico.OCRDocsViewmodel
 import java.io.File
 
@@ -62,7 +60,7 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
         val layoutManager = LinearLayoutManager(this)
         binding.RecyclerFormCFE.layoutManager = layoutManager
         val listaInicial: ArrayList<ItemScanner> = getListaEtiquetas()
-        val adapter = adapterFormDocs(listaInicial, R.layout.view_item_cfe, this)
+        val adapter = AdapterFormDocs(listaInicial, R.layout.view_item_cfe, this)
         binding.RecyclerFormCFE.adapter = adapter
 
         binding.btnGuardarInfoCFE.setOnClickListener {

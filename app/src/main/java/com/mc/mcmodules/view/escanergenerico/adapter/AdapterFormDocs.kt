@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
 import com.mc.mcmodules.R
 import com.mc.mcmodules.model.classes.data.ItemScanner
-import com.mc.mcmodules.view.escanergenerico.adapter.adapterFormDocs.ViewHolder
+import com.mc.mcmodules.view.escanergenerico.adapter.AdapterFormDocs.ViewHolder
 import kotlin.collections.ArrayList
 
-class adapterFormDocs(
+class AdapterFormDocs(
     private val items: ArrayList<ItemScanner>,
     private val Layout: Int = 0,
     private val activity: Activity

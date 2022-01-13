@@ -1,6 +1,6 @@
 plugins {
-    //id 'com.android.application'
-    id 'com.android.library'
+    id 'com.android.application'
+    //id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -14,7 +14,7 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-        //applicationId "com.mc.modules"
+        applicationId "com.mc.modules"
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -61,6 +61,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -73,14 +75,17 @@ dependencies {
 
     implementation 'com.github.tapadoo:alerter:7.1.0'
 
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'com.github.CanHub:Android-Image-Cropper:3.2.2'
+
+
+
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-    implementation 'ja.burhanrashid52:photoeditor:0.3.3'
+    implementation 'com.burhanrashid52:photoeditor:1.5.1'
     implementation 'com.larswerkman:HoloColorPicker:1.5'
 
 
-
+    zxing
     // Lifecycle components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
@@ -101,7 +106,7 @@ dependencies {
 
 
 }
-
+/*
 afterEvaluate {
     publishing{
         publications{
@@ -114,3 +119,4 @@ afterEvaluate {
         }
     }
 }
+*/

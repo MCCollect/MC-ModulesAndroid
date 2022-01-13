@@ -7,6 +7,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
+import com.mc.mcmodules.model.classes.library.CipherAES
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
@@ -23,7 +24,7 @@ class ActTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
-//        val intent = Intent(this, ActCam::class.java)
+/*        val intent = Intent(this, ActCam::class.java)
         val intent = Intent(this, ActOCRDocs::class.java)
         intent.putExtra("data_docs", DataDocs(
             arrayListOf(),
@@ -33,7 +34,7 @@ class ActTest : AppCompatActivity() {
                 "NO. DE SERVICIO",
                 "RMU","LIMITE DE PAGO","CORTE A PARTIR","TARIFA","NO. MEDIDOR","MULTIPLICADOR","PERIODO FACTURADO")
         ))
-
+*/
 /*
 
         intent.putExtra(
@@ -100,7 +101,7 @@ class ActTest : AppCompatActivity() {
             )
         )*/
 //        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
-        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
+        //startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
 /*
 
         val ocr = OCR(this)
@@ -109,6 +110,14 @@ class ActTest : AppCompatActivity() {
         ocr.loadString("xcvcxvxcv vkfhn54mndamnbasd (race960730hdfmrr00)fsdkl f ñlsdflk hfsdjklh sdf")
         //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
         binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)*/
+
+        val cipherAES = CipherAES()
+
+        val objectAES = cipherAES.encrypt("Hola comó estas")
+
+        println("Texto cifrado : " + objectAES.ciphertext)
+        println("Texto descifrado : " + cipherAES.decrypt(objectAES.ciphertext, objectAES.iv))
+
 
     }
 

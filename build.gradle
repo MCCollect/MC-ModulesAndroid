@@ -3,7 +3,9 @@ buildscript {
     ext.kotlin_version = "1.5.10"
     repositories {
         google()
+        maven { url "https://jitpack.io" }
         mavenCentral()
+        maven { url 'https://maven.fabric.io/public'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:4.2.2'
@@ -16,13 +18,15 @@ buildscript {
 
 allprojects {
     repositories {
+
         google()
-        mavenCentral()
         maven {
             url "https://jitpack.io"
             credentials { username authToken }
         }
-        jcenter()
+
+        mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
 
 
     }
