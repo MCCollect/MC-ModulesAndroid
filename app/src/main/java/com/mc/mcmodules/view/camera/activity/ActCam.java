@@ -28,6 +28,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.canhub.cropper.CropImageView;
 import com.mc.alternativasur.api.interfaces.ActivityResultHandler;
 import com.mc.mcmodules.R;
 import com.mc.mcmodules.model.classes.data.DataCamera;
@@ -38,7 +39,6 @@ import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.tapadoo.alerter.Alerter;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

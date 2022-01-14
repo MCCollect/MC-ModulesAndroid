@@ -5,6 +5,8 @@ package com.mc.mcmodules.view.scanine
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Parcelable
@@ -30,8 +32,13 @@ import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
 import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.databinding.ActOcrineBinding
+import com.mc.mcmodules.model.classes.data.*
+import com.mc.mcmodules.view.camera.activity.ActCam
+import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
+import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.viewmodel.scanine.OCRINEViewmodel
 import com.tapadoo.alerter.Alerter
+import java.io.File
 import java.io.IOException
 import java.net.MalformedURLException
 import java.net.URISyntaxException
@@ -96,8 +103,10 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             else -> {
                 try {
                     mCameraSource.stop()
-                    val intent = Intent(this@ActOCRINE, ActScanCodes::class.java)
-                    startActivityForResult(intent, CODIGO_INTENT_QR)
+//                    val intent = Intent(this@ActOCRINE, ActScanCodes::class.java)
+//                    startActivityForResult(intent, CODIGO_INTENT_QR)
+                    val intent = Intent(this, ActScanCodes::class.java)
+                    startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)
 
 
                 } catch (e: Exception) {
@@ -1097,9 +1106,41 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                ActScanCodes.CODIGO_OK_QR -> {
+                    val info: DatoQR? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        DatoQR("N/F")
+                    }
+                    //tarea a realizar
+                    println("Resultado  (${info?.QR})")
+                    val codigo: String = info?.QR.toString()
+                    if (urlValidator(codigo)) {
+                        with(binding.lyBottomSheet) {
+                            ttCodQR.visibility = View.VISIBLE
+                            txtCodQR.visibility = View.VISIBLE
+                            //codQr.setText(code.rawValue.replace("http","https"));
+                            txtCodQR.text = codigo
+                            txtCodQR.requestFocus()
+                            btnValidar.visibility = View.VISIBLE
+                        }
+                    } else {
+                        with(binding.lyBottomSheet) {
+                            ttCodUni.visibility = View.VISIBLE
+                            txtCodUni.visibility = View.VISIBLE
+                            txtCodUni.text = codigo
+                            txtCodUni.requestFocus()
+                        }
+                    }
+                }
+            }
+        }
 
 
-        if (requestCode == CODIGO_INTENT_QR) {
+//          REMPLAZAR ESTA LLAMADA
+/*        if (requestCode == CODIGO_INTENT_QR) {
             if (resultCode == RESULT_OK) {
                 if (data != null) {
                     val codigo: String = data.getStringExtra("codigo")!!
@@ -1129,7 +1170,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     println("Este es el valor del codigo : $codigo")
                 }
             }
-        }
+        }*/
 
 
     }

@@ -12,6 +12,7 @@ import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
+import com.mc.mcmodules.view.scanine.ActScanCodes
 import java.io.File
 
 
@@ -24,6 +25,9 @@ class ActTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
+/*//        PRUEBA DEL ESCANNER DE QR
+        val intent = Intent(this, ActScanCodes::class.java)
+        startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
 /*        val intent = Intent(this, ActCam::class.java)
         val intent = Intent(this, ActOCRDocs::class.java)
         intent.putExtra("data_docs", DataDocs(
@@ -190,6 +194,15 @@ class ActTest : AppCompatActivity() {
                         println("Respuesta ${index}: " + itemScanner)
                     }
                 }
+/*                ActScanCodes.CODIGO_OK_QR -> {
+                    val info: DatoQR? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else {
+                        DatoQR("N/F")
+                    }
+                    //tarea a realizar
+                    println("Resultado  (${info?.QR})")
+                }*/
             }
         }
     }
