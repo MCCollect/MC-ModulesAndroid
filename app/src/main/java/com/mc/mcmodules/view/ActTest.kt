@@ -28,17 +28,23 @@ class ActTest : AppCompatActivity() {
 /*//        PRUEBA DEL ESCANNER DE QR
         val intent = Intent(this, ActScanCodes::class.java)
         startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
-/*        val intent = Intent(this, ActCam::class.java)
+        //val intent = Intent(this, ActCam::class.java)
         val intent = Intent(this, ActOCRDocs::class.java)
-        intent.putExtra("data_docs", DataDocs(
-            arrayListOf(),
-            arrayListOf(
-                "NOMBRE",
-                "DIRECCION",
-                "NO. DE SERVICIO",
-                "RMU","LIMITE DE PAGO","CORTE A PARTIR","TARIFA","NO. MEDIDOR","MULTIPLICADOR","PERIODO FACTURADO")
-        ))
-*/
+        intent.putExtra(
+            "data_docs", DataDocs(
+                arrayListOf(),
+                arrayListOf(
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS"
+                )
+            )
+        )
+
+        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
+
 /*
 
         intent.putExtra(
@@ -105,7 +111,7 @@ class ActTest : AppCompatActivity() {
             )
         )*/
 //        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
-        //startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
+
 /*
 
         val ocr = OCR(this)
@@ -115,12 +121,14 @@ class ActTest : AppCompatActivity() {
         //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
         binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)*/
 
+
+        /*
         val cipherAES = CipherAES()
 
         val objectAES = cipherAES.encrypt("Hola comó estas")
 
         println("Texto cifrado : " + objectAES.ciphertext)
-        println("Texto descifrado : " + cipherAES.decrypt(objectAES.ciphertext, objectAES.iv))
+        println("Texto descifrado : " + cipherAES.decrypt(objectAES.ciphertext, objectAES.iv))*/
 
 
     }
