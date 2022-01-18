@@ -218,9 +218,7 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
         previewHolder = camera_preview.getHolder();
         previewHolder.addCallback(surfaceCallback);
         previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        previewHolder.setFixedSize(getWindow().getWindowManager()
-                .getDefaultDisplay().getWidth(), getWindow().getWindowManager()
-                .getDefaultDisplay().getHeight());
+        previewHolder.setFixedSize(1280, 1024);
 
         SGD = new ScaleGestureDetector(this, new ScaleListener());
     }

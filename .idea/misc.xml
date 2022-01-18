@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Documentos/Trabajo/MC-ModulesAndroid/app/src/main/res/layout/act_cam.xml" value="0.125" />
+        <entry key="..\:/Documentos/Trabajo/MC-ModulesAndroid/app/src/main/res/layout/act_ocrcfe.xml" value="0.125" />
+        <entry key="..\:/Documentos/Trabajo/MC-ModulesAndroid/app/src/main/res/layout/act_test.xml" value="0.125" />
         <entry key="..\:/Users/USUARIO/Documents/PROYECTOSMCCOLLECT/MC-ModulesAndroid-Preliminar-Scanner/MC-ModulesAndroid/app/src/main/res/layout/act_cam.xml" value="0.16354166666666667" />
         <entry key="..\:/Users/USUARIO/Documents/PROYECTOSMCCOLLECT/MC-ModulesAndroid-Preliminar-Scanner/MC-ModulesAndroid/app/src/main/res/layout/act_scan_codes.xml" value="0.160081053698075" />
         <entry key="..\:/Users/USUARIO/Documents/PROYECTOSMCCOLLECT/MC-ModulesAndroid-Preliminar-Scanner/MC-ModulesAndroid/app/src/main/res/layout/bottom_sheet_campos_ine.xml" value="0.1574074074074074" />
