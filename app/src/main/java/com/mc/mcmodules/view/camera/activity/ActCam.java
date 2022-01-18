@@ -215,11 +215,6 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
         else
             btnFlash.setVisibility(View.GONE);
 
-        previewHolder = camera_preview.getHolder();
-        previewHolder.addCallback(surfaceCallback);
-        previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        previewHolder.setFixedSize(1280, 1024);
-
         SGD = new ScaleGestureDetector(this, new ScaleListener());
     }
 
@@ -577,7 +572,6 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
         return Base64.encodeToString(byte_arr, Base64.DEFAULT);
     }
 
-
     public boolean onTouchEvent(MotionEvent ev) {
         SGD.onTouchEvent(ev);
         return true;
@@ -639,9 +633,14 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
     public void onResume() {
         super.onResume();
 
-        if (camera != null)
-            camera.release();
+        if (camera != null) camera.release();
         camera = getCameraInstance();
+        Camera.Parameters params= camera.getParameters();
+
+        previewHolder = camera_preview.getHolder();
+        previewHolder.addCallback(surfaceCallback);
+        previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+        previewHolder.setFixedSize(params.getPreviewSize().width, params.getPreviewSize().height);
         if (camera == null) {
             Toast.makeText(this, "No es posible tomar la fotografía, la cámara no está disponible.   on resume", Toast.LENGTH_LONG).show();
         }
