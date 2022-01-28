@@ -6,41 +6,45 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputLayout
-import com.mc.mcmodules.R
+import com.mc.mcmodules.databinding.ViewItemCfeBinding
 import com.mc.mcmodules.model.classes.data.ItemScanner
 import com.mc.mcmodules.view.escanergenerico.adapter.AdapterFormDocs.ViewHolder
-import kotlin.collections.ArrayList
 
 class AdapterFormDocs(
-    private val items: ArrayList<ItemScanner>,
-    private val Layout: Int = 0,
+    private val items: List<ItemScanner>,
     private val activity: Activity
 ) : RecyclerView.Adapter<ViewHolder>() {
-    private var text: String = ""
-    private lateinit var textSet: String
-    var textPaste: String = ""
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var editText: EditText = itemView.findViewById<View>(R.id.etItemRecycler) as EditText
-        var textInputLayout: TextInputLayout =
-            itemView.findViewById<View>(R.id.inputItemRecycler) as TextInputLayout
 
-        init {
-            textInputLayout.setEndIconOnClickListener {
-                imagepaste(textInputLayout, editText)
-                oyenteEdit(editText)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemBinding = ViewItemCfeBinding.inflate(layoutInflater, parent, false)
+        return ViewHolder(itemBinding)
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = items[position]
+        holder.setIsRecyclable(false)
+        holder.bind(item, activity)
+    }
+
+    class ViewHolder(private val binding: ViewItemCfeBinding) : RecyclerView.ViewHolder(binding.root) {
+        private var text: String = ""
+        var textPaste: String = ""
+
+        fun bind(item: ItemScanner, activity: Activity) {
+            binding.etItemRecycler.hint = item.etiqueta
+            item.respuest?.let { text -> binding.etItemRecycler.setText(text)}
+            binding.inputItemRecycler.setEndIconOnClickListener {
+                imagepaste(binding.inputItemRecycler, binding.etItemRecycler, activity)
             }
-        }
-
-        fun bind(position: Int, items: ArrayList<ItemScanner>) {
-            textInputLayout.hint = items[position].etiqueta
-            editText.addTextChangedListener(object : TextWatcher {
+            binding.etItemRecycler.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -55,63 +59,25 @@ class AdapterFormDocs(
                 }
 
                 override fun afterTextChanged(s: Editable?) {
-                    items[position].respuest = s.toString()
+                    item.respuest = s.toString()
                 }
             })
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(Layout, parent, false)
-        return ViewHolder(v)
-    }
-
-    override fun getItemCount(): Int {
-        return items.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position, items)
-    }
-
-    /*MÉTODO PARA SETTEAR EL TEXTO EN EL EDITTEXT*/
-    fun imagepaste(textInputLayout: TextInputLayout, editText: EditText) {
-        textPaste = pasteData()
-        if ("DIRECCION" == textInputLayout.hint) {
-            text += "$textPaste "
-            editText.setText(text)
-            if (text.length > 150) {
-                text = ""
-            }
-        } else {
-            editText.setText(textPaste)
+        fun imagepaste(textInputLayout: TextInputLayout, editText: EditText, activity: Activity) {
+            textPaste = pasteData(activity)
+            if ("DIRECCION" == textInputLayout.hint) {
+                text += "$textPaste "
+                editText.setText(text)
+                if (text.length > 150) text = ""
+            } else editText.setText(textPaste)
         }
-//        editText.setText(textPaste);
-    }
 
-    /*MÉTODO PARA PEGAR EL TEXTO*/
-    private fun pasteData(): String {
-        val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clipData = clipboard.primaryClip
-        val itemAt = clipData!!.getItemAt(0)
-        return itemAt.text.toString()
-    }
-
-    /*MÉTODOS DE PRUEBA*/
-    fun oyenteVacio(text: String) {
-        Toast.makeText(activity.applicationContext, "" + text, Toast.LENGTH_LONG)
-            .show()
-    }
-
-    fun oyente(textInputLayout: TextInputLayout) {
-        Toast.makeText(activity.applicationContext, "" + textInputLayout.hint, Toast.LENGTH_LONG)
-            .show()
-    }
-
-    fun oyenteEdit(editText: EditText) {
-        /*Toast.makeText(activity.applicationContext, ""
-                + "\n"+
-                editText.text.toString(), Toast.LENGTH_LONG)
-            .show()*/
+        private fun pasteData(activity: Activity): String {
+            val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = clipboard.primaryClip
+            val itemAt = clipData!!.getItemAt(0)
+            return itemAt.text.toString()
+        }
     }
 }

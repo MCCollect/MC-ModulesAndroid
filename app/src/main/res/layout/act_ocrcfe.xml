@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.escanergenerico.activity.ActOCRDocs">
 
-    <ScrollView
+    <ImageView
+        android:id="@+id/imgReciboCFE"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="150dp"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginEnd="@dimen/dimen_20"
+        android:layout_marginBottom="@dimen/dimen_20"
+        android:background="@color/colorPrimary"
+        android:contentDescription="@string/contentdescription"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:context=".view.scancfe.ActOCRCFE">
+    <ImageView
+        android:id="@+id/imgcamara"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/contentdescription"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintStart_toStartOf="@id/imgReciboCFE"
+        app:layout_constraintTop_toTopOf="@id/imgReciboCFE"
+        app:tint="@color/white" />
 
-            <ImageView
-                android:id="@+id/imgReciboCFE"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginStart="@dimen/dimen_20"
-                android:layout_marginTop="@dimen/dimen_20"
-                android:layout_marginEnd="@dimen/dimen_20"
-                android:layout_marginBottom="@dimen/dimen_20"
-                android:background="@color/colorPrimary"
-                android:contentDescription="@string/contentdescription"
-                android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerPrueba"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/dimen_8"
+        app:layout_constraintBottom_toTopOf="@+id/RecyclerFormCFE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgReciboCFE"
+        tools:listitem="@layout/recycler_view_item"/>
 
-            <ImageView
-                android:id="@+id/imgcamara"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:contentDescription="@string/contentdescription"
-                android:src="@drawable/ic_camera"
-                app:layout_constraintStart_toStartOf="@id/imgReciboCFE"
-                app:layout_constraintTop_toTopOf="@id/imgReciboCFE"
-                app:tint="@color/white" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerFormCFE"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="@dimen/dimen_8"
+        app:layout_constraintBottom_toTopOf="@+id/btnGuardarInfoCFE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/RecyclerPrueba" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="@dimen/dimen_10"
-                android:id="@+id/RecyclerPrueba"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/imgReciboCFE" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/RecyclerFormCFE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/RecyclerPrueba"
-                />
-            <Button
-                android:id="@+id/btnGuardarInfoCFE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimen_20"
-                android:backgroundTint="@color/colorPrimary"
-                android:text="@string/terminar"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/RecyclerFormCFE"
-                />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-</layout>
+    <Button
+        android:id="@+id/btnGuardarInfoCFE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_20"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/terminar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

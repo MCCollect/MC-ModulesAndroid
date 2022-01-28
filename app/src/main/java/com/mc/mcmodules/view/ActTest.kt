@@ -7,12 +7,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
-import com.mc.mcmodules.model.classes.library.CipherAES
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
-import com.mc.mcmodules.view.scanine.ActScanCodes
 import java.io.File
 
 
@@ -34,6 +32,40 @@ class ActTest : AppCompatActivity() {
             "data_docs", DataDocs(
                 arrayListOf(),
                 arrayListOf(
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS","NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
+                    "NOMBRE",
+                    "FILIACION",
+                    "PERIODO DE PAGO",
+                    "LIQUIDO",
+                    "ESTATUS",
                     "NOMBRE",
                     "FILIACION",
                     "PERIODO DE PAGO",
