@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginStart="@dimen/dimen_20"
-        android:layout_marginTop="@dimen/dimen_20"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="@dimen/dimen_20"
         android:layout_marginBottom="@dimen/dimen_20"
         android:background="@color/colorPrimary"
@@ -36,13 +36,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerPrueba"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:padding="@dimen/dimen_8"
-        app:layout_constraintBottom_toTopOf="@+id/RecyclerFormCFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgReciboCFE"
-        tools:listitem="@layout/recycler_view_item"/>
+        tools:listitem="@layout/recycler_view_item"
+        tools:itemCount="3"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RecyclerFormCFE"
@@ -52,13 +52,15 @@
         app:layout_constraintBottom_toTopOf="@+id/btnGuardarInfoCFE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/RecyclerPrueba" />
+        app:layout_constraintTop_toBottomOf="@id/RecyclerPrueba"
+        tools:listitem="@layout/view_item_cfe"
+        />
 
     <Button
         android:id="@+id/btnGuardarInfoCFE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimen_20"
+        android:layout_margin="10dp"
         android:backgroundTint="@color/colorPrimary"
         android:text="@string/terminar"
         android:textAllCaps="false"
@@ -66,4 +68,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="70sp"
+        android:layout_height="70sp"
+        android:backgroundTint="@color/transparente"
+        android:textSize="50sp"
+        android:translationZ="6dp"
+        android:indeterminateTint="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/txtCargando"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        android:text="Cargando..."
+        android:translationZ="6dp"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:padding="15sp"
+        tools:visibility="gone"
+        />
+
+    <View
+        android:id="@+id/viewLockScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:translationZ="5dp"
+        android:focusable="true"
+        android:clickable="true"
+        style="@style/ClickableViewLibrary"
+        android:background="@color/blackBackGroundLibrary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

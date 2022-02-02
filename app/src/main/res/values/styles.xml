@@ -70,6 +70,12 @@
         <item name="android:windowIsFloating">false</item>
     </style>
 
+    <style name="ClickableViewLibrary">
+        <item name="android:clickable">true</item>
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+        <item name="android:focusable">true</item>
+    </style>
 
 
 </resources>

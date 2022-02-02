@@ -28,50 +28,16 @@ class ActTest : AppCompatActivity() {
         startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
         //val intent = Intent(this, ActCam::class.java)
         val intent = Intent(this, ActOCRDocs::class.java)
+
+        val array = mutableListOf<String>()
+        for (i in 0..100) {
+            array.add("Test $i")
+        }
+
         intent.putExtra(
             "data_docs", DataDocs(
                 arrayListOf(),
-                arrayListOf(
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS","NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS",
-                    "NOMBRE",
-                    "FILIACION",
-                    "PERIODO DE PAGO",
-                    "LIQUIDO",
-                    "ESTATUS"
-                )
+                ArrayList(array)
             )
         )
 

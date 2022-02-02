@@ -8,6 +8,7 @@
     android:layout_marginTop="@dimen/dimen_10"
     android:layout_marginStart="@dimen/dimen_10"
     android:layout_marginEnd="@dimen/dimen_10">
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputItemRecycler"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -21,6 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <EditText
             android:id="@+id/etItemRecycler"
             android:layout_width="match_parent"
@@ -30,5 +32,6 @@
             android:inputType="textMultiLine"
             android:textSize="16sp"
             tools:ignore="LabelFor" />
+
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

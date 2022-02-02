@@ -1,6 +1,5 @@
 package com.mc.mcmodules.view.escanergenerico.adapter
 
-import android.app.Activity
 import android.content.ClipboardManager
 import android.content.Context
 import android.text.Editable
@@ -9,16 +8,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.textfield.TextInputLayout
 import com.mc.mcmodules.databinding.ViewItemCfeBinding
 import com.mc.mcmodules.model.classes.data.ItemScanner
 import com.mc.mcmodules.view.escanergenerico.adapter.AdapterFormDocs.ViewHolder
 
-class AdapterFormDocs(
-    private val items: List<ItemScanner>,
-    private val activity: Activity
-) : RecyclerView.Adapter<ViewHolder>() {
-
+class AdapterFormDocs(private val items: List<ItemScanner>) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -30,54 +24,52 @@ class AdapterFormDocs(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
-        holder.setIsRecyclable(false)
-        holder.bind(item, activity)
+        holder.bind(item)
     }
 
     class ViewHolder(private val binding: ViewItemCfeBinding) : RecyclerView.ViewHolder(binding.root) {
-        private var text: String = ""
-        var textPaste: String = ""
 
-        fun bind(item: ItemScanner, activity: Activity) {
-            binding.etItemRecycler.hint = item.etiqueta
-            item.respuest?.let { text -> binding.etItemRecycler.setText(text)}
-            binding.inputItemRecycler.setEndIconOnClickListener {
-                imagepaste(binding.inputItemRecycler, binding.etItemRecycler, activity)
+        fun bind(item: ItemScanner) {
+
+            binding.inputItemRecycler.editText?.apply {
+
+                setText(item.respuest)
+
+                val watcher = object : TextWatcher {
+                    override fun beforeTextChanged(s: CharSequence?,start: Int,count: Int,after: Int) {}
+                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+                    override fun afterTextChanged(s: Editable?) { item.respuest = s.toString() }
+                }
+
+                setOnFocusChangeListener { _, isFocus ->
+                    if (isFocus) { addTextChangedListener(watcher) }
+                    else { removeTextChangedListener(watcher) }
+                }
+
+                binding.inputItemRecycler.let { inp ->
+                    inp.setEndIconOnClickListener { _ ->
+                        item.respuest = imagepaste(this)
+                    }
+                    inp.hint = item.etiqueta
+                }
             }
-            binding.etItemRecycler.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                    println("BeforeTextChanged")
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    println("OnTextChanged")
-                }
-
-                override fun afterTextChanged(s: Editable?) {
-                    item.respuest = s.toString()
-                }
-            })
         }
 
-        fun imagepaste(textInputLayout: TextInputLayout, editText: EditText, activity: Activity) {
-            textPaste = pasteData(activity)
-            if ("DIRECCION" == textInputLayout.hint) {
-                text += "$textPaste "
-                editText.setText(text)
-                if (text.length > 150) text = ""
-            } else editText.setText(textPaste)
+        fun imagepaste(editText: EditText): String {
+            var text = editText.text.toString().trim()
+            text = "$text ${pasteData(editText.context)}"
+            editText.setText(text)
+            return text
         }
 
-        private fun pasteData(activity: Activity): String {
-            val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val clipData = clipboard.primaryClip
-            val itemAt = clipData!!.getItemAt(0)
-            return itemAt.text.toString()
+        private fun pasteData(context: Context): String {
+            val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            clipboard.primaryClip?.let { clipData ->
+                clipData.getItemAt(0)?.let { itemAt ->
+                    return itemAt.text.toString()
+                }
+            }
+            return ""
         }
     }
 }
