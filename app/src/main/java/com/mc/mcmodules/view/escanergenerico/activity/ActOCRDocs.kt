@@ -32,8 +32,8 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
     private lateinit var binding: ActOcrcfeBinding
     private lateinit var dataDocs: DataDocs
     private lateinit var ocr: OCR
+    private lateinit var adapterOCR: AdapterOCRLista
     private var cadena: MutableList<String> = mutableListOf("Tome una fotografía para escanear.")
-    private var texto = ""
 
     private val scope by lazy { CoroutineScope(SupervisorJob()) }
 
@@ -72,12 +72,16 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
     private fun initObjects() {
         ocr = OCR(this)
         binding.RecyclerPrueba.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL)
-        val adapter = AdapterOCRLista(cadena, R.layout.recycler_view_item, this) {
+        adapterOCR = AdapterOCRLista(cadena, R.layout.recycler_view_item, this) {
                 texto, _ -> if (texto != null) copiar(texto)
         }
-        binding.RecyclerPrueba.adapter = adapter
+        binding.RecyclerPrueba.adapter = adapterOCR
         val intent = Intent(this, ActCam::class.java)
         startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
+    }
+
+    private fun sortCadena () {
+
     }
 
     private fun initBinding() {
@@ -137,6 +141,7 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun procesaImagenEscaneada(bitmap: Bitmap?) {
+
         bitmap?.let { image ->
             with(binding) {
                 progressBar.visibility = View.VISIBLE
@@ -157,13 +162,26 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
                     cadena.add("Sin resultados!")
                 }
                 else {
-                    val lengthComparator = Comparator { str1: String, str2: String -> str1.length - str2.length }
-                    val sortedList = cadena.sortedWith(lengthComparator)
+                    val temListAux = mutableListOf<String>()
+                    for (stringTem in cadena) {
+                        temListAux.add(stringTem)
+                        if (stringTem.length >= 8) {
+                            val tem = stringTem.split(" ")
+                            if (tem.size > 1) {
+                                for (temAux in tem) {
+                                    if (temAux.isNotBlank()){
+                                        temListAux.add(temAux)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    val sortedList = temListAux.sortedWith(AlphanumComparator())
                     cadena.clear()
                     cadena.addAll(sortedList)
                 }
 
-                delay(1500L)
+                delay(500L)
                 scope.launch(Dispatchers.Main) {
                     with(binding) {
                         progressBar.visibility = View.GONE
@@ -176,10 +194,76 @@ open class ActOCRDocs : AppCompatActivity(), ActivityResultHandler {
         }
     }
 
+    private fun splitStringIfLong() {
+
+    }
+
     override fun handleResult(parcelable: Parcelable) {
         val intentRegreso = Intent()
         intentRegreso.putExtra("result_object", parcelable)
         setResult(RESULT_OK, intentRegreso)
         this.finish()
     }
+}
+
+class AlphanumComparator : Comparator<String> {
+    override fun compare(s1: String, s2: String): Int {
+        var thisMarker = 0
+        var thatMarker = 0
+        val s1Length = s1.length
+        val s2Length = s2.length
+
+        while (thisMarker < s1Length && thatMarker < s2Length) {
+            val thisChunk = getChunk(s1, s1Length, thisMarker)
+            thisMarker += thisChunk.length
+
+            val thatChunk = getChunk(s2, s2Length, thatMarker)
+            thatMarker += thatChunk.length
+
+            // If both chunks contain numeric characters, sort them numerically.
+            var result: Int
+            if (isDigit(thisChunk[0]) && isDigit(thatChunk[0])) {
+                // Simple chunk comparison by length.
+                val thisChunkLength = thisChunk.length
+                result = thisChunkLength - thatChunk.length
+                // If equal, the first different number counts.
+                if (result == 0) {
+                    for (i in 0 until thisChunkLength) {
+                        result = thisChunk[i] - thatChunk[i]
+                        if (result != 0) return result
+                    }
+                }
+            } else result = thisChunk.compareTo(thatChunk)
+
+            if (result != 0) return result
+        }
+
+        return s1Length - s2Length
+    }
+
+    private fun getChunk(string: String, length: Int, marker: Int): String {
+        var current = marker
+        val chunk = StringBuilder()
+        var c = string[current]
+        chunk.append(c)
+        current++
+        if (isDigit(c)) {
+            while (current < length) {
+                c = string[current]
+                if (!isDigit(c)) break
+                chunk.append(c)
+                current++
+            }
+        } else {
+            while (current < length) {
+                c = string[current]
+                if (isDigit(c)) break
+                chunk.append(c)
+                current++
+            }
+        }
+        return chunk.toString()
+    }
+
+    private fun isDigit(ch: Char): Boolean = ch in '0'..'9'
 }

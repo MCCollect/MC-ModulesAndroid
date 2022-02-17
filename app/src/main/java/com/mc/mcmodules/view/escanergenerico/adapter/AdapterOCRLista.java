@@ -16,6 +16,7 @@ import com.mc.mcmodules.R;
 
 import java.util.List;
 
+
 public class AdapterOCRLista extends RecyclerView.Adapter<AdapterOCRLista.ViewHolder> {
     private final List<String> texto;
     private final int Layout;
