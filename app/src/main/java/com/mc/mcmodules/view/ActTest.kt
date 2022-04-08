@@ -1,14 +1,18 @@
 package com.mc.mcmodules.view
 
+import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
+import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scanine.ActOCRINE
 import java.io.File
@@ -23,13 +27,18 @@ class ActTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
+        val intent = Intent(this,FirmaActivity::class.java)
+        val mypath = File(filesDir.path,"ultima.jpg")
+        //val mypath = File(filesDir.path+"/R1/seccion2/r2","firma1.jpg")
+        intent.putExtra("data_firma",DataFirmaRequest(mypath.absolutePath,"Anita la huerfanita"))
+        startActivityForResult(intent, FirmaActivity.CODIGO_OK_FIRMA_DATA)
 /*//        PRUEBA DEL ESCANNER DE QR
         val intent = Intent(this, ActScanCodes::class.java)
         startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
         //val intent = Intent(this, ActCam::class.java)
-        val intent = Intent(this, ActOCRDocs::class.java)
+        //val intent = Intent(this, ActOCRDocs::class.java)
 
-        val array = mutableListOf<String>()
+        /*val array = mutableListOf<String>()
         for (i in 0..100) {
             array.add("Test $i")
         }
@@ -41,7 +50,7 @@ class ActTest : AppCompatActivity() {
             )
         )
 
-        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)
+        startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)*/
 
 /*
 
@@ -198,6 +207,14 @@ class ActTest : AppCompatActivity() {
                             binding.text.setText("${info?.camposCFE}")*/
                     info?.camposDocScaneado?.forEachIndexed { index, itemScanner ->
                         println("Respuesta ${index}: " + itemScanner)
+                    }
+                }
+                FirmaActivity.CODIGO_OK_FIRMA_DATA -> {
+                    val dataResponse: DataFirmaResponse? = if (data != null) {
+                        data.extras!!.getParcelable("result_object")
+                    } else DataFirmaResponse()
+                    if (dataResponse != null) {
+                        Log.i(" CODIGO_OK_FIRMA_DATA ", "status: ${dataResponse.isOk}, mensaje: ${dataResponse.message}")
                     }
                 }
 /*                ActScanCodes.CODIGO_OK_QR -> {

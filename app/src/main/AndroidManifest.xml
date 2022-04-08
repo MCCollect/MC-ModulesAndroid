@@ -26,7 +26,9 @@
             android:configChanges="screenSize|orientation" />
         <activity android:name=".view.ActTest"
             android:configChanges="screenSize|orientation" >
-
+        </activity>
+        <activity android:name=".view.firma.FirmaActivity"
+            android:configChanges="screenSize|orientation" >
         </activity>
         <activity
             android:name=".view.scanine.ActScanCodes"
