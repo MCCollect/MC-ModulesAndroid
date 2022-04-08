@@ -4,6 +4,7 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -215,6 +216,11 @@ class ActTest : AppCompatActivity() {
                     } else DataFirmaResponse()
                     if (dataResponse != null) {
                         Log.i(" CODIGO_OK_FIRMA_DATA ", "status: ${dataResponse.isOk}, mensaje: ${dataResponse.message}")
+                        if (dataResponse.isOk) {
+                            val file = File(filesDir.path,"ultima.jpg")
+                            val uri = Uri.fromFile(file)
+                            binding.imgFirmaTest.setImageURI(uri)
+                        }
                     }
                 }
 /*                ActScanCodes.CODIGO_OK_QR -> {
