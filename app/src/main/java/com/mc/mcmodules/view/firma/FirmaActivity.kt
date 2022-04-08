@@ -1,14 +1,11 @@
 package com.mc.mcmodules.view.firma
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentTransaction
-import com.mc.mcmodules.R
+import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActivityFirmaBinding
 import com.mc.mcmodules.model.classes.data.DataFirmaRequest
 import com.mc.mcmodules.model.classes.library.SharePreference
-import com.mc.mcmodules.view.firmae.FrgAutorizacionE
 
 class FirmaActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFirmaBinding
@@ -52,7 +49,7 @@ class FirmaActivity : AppCompatActivity() {
             throw java.lang.Exception("Los datos de la firma son obligatorios (path,usuario)")
         } else {
             if (data.path.isNotEmpty() && data.user.isNotEmpty()) initData(data)
-            else java.lang.Exception("Parametros path:${data.path} user:${data.user}")
+            else throw java.lang.Exception("Parametros path:${data.path} user:${data.user}")
         }
     }
 
