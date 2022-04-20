@@ -33,7 +33,7 @@ public class ActWebView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_web_view);
 
-        webViewINE = (WebView) findViewById(R.id.webViewINE);
+        webViewINE = findViewById(R.id.webViewINE);
         webViewINE.getSettings().setLoadsImagesAutomatically(true);
 
         webViewINE.getSettings().setJavaScriptEnabled(true);

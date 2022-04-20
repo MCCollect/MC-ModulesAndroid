@@ -447,7 +447,7 @@ class OCRINEViewmodel : ViewModel() {
 
                     println("Estado $estado")
 
-                    _liveEstado.postValue(estado)
+                    _liveEstado.postValue(estado!!)
 
                 } else {
                     _liveEstado.postValue("")
@@ -470,7 +470,7 @@ class OCRINEViewmodel : ViewModel() {
 
                     println("Municipio $municipio")
 
-                    _liveMunicipio.postValue(municipio)
+                    _liveMunicipio.postValue(municipio!!)
                 } else {
                     _liveMunicipio.postValue("")
                 }
@@ -491,7 +491,7 @@ class OCRINEViewmodel : ViewModel() {
 
                     println("Colonia $colonia")
 
-                    _liveColonia.postValue(colonia)
+                    _liveColonia.postValue(colonia!!)
                 } else {
                     _liveColonia.postValue("")
                 }
@@ -506,6 +506,9 @@ class OCRINEViewmodel : ViewModel() {
 
     fun getInfoINE(): InfoINE {
 
+        val tempCurp = _liveCurp.value.toString()
+        val rfc = if (tempCurp.length > 9) tempCurp.substring(0, 10) else tempCurp
+
         return InfoINE(
             _liveNombre.value.toString(),
             _liveDomicilio.value.toString(),
@@ -514,7 +517,7 @@ class OCRINEViewmodel : ViewModel() {
             _liveMunicipio.value.toString(),
             _liveColonia.value.toString(),
             _liveSexo.value.toString(),
-            _liveCurp.value.toString().substring(0, 10),
+            rfc,
             _liveEmision.value.toString(),
             _liveClaveLector.value.toString(),
             _liveVigencia.value.toString()
@@ -531,6 +534,47 @@ class OCRINEViewmodel : ViewModel() {
                 !_liveVigencia.value.equals("")
 
     }
+
+
+
+    fun setValueNOMBRE(value: String) {
+        if (value.isNotEmpty()) {
+            _liveNombre.postValue(value)
+        }
+    }
+    fun setValueDOMICILO(value: String) {
+        if (value.isNotEmpty()) {
+            _liveDomicilio.postValue(value)
+        }
+    }
+    fun setValueFechaNac(value: String) {
+        if (value.isNotEmpty()) {
+            _liveFecha.postValue(value)
+        }
+    }
+    fun setValueEDAD(value: String) {
+        if (value.isNotEmpty()) {
+            _liveEdad.postValue(value)
+        }
+    }
+    fun setValueSEXO(value: String) {
+        if (value.isNotEmpty()) {
+            _liveSexo.postValue(value)
+        }
+    }
+    fun setValueCLAVELECTOR(value: String) {
+        if (value.isNotEmpty()) {
+            _liveClaveLector.postValue(value)
+        }
+    }
+    fun setValueCURP(value: String) {
+        if (value.isNotEmpty()) {
+            _liveCurp.postValue(value)
+        }
+    }
+
+
+
 
 
     fun setValueEstado(estado: String) {
@@ -556,7 +600,6 @@ class OCRINEViewmodel : ViewModel() {
             _liveColonia.postValue(colonia)
         }
     }
-
 
     fun setValueEmision(emision: String) {
 

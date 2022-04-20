@@ -9,7 +9,7 @@ public class SharePreference {
     private static final String _PREFERENCE = "SHARE_PREFERENCE";
     public static final String _PREFERENCE_FOTOS = "SHARE_PREFERENCE_FOTOS";
     private static SharePreference preference;
-    private SharedPreferences sharedPreferences;
+    private final SharedPreferences sharedPreferences;
 
     private SharePreference(Context context) {
         sharedPreferences = context.getSharedPreferences(_PREFERENCE, Context.MODE_PRIVATE);

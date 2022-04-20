@@ -1,4 +1,4 @@
-package com.mc.alternativasur.ui.binding
+package com.mc.mcmodules.view.binding
 
 import android.text.TextWatcher
 import android.view.View

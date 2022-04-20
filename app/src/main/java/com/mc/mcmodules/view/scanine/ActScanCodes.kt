@@ -100,16 +100,6 @@ class ActScanCodes : AppCompatActivity(), ActivityResultHandler {
         })
     }
 
-    override fun onResume() {
-        super.onResume()
-//        escanerZXing.setResultHandler(this);
-//        escanerZXing.startCamera(); // Comenzar la cámara en onResume
-    }
-    override fun onPause() {
-        super.onPause()
-//        escanerZXing.stopCamera(); // Pausar en onPause
-    }
-
     override fun handleResult(parcelable: Parcelable) {
         val intentRegreso = Intent()
         intentRegreso.putExtra("result_object", parcelable)

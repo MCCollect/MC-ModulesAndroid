@@ -17,4 +17,18 @@ class InfoINE(
     var EMISION: String,
     var CLAVE_ELECTOR: String,
     var VIGENCIA: String
-) : Parcelable
+) : Parcelable {
+
+    fun printInfo() =
+        "NOMBRE = $NOMBRE\n" +
+        "DOMICILO = $DOMICILO\n" +
+        "CURP = $CURP\n" +
+        "ESTADO = $ESTADO\n" +
+        "MUNICIPIO = $MUNICIPIO\n" +
+        "COLONIA = $COLONIA\n" +
+        "SEXO = $SEXO\n" +
+        "RFC = $RFC\n" +
+        "EMISION = $EMISION\n" +
+        "CLAVE_ELECTOR = $CLAVE_ELECTOR\n" +
+        "VIGENCIA = $VIGENCIA"
+}

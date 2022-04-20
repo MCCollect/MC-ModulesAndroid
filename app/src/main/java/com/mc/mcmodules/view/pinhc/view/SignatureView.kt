@@ -209,7 +209,7 @@ class SignatureView(context: Context, attrs: AttributeSet?) : View(context, attr
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     fun setSignatureBitmap(signature: Bitmap) {
-        if (isLaidOut()) {
+        if (isLaidOut) {
             clearView()
             ensureSignatureBitmap()
             val tempSrc = RectF()

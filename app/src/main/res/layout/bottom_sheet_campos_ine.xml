@@ -101,793 +101,1005 @@
 
         </RelativeLayout>
 
-        <RelativeLayout
-            android:id="@+id/RelFrente"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/headerSheet"
-            android:paddingBottom="10dp"
-            android:visibility="visible">
-
-            <ProgressBar
-                android:id="@+id/progressNombre"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/ttNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/progressNombre"
-                android:text="@string/nombreS"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtNombre"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_toEndOf="@+id/ttNombre"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickNombre}" />
-
-            <ProgressBar
-                android:id="@+id/progressDomicilio"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtNombre"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/ttDomicilio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtNombre"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressDomicilio"
-                android:text="@string/domicilio"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtDomicilio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtNombre"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttDomicilio"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickDomicilio}" />
-
-            <ProgressBar
-                android:id="@+id/progressFecha"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtDomicilio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/ttFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtDomicilio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressFecha"
-                android:text="@string/fecha_nac"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtDomicilio"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttFecha"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickFecha}" />
-
-            <ProgressBar
-                android:id="@+id/progressEdad"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtFecha"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/ttEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtFecha"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressEdad"
-                android:text="@string/edadS"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtEdad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtFecha"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttEdad"
-                android:text="@{viewModel.liveEdad}"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <ProgressBar
-                android:id="@+id/progressSexo"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtEdad"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/ttSexo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEdad"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressSexo"
-                android:text="@string/sexoS"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtSexo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEdad"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttSexo"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickSexo}" />
-
-            <ProgressBar
-                android:id="@+id/progressClaveElector"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtSexo"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttClaveElector"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtSexo"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressClaveElector"
-                android:text="@string/clave_de_elector"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtClaveElector"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtSexo"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttClaveElector"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickclaveElector}" />
-
-            <ProgressBar
-                android:id="@+id/progressCurp"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtClaveElector"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/ttCurp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtClaveElector"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="20dp"
-                android:layout_toEndOf="@+id/progressCurp"
-                android:text="@string/curp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txtCurp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtClaveElector"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttCurp"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickCurp}" />
-
-            <ProgressBar
-                android:id="@+id/progressEstado"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtCurp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCurp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressEstado"
-                android:text="@string/estado2"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCurp"
-                android:layout_alignTop="@+id/ttEstado"
-                android:layout_alignBottom="@+id/ttEstado"
-                android:layout_marginStart="3dp"
-                android:layout_toEndOf="@+id/ttEstado"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:addClickListener="@{mainView.onclickEstado}" />
-
-            <ProgressBar
-                android:id="@+id/progressMunicipio"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtEstado"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttMunicipio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEstado"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressMunicipio"
-                android:text="@string/municipio2"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtMunicipio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEstado"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttMunicipio"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:addClickListener="@{mainView.onclickMunicipio}" />
-
-            <ProgressBar
-                android:id="@+id/progressSeccion"
-                style="@style/CircularProgress"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/ttSeccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressSeccion"
-                android:text="@string/seccion"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txtSeccion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttSeccion"
-                android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:visibility="gone" />
-
-            <ProgressBar
-                android:id="@+id/progressLocalidad"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttLocalidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressLocalidad"
-                android:text="@string/colonia2"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtLocalidad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtMunicipio"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttLocalidad"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:addClickListener="@{mainView.onclickColonia}" />
-
-            <ProgressBar
-                android:id="@+id/progressEmision"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtLocalidad"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttEmision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtLocalidad"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressEmision"
-                android:text="@string/emision"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtEmision"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtLocalidad"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttEmision"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:addClickListener="@{mainView.onclickEmision}" />
-
-            <ProgressBar
-                android:id="@+id/progressVigencia"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtEmision"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/ttVigencia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEmision"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressVigencia"
-                android:text="@string/vigencia"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/txtVigencia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtEmision"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttVigencia"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:addClickListener="@{mainView.onclickVigencia}"
-                android:visibility="visible" />
-
-            <ProgressBar
-                android:id="@+id/progressTipo"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtVigencia"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/ttTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtVigencia"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/progressTipo"
-                android:text="@string/tipo_ine"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txtTipo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtVigencia"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/ttTipo"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:addClickListener="@{mainView.onclickTipoIne}" />
-
-
-            <ProgressBar
-                android:id="@+id/progressCodUni"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtTipo"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/ttCodUni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtTipo"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressCodUni"
-                android:text="@string/ocr"
-                android:textColor="@color/colorPrimary"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txtCodUni"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtTipo"
-                android:layout_alignTop="@+id/ttCodUni"
-                android:layout_alignBottom="@+id/ttCodUni"
-                android:layout_marginStart="5dp"
-                android:layout_toEndOf="@+id/ttCodUni"
-                android:gravity="center"
-                android:text="@string/codeini"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone" />
-
-
-            <ProgressBar
-                android:id="@+id/progressCodQR"
-                style="@style/CircularProgress"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_below="@+id/txtCodUni"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/ttCodQR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCodUni"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/progressCodQR"
-                android:text="@string/codigo_qr"
-                android:textColor="@color/colorPrimary"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/txtCodQR"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCodUni"
-                android:layout_marginTop="8dp"
-                android:layout_toEndOf="@+id/ttCodQR"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:addClickListener="@{mainView.listenerCodQr}" />
+            android:fillViewport="true"
+            >
 
             <RelativeLayout
-                android:visibility="gone"
-                android:id="@+id/contentIngresoManual"
+                android:id="@+id/RelFrente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCodQR">
+                android:layout_below="@+id/headerSheet"
+                android:paddingBottom="10dp"
+                android:visibility="visible">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputEstado"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
+                <ProgressBar
+                    android:id="@+id/progressNombre"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/ttNombre"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/progressNombre"
+                    android:text="@string/nombreS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/ttNombre"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickNombre}" />
+
+                <ProgressBar
+                    android:id="@+id/progressDomicilio"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtNombre"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/ttDomicilio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtNombre"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progressDomicilio"
+                    android:text="@string/domicilio"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtDomicilio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtNombre"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttDomicilio"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickDomicilio}" />
+
+                <ProgressBar
+                    android:id="@+id/progressFecha"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtDomicilio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/ttFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtDomicilio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progressFecha"
+                    android:text="@string/fecha_nac"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtFecha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtDomicilio"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttFecha"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickFecha}" />
+
+                <ProgressBar
+                    android:id="@+id/progressEdad"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtFecha"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/ttEdad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtFecha"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progressEdad"
+                    android:text="@string/edadS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtEdad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtFecha"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttEdad"
+                    android:text="@{viewModel.liveEdad}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progressSexo"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtEdad"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/ttSexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEdad"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progressSexo"
+                    android:text="@string/sexoS"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtSexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEdad"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttSexo"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickSexo}" />
+
+                <ProgressBar
+                    android:id="@+id/progressClaveElector"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtSexo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ttClaveElector"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSexo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progressClaveElector"
+                    android:text="@string/clave_de_elector"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtClaveElector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSexo"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttClaveElector"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickclaveElector}" />
+
+                <ProgressBar
+                    android:id="@+id/progressCurp"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtClaveElector"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/ttCurp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtClaveElector"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_toEndOf="@+id/progressCurp"
+                    android:text="@string/curp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txtCurp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtClaveElector"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttCurp"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickCurp}" />
+
+                <ProgressBar
+                    android:id="@+id/progressEstado"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtCurp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:errorTextAppearance="@style/error">
+                    android:visibility="visible" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCapEstado"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="@string/estado2"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="100"
-                        android:padding="7dp"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputMunicipio"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/ttEstado"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/inputEstado"
+                    android:layout_below="@+id/txtCurp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressEstado"
+                    android:text="@string/estado2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtEstado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCurp"
+                    android:layout_alignTop="@+id/ttEstado"
+                    android:layout_alignBottom="@+id/ttEstado"
+                    android:layout_marginStart="3dp"
+                    android:layout_toEndOf="@+id/ttEstado"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickEstado}" />
+
+                <ProgressBar
+                    android:id="@+id/progressMunicipio"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtEstado"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ttMunicipio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEstado"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressMunicipio"
+                    android:text="@string/municipio2"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtMunicipio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEstado"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttMunicipio"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickMunicipio}" />
+
+                <ProgressBar
+                    android:id="@+id/progressSeccion"
+                    style="@style/CircularProgress"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ttSeccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressSeccion"
+                    android:text="@string/seccion"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtSeccion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttSeccion"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <ProgressBar
+                    android:id="@+id/progressLocalidad"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ttLocalidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressLocalidad"
+                    android:text="@string/colonia2"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtLocalidad"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtMunicipio"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttLocalidad"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickColonia}" />
+
+                <ProgressBar
+                    android:id="@+id/progressEmision"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtLocalidad"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ttEmision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtLocalidad"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressEmision"
+                    android:text="@string/emision"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtEmision"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtLocalidad"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttEmision"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickEmision}" />
+
+                <ProgressBar
+                    android:id="@+id/progressVigencia"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtEmision"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/ttVigencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEmision"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressVigencia"
+                    android:text="@string/vigencia"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtVigencia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtEmision"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttVigencia"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickVigencia}"
+                    android:visibility="visible" />
+
+                <ProgressBar
+                    android:id="@+id/progressTipo"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtVigencia"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ttTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtVigencia"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/progressTipo"
+                    android:text="@string/tipo_ine"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtTipo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtVigencia"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/ttTipo"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:addClickListener="@{mainView.onclickTipoIne}" />
+
+
+                <ProgressBar
+                    android:id="@+id/progressCodUni"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtTipo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ttCodUni"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtTipo"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:errorTextAppearance="@style/error">
+                    android:layout_toEndOf="@+id/progressCodUni"
+                    android:text="@string/ocr"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCapMunicipio"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="@string/municipio2"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="100"
-                        android:padding="7dp"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputColonia"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/txtCodUni"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/inputMunicipio"
+                    android:layout_below="@+id/txtTipo"
+                    android:layout_alignTop="@+id/ttCodUni"
+                    android:layout_alignBottom="@+id/ttCodUni"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/ttCodUni"
+                    android:gravity="center"
+                    android:text="@string/codeini"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+
+                <ProgressBar
+                    android:id="@+id/progressCodQR"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txtCodUni"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/ttCodQR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCodUni"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:errorTextAppearance="@style/error">
+                    android:layout_toEndOf="@+id/progressCodQR"
+                    android:text="@string/codigo_qr"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCapColonia"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="@string/colonia2"
-                        android:inputType="textCapCharacters"
-                        android:maxLength="100"
-                        android:padding="7dp"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/txtCodQR"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtCodUni"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/ttCodQR"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:addClickListener="@{mainView.listenerCodQr}" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputEmision"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <RelativeLayout
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:id="@+id/contentIngresoManual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/inputColonia"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:errorTextAppearance="@style/error">
+                    android:layout_below="@+id/txtCodQR">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCapEmision"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputNOMBRE"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="@string/emision"
-                        android:inputType="numberDecimal"
-                        android:maxLength="4"
-                        android:padding="7dp"
-                        android:textSize="16sp" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Nombre:"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputDOMICILO"
+                        android:layout_below="@+id/inputNOMBRE"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Domicilio:"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputFechaNac"
+                        android:layout_below="@+id/inputDOMICILO"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Fecha de nacimiento:"
+                            android:inputType="date"
+                            android:digits="/0123456789"
+                            android:maxLength="10"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputEDAD"
+                        android:layout_below="@+id/inputFechaNac"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Edad:"
+                            android:inputType="number"
+                            android:digits="1234567890"
+                            android:maxLength="2"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputSEXO"
+                        android:layout_below="@+id/inputEDAD"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Sexo (M / F):"
+                            android:inputType="textCapCharacters"
+                            android:digits="mfMF"
+                            android:maxLength="1"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputCLAVELECTOR"
+                        android:layout_below="@+id/inputSEXO"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="Clave de lector:"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputCURP"
+                        android:layout_below="@+id/inputCLAVELECTOR"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="CURP:"
+                            android:inputType="textCapCharacters"
+                            android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputEstado"
+                        android:layout_below="@+id/inputCURP"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCapEstado"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/estado2"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputMunicipio"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputEstado"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCapMunicipio"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/municipio2"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputColonia"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputMunicipio"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCapColonia"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/colonia2"
+                            android:inputType="textCapCharacters"
+                            android:maxLength="100"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputEmision"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputColonia"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCapEmision"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/emision"
+                            android:inputType="numberDecimal"
+                            android:maxLength="4"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/inputVigencia"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputEmision"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/txtCapVigencia"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/vigencia2"
+                            android:inputType="numberDecimal"
+                            android:maxLength="4"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnSetValuesCaptured"
+                        style="@style/Widget.AppCompat.Button.Colored2"
+                        android:layout_width="135dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/inputVigencia"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/establecer"
+                        android:textAllCaps="false"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:addClickListener="@{mainView.onclickSetValuesCaptured}" />
+
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputVigencia"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/etOCR"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/inputEmision"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="10dp"
-                    app:boxCornerRadiusBottomEnd="8dp"
-                    app:boxCornerRadiusBottomStart="8dp"
-                    app:boxCornerRadiusTopEnd="8dp"
-                    app:boxCornerRadiusTopStart="8dp"
-                    app:errorTextAppearance="@style/error">
+                    android:layout_below="@+id/contentIngresoManual"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    tools:visibility="gone"
+                    app:errorTextAppearance="@style/error"
+                    app:passwordToggleEnabled="true">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txtCapVigencia"
+                    <EditText
+                        android:id="@+id/editTextOCR"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:hint="@string/vigencia2"
-                        android:inputType="numberDecimal"
-                        android:maxLength="4"
-                        android:padding="7dp"
-                        android:textSize="16sp" />
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ocr"
+                        android:imeOptions="actionUnspecified"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="13"
+                        android:textSize="12sp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <Button
-                    android:id="@+id/btnSetValuesCaptured"
+                    android:id="@+id/btnValidar"
                     style="@style/Widget.AppCompat.Button.Colored2"
                     android:layout_width="135dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/inputVigencia"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/etOCR"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
                     android:layout_marginTop="15dp"
-                    android:text="@string/establecer"
+                    android:background="@drawable/redounded_corners_button"
+                    android:text="@string/ValidarINE"
                     android:textAllCaps="false"
                     android:textColor="#FFF"
                     android:textStyle="bold"
-                    android:visibility="visible"
-                    app:addClickListener="@{mainView.onclickSetValuesCaptured}" />
+                    android:visibility="gone"
+                    app:addClickListener="@{mainView.listenerbtnValidar}" />
+
             </RelativeLayout>
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etOCR"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/contentIngresoManual"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:visibility="gone"
-                app:errorTextAppearance="@style/error"
-                app:passwordToggleEnabled="true">
-
-                <EditText
-                    android:id="@+id/editTextOCR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/ocr"
-                    android:imeOptions="actionUnspecified"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    android:maxLength="13"
-                    android:textSize="12sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/btnValidar"
-                style="@style/Widget.AppCompat.Button.Colored2"
-                android:layout_width="135dp"
-                android:layout_height="30dp"
-                android:layout_below="@+id/etOCR"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/redounded_corners_button"
-                android:text="@string/ValidarINE"
-                android:textAllCaps="false"
-                android:textColor="#FFF"
-                android:textStyle="bold"
-                android:visibility="gone"
-                app:addClickListener="@{mainView.listenerbtnValidar}" />
-        </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <TextView
             android:id="@+id/txtCid"

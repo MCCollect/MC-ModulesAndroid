@@ -479,7 +479,7 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
                     try {
                         camera.takePicture(null, null, mPicture);
                     } catch (Exception e) {
-                        System.out.println("EX controlada: " + e.toString());
+                        System.out.println("EX controlada: " + e);
                     }
                 }
             }
@@ -757,7 +757,7 @@ public class ActCam extends AppCompatActivity implements ActivityResultHandler {
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Exception surfaceChanged: " + e.toString());
+                System.out.println("Exception surfaceChanged: " + e);
             }
         }
 

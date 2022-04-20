@@ -14,8 +14,8 @@ public class Acelerometro implements SensorEventListener {
 
     /* DECLARACION DE OBJETOS */
 
-    private Context context;
-    private SensorManager mSensorManager;
+    private final Context context;
+    private final SensorManager mSensorManager;
 
     /* DECLARACION DE VARIABLES */
 

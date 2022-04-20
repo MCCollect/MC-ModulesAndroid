@@ -22,35 +22,65 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true">
+
         <activity android:name=".view.pinhc.activity.ActLoadURL"
-            android:configChanges="screenSize|orientation" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity android:name=".view.pinhc.activity.ActPinHC"
-            android:configChanges="screenSize|orientation" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity android:name=".view.ActTest"
-            android:configChanges="screenSize|orientation" >
+            android:configChanges="screenSize|orientation"
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".view.firma.FirmaActivity"
-            android:configChanges="screenSize|orientation" >
-        </activity>
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity
             android:name=".view.scanine.ActScanCodes"
-            android:configChanges="screenSize|orientation" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity
             android:name=".view.scanine.ActOCRINE"
-            android:configChanges="screenSize|orientation" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity
             android:name=".view.escanergenerico.activity.ActOCRDocs"
-            android:configChanges="screenSize|orientation" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
         <activity
             android:name=".view.firmae.ActPinE"
-            android:configChanges="screenSize|orientation" />
-        <activity android:name=".view.camera.activity.ActCam" />
-        <activity android:name=".view.camera.activity.ActEditorBitmap" />
+            android:configChanges="screenSize|orientation"
+            android:exported="true"
+            />
+
+        <activity android:name=".view.camera.activity.ActCam"
+            android:exported="true"
+            />
+
+        <activity android:name=".view.camera.activity.ActEditorBitmap"
+            android:exported="true"
+            />
+
     </application>
 
 </manifest>

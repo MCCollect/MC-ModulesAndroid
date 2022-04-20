@@ -197,7 +197,6 @@ class FrgAutorizacionE(
                     selfViewModel.pin.toString(),
                     "",
                     ""
-                        ?: "No se pudo obtener datos domicilio"
                 ), alert
             )
         }

@@ -98,7 +98,7 @@ class OCR(
     }
 
     fun getTextOfImage(): String {
-        return textOfImage;
+        return textOfImage
     }
 
 

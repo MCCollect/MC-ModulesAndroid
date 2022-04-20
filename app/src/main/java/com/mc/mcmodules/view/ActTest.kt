@@ -1,5 +1,6 @@
 package com.mc.mcmodules.view
 
+import android.app.Activity
 import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,6 +9,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
@@ -22,17 +24,38 @@ import java.io.File
 @Suppress("DEPRECATION")
 class ActTest : AppCompatActivity() {
 
+    private val TAG = this::class.java.simpleName
 
     private lateinit var binding: ActTestBinding
+
+    private val ineLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            result.data?.let { data ->
+                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
+                Log.d(TAG, "DEBUG: Info = ${ineObject.printInfo()}")
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
+
+        val intent = Intent(this, ActOCRINE::class.java)
+        ineLauncher.launch(intent)
+
+        /*
+
         val intent = Intent(this,FirmaActivity::class.java)
         val mypath = File(filesDir.path,"ultima.jpg")
         //val mypath = File(filesDir.path+"/R1/seccion2/r2","firma1.jpg")
         intent.putExtra("data_firma",DataFirmaRequest(mypath.absolutePath,"Anita la huerfanita"))
         startActivityForResult(intent, FirmaActivity.CODIGO_OK_FIRMA_DATA)
+
+        */
+
+
 /*//        PRUEBA DEL ESCANNER DE QR
         val intent = Intent(this, ActScanCodes::class.java)
         startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/

@@ -3,10 +3,9 @@
 package com.mc.mcmodules.view.scanine
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
 import android.os.Parcelable
@@ -30,15 +29,11 @@ import com.google.android.gms.vision.text.TextRecognizer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.mc.alternativasur.api.interfaces.ActivityResultHandler
 import com.mc.mcmodules.R
-import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.databinding.ActOcrineBinding
 import com.mc.mcmodules.model.classes.data.*
-import com.mc.mcmodules.view.camera.activity.ActCam
-import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
-import com.mc.mcmodules.view.pinhc.activity.ActPinHC
+import com.mc.mcmodules.utils.Utils
 import com.mc.mcmodules.viewmodel.scanine.OCRINEViewmodel
 import com.tapadoo.alerter.Alerter
-import java.io.File
 import java.io.IOException
 import java.net.MalformedURLException
 import java.net.URISyntaxException
@@ -53,6 +48,8 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         const val CODIGO_INTENT_QR: Int = 100
         const val CODIGO_OK_INE_DATA: Int = 101
     }
+
+    private val TAG = this::class.java.simpleName
 
     private lateinit var selfViewModel: OCRINEViewmodel
     private lateinit var binding: ActOcrineBinding
@@ -70,7 +67,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     private lateinit var timer: Timer
     private val noDelay = 12000L
-    private lateinit var timerTask: TimerTask
 
 
     val listenerImgIne = View.OnClickListener {
@@ -238,7 +234,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     val listenerbtnValidar = View.OnClickListener {
 
-
         with(binding.lyBottomSheet) {
             when (intEmision) {
                 0 -> {
@@ -275,10 +270,10 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     val onclickNombre = View.OnClickListener {
 
-        (it as TextView).text = ""
         with(binding) {
             with(lyBottomSheet) {
                 progressNombre.visibility = View.VISIBLE
+                txtNombre.text = ""
             }
         }
 
@@ -418,7 +413,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     }
 
-
     val onclickEstado = View.OnClickListener {
 
 
@@ -434,7 +428,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         disminurContador()
 
     }
-
 
     val onclickMunicipio = View.OnClickListener {
 
@@ -452,7 +445,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     }
 
-
     val onclickColonia = View.OnClickListener {
 
 
@@ -469,13 +461,38 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     }
 
-
     val onclickScanCorrect = View.OnClickListener {
         mCameraSource.stop()
         handleResult(selfViewModel.getInfoINE())
     }
 
     val onclickSetValuesCaptured = View.OnClickListener {
+
+        if (binding.lyBottomSheet.inputNOMBRE.visibility == View.VISIBLE){
+            selfViewModel.setValueNOMBRE(binding.lyBottomSheet.inputNOMBRE.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputDOMICILO.visibility == View.VISIBLE){
+            selfViewModel.setValueDOMICILO(binding.lyBottomSheet.inputDOMICILO.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputFechaNac.visibility == View.VISIBLE){
+            selfViewModel.setValueFechaNac(binding.lyBottomSheet.inputFechaNac.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputEDAD.visibility == View.VISIBLE){
+            selfViewModel.setValueEDAD(binding.lyBottomSheet.inputEDAD.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputSEXO.visibility == View.VISIBLE){
+            selfViewModel.setValueSEXO(binding.lyBottomSheet.inputSEXO.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputCLAVELECTOR.visibility == View.VISIBLE){
+            selfViewModel.setValueCLAVELECTOR(binding.lyBottomSheet.inputCLAVELECTOR.editText?.text.toString())
+        }
+        if (binding.lyBottomSheet.inputCURP.visibility == View.VISIBLE){
+            selfViewModel.setValueCURP(binding.lyBottomSheet.inputCURP.editText?.text.toString())
+        }
+
+
+
+
 
         if(binding.lyBottomSheet.inputEstado.visibility == View.VISIBLE){
             selfViewModel.setValueEstado(binding.lyBottomSheet.txtCapEstado.text.toString())
@@ -510,7 +527,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         super.onCreate(savedInstanceState)
         initContentView()
         initObjects()
-        initViews()
+        //initViews()
         initBottomSheet()
         setOCR_Automatico()
         setOCR_Manual()
@@ -523,22 +540,19 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     private fun initCountCamposManual() {
 
-        timerTask = object : TimerTask() {
+        val timerTask = object : TimerTask() {
             override fun run() {
                 if (selfViewModel.isEsMuCoScanned()) {
-
                     runOnUiThread {
                         binding.lyBottomSheet.contentIngresoManual.visibility = View.GONE
                     }
-
-
-                } else {
+                }
+                else {
                     runOnUiThread {
                         binding.lyBottomSheet.contentIngresoManual.visibility = View.VISIBLE
                         sheetBehaviorIne.state = BottomSheetBehavior.STATE_EXPANDED
                         noDataEsMuCo = true
                     }
-
                 }
             }
         }
@@ -588,6 +602,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             }*/
 
             binding.surfaceView.holder.addCallback(object : SurfaceHolder.Callback {
+                @SuppressLint("MissingPermission")
                 override fun surfaceCreated(holder: SurfaceHolder) {
                     try {
                         if (ActivityCompat.checkSelfPermission(
@@ -665,12 +680,12 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
     }
 
-    private fun initViews() {
+    /*private fun initViews() {
         with(binding) {
 
 
         }
-    }
+    }*/
 
     private fun initObjects() {
 
@@ -680,28 +695,29 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
     private fun initObservers() {
 
 
-        selfViewModel.liveNombre.observe(this, { nombre ->
-
+        selfViewModel.liveNombre.observe(this) { nombre ->
             with(binding.lyBottomSheet) {
-
                 if (nombre.isNotEmpty()) {
                     txtNombre.text = nombre
                     progressNombre.visibility = View.GONE
                     selfViewModel.aumentarContador()
-
-                } else {
-                    txtNombre.text = ""
-                    progressNombre.visibility = View.VISIBLE
+                    if (noDataEsMuCo) {
+                        inputNOMBRE.visibility = View.GONE
+                    }
 
                 }
-
-
+                else {
+                    txtNombre.text = ""
+                    progressNombre.visibility = View.VISIBLE
+                    if (noDataEsMuCo) {
+                        inputNOMBRE.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
+                }
             }
+        }
 
-
-        })
-
-        selfViewModel.liveDomicilio.observe(this, { domicilio ->
+        selfViewModel.liveDomicilio.observe(this) { domicilio ->
 
             with(binding.lyBottomSheet) {
 
@@ -710,20 +726,25 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtDomicilio.text = domicilio
                     progressDomicilio.visibility = View.GONE
                     selfViewModel.aumentarContador()
+                    if (noDataEsMuCo) {
+                        inputDOMICILO.visibility = View.GONE
+                    }
 
                 } else {
                     txtDomicilio.text = ""
                     progressDomicilio.visibility = View.VISIBLE
-                    progressDomicilio.visibility = View.VISIBLE
-
+                    if (noDataEsMuCo) {
+                        inputDOMICILO.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
 
-        })
+        }
 
-        selfViewModel.liveFecha.observe(this, { fecha ->
+        selfViewModel.liveFecha.observe(this) { fecha ->
 
             with(binding.lyBottomSheet) {
 
@@ -734,22 +755,29 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     progressEdad.visibility = View.GONE
                     selfViewModel.aumentarContador()
                     selfViewModel.aumentarContador()
+                    if (noDataEsMuCo) {
+                        inputFechaNac.visibility = View.GONE
+                        inputEDAD.visibility = View.GONE
+                    }
 
                 } else {
                     txtFecha.text = ""
                     txtEdad.text = ""
                     progressFecha.visibility = View.VISIBLE
                     progressEdad.visibility = View.VISIBLE
-
+                    if (noDataEsMuCo) {
+                        inputFechaNac.visibility = View.VISIBLE
+                        inputEDAD.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
 
-        })
+        }
 
-
-        selfViewModel.livesexo.observe(this, { sexo ->
+        selfViewModel.livesexo.observe(this) { sexo ->
 
             with(binding.lyBottomSheet) {
 
@@ -758,20 +786,24 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtSexo.text = sexo
                     progressSexo.visibility = View.GONE
                     selfViewModel.aumentarContador()
-
+                    if (noDataEsMuCo) {
+                        inputSEXO.visibility = View.GONE
+                    }
                 } else {
                     txtSexo.text = ""
                     progressSexo.visibility = View.VISIBLE
-
+                    if (noDataEsMuCo) {
+                        inputSEXO.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
 
-        })
+        }
 
-
-        selfViewModel.liveClaveLector.observe(this, { claveElector ->
+        selfViewModel.liveClaveLector.observe(this) { claveElector ->
 
             with(binding.lyBottomSheet) {
 
@@ -780,19 +812,25 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtClaveElector.text = claveElector
                     progressClaveElector.visibility = View.GONE
                     selfViewModel.aumentarContador()
+                    if (noDataEsMuCo) {
+                        inputCLAVELECTOR.visibility = View.GONE
+                    }
 
                 } else {
                     txtClaveElector.text = ""
                     progressClaveElector.visibility = View.VISIBLE
-
+                    if (noDataEsMuCo) {
+                        inputCLAVELECTOR.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
 
-        })
+        }
 
-        selfViewModel.liveCurp.observe(this, { curp ->
+        selfViewModel.liveCurp.observe(this) { curp ->
 
             with(binding.lyBottomSheet) {
 
@@ -801,20 +839,24 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtCurp.text = curp
                     progressCurp.visibility = View.GONE
                     selfViewModel.aumentarContador()
-
+                    if (noDataEsMuCo) {
+                        inputCURP.visibility = View.GONE
+                    }
                 } else {
                     txtCurp.text = ""
                     progressCurp.visibility = View.VISIBLE
-
+                    if (noDataEsMuCo) {
+                        inputCURP.visibility = View.VISIBLE
+                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
 
-        })
+        }
 
-
-        selfViewModel.liveEmision.observe(this, { emision ->
+        selfViewModel.liveEmision.observe(this) { emision ->
 
             with(binding.lyBottomSheet) {
 
@@ -831,7 +873,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                         0
                     }
 
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
 
                         inputEmision.visibility = View.GONE
                     }
@@ -841,7 +883,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtEmision.text = ""
                     progressEmision.visibility = View.VISIBLE
 
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputEmision.visibility = View.VISIBLE
                         binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
@@ -851,10 +893,10 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             }
 
 
-        })
+        }
 
 
-        selfViewModel.liveVigencia.observe(this, { vigencia ->
+        selfViewModel.liveVigencia.observe(this) { vigencia ->
 
             with(binding.lyBottomSheet) {
 
@@ -865,7 +907,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     selfViewModel.aumentarContador()
 
 
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
 
                         inputVigencia.visibility = View.GONE
                     }
@@ -875,7 +917,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     txtVigencia.text = ""
                     progressVigencia.visibility = View.VISIBLE
 
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputVigencia.visibility = View.VISIBLE
                         binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
@@ -885,7 +927,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             }
 
 
-        })
+        }
 
 /*
         selfViewModel.liveTipoIne.observe(this, { tipoIne ->
@@ -909,71 +951,50 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
         })*/
 
-        selfViewModel.liveEstado.observe(this, { estado ->
-
+        selfViewModel.liveEstado.observe(this) { estado ->
             with(binding.lyBottomSheet) {
-
-
                 if (estado.isNotEmpty()) {
                     txtEstado.text = estado
                     progressEstado.visibility = View.GONE
                     selfViewModel.aumentarContador()
-
-                    if(noDataEsMuCo){
-
+                    if (noDataEsMuCo) {
                         inputEstado.visibility = View.GONE
                     }
-
-
-                } else {
+                }
+                else {
                     txtEstado.text = ""
                     progressEstado.visibility = View.VISIBLE
-
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputEstado.visibility = View.VISIBLE
                         binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
-
                 }
-
             }
+        }
 
 
-        })
-
-
-        selfViewModel.liveMunicipio.observe(this, { municipio ->
-
+        selfViewModel.liveMunicipio.observe(this) { municipio ->
             with(binding.lyBottomSheet) {
-
-
                 if (municipio.isNotEmpty()) {
                     txtMunicipio.text = municipio
                     progressMunicipio.visibility = View.GONE
                     selfViewModel.aumentarContador()
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputMunicipio.visibility = View.GONE
                     }
-
-
-
-                } else {
+                }
+                else {
                     txtMunicipio.text = ""
                     progressMunicipio.visibility = View.VISIBLE
-
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputMunicipio.visibility = View.VISIBLE
                         binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
-
                 }
-
             }
+        }
 
-
-        })
-
-        selfViewModel.liveColonia.observe(this, { localidad ->
+        selfViewModel.liveColonia.observe(this) { localidad ->
 
             with(binding.lyBottomSheet) {
 
@@ -983,7 +1004,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                     progressLocalidad.visibility = View.GONE
                     selfViewModel.aumentarContador()
 
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputColonia.visibility = View.GONE
                     }
 
@@ -991,7 +1012,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                 } else {
                     txtLocalidad.text = ""
                     progressLocalidad.visibility = View.VISIBLE
-                    if(noDataEsMuCo){
+                    if (noDataEsMuCo) {
                         inputColonia.visibility = View.VISIBLE
                         binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                     }
@@ -1001,11 +1022,11 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             }
 
 
-        })
+        }
 
 
 
-        selfViewModel.liveTotalCampos.observe(this, { contador ->
+        selfViewModel.liveTotalCampos.observe(this) { contador ->
 
 
             println("Contador para la transicion : $contador")
@@ -1022,7 +1043,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                 binding.lyBottomSheet.btnCompararInfo.visibility = View.GONE
             }
 
-        })
+        }
 
 
     }
@@ -1093,7 +1114,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
     }
 
 
-    fun urlValidator(url: String?): Boolean {
+    private fun urlValidator(url: String?): Boolean {
         return try {
             URL(url).toURI()
             true
