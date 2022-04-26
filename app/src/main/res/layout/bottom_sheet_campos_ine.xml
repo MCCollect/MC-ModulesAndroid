@@ -823,9 +823,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:hint="Sexo (M / F):"
+                            android:hint="Sexo (H / M):"
                             android:inputType="textCapCharacters"
-                            android:digits="mfMF"
                             android:maxLength="1"
                             android:padding="7dp"
                             android:textSize="16sp" />
