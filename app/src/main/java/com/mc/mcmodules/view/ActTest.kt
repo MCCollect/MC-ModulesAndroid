@@ -1,14 +1,12 @@
 package com.mc.mcmodules.view
 
 import android.app.Activity
-import android.content.ContextWrapper
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
@@ -17,7 +15,7 @@ import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
-import com.mc.mcmodules.view.scanine.ActOCRINE
+import com.mc.mcmodules.view.scaninereverso.ActOCRINE
 import java.io.File
 
 
@@ -32,7 +30,8 @@ class ActTest : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             // There are no request codes
             result.data?.let { data ->
-                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
+                //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
+                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
                 Log.d(TAG, "DEBUG: Info = ${ineObject.printInfo()}")
             }
         }

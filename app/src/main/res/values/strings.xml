@@ -18,6 +18,7 @@
     <string name="ValidarINE">Validar INE</string>
     <string name="domicilio">DOMICILIO:</string>
     <string name="escaneo_de_informaci_n_ine">Escaneo de información INE</string>
+    <string name="escaneo_de_informaci_n_ine_reverso">Escaneo de información INE</string>
     <string name="captura_de_info_ine">captura de info ine</string>
     <string name="en_progreso">En progreso…</string>
     <string name="escaneo_listo">"Escaneo Listo (Verifica la información)"</string>
@@ -34,6 +35,8 @@
     <string name="nunicipio3">Municipio</string>
     <string name="rfc2">RFC</string>
 
+    <string name="cic">CIC</string>
+    <string name="identificador_c">IDENTIFICADOR CIUDADANO</string>
     <string name="fecha_nac">Fecha de nacimiento:</string>
 
     <string name="estado2">ESTADO:</string>
@@ -103,6 +106,8 @@
     <string name="color_actual">Color actual</string>
     <string name="item">ITEM</string>
     <string name="terminar">Terminar</string>
+    <string name="cic_descripcion">CIC:</string>
+    <string name="identificador_ciudadano_desc">Identificador ciudadano:</string>
 
 
 </resources>

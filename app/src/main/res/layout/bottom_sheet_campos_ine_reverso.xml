@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainView"
+            type="com.mc.mcmodules.view.scaninereverso.ActOCRINE" />
+
+        <variable
+            name="viewModel"
+            type="com.mc.mcmodules.viewmodel.scanine.OCRINEREVERSOViewmodel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/bottom_sheet_ine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/redounded_top_corners_white"
+        android:orientation="vertical"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="75dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <RelativeLayout
+            android:id="@+id/headerSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/transition_color_scanine"
+
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+
+                android:id="@+id/titleEscaneo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/escaneo_de_informaci_n_ine_reverso"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <View
+                android:id="@+id/viewSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/titleEscaneo"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/white" />
+
+            <ProgressBar
+                android:id="@+id/progressScan"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                android:layout_below="@+id/viewSeparator"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/white"
+                android:indeterminateTint="@color/white" />
+
+            <TextView
+                android:id="@+id/labelScan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/viewSeparator"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@+id/progressScan"
+                android:text="@string/en_progreso"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/btnCompararInfo"
+                style="@style/Widget.AppCompat.Button.Colored3"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
+                android:layout_below="@+id/viewSeparator"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/redounded_corners_button"
+                android:text="@string/es_correcto"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:addClickListener="@{mainView.onclickScanCorrect}"
+                tools:ignore="SmallSp" />
+
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/headerSheet"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/RelFrente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/headerSheet"
+                android:paddingBottom="10dp"
+                android:visibility="visible">
+
+                <ProgressBar
+                    android:id="@+id/progress_cic"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp" />
+
+                <TextView
+                    android:id="@+id/tt_cic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/progress_cic"
+                    android:text="@string/cic"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_cic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@+id/tt_cic"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickCic}" />
+
+                <ProgressBar
+                    android:id="@+id/progress_identificador_c"
+                    style="@style/CircularProgress"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_below="@+id/txt_cic"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp" />
+
+                <TextView
+                    android:id="@+id/tt_identificador_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_cic"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/progress_identificador_c"
+                    android:text="@string/identificador_c"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txt_identificador_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_cic"
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@+id/tt_identificador_c"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickIdentificadorC}" />
+
+
+                <RelativeLayout
+                    android:id="@+id/contentIngresoManual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tt_identificador_c"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_cic"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/cic_descripcion"
+                            android:digits="0123456789"
+                            android:inputType="number"
+                            android:maxLength="9"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/input_identificado_c"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/input_cic"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        app:boxCornerRadiusBottomEnd="8dp"
+                        app:boxCornerRadiusBottomStart="8dp"
+                        app:boxCornerRadiusTopEnd="8dp"
+                        app:boxCornerRadiusTopStart="8dp"
+                        app:errorTextAppearance="@style/error">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:hint="@string/identificador_ciudadano_desc"
+                            android:digits="0123456789"
+                            android:inputType="number"
+                            android:maxLength="9"
+                            android:padding="7dp"
+                            android:textSize="16sp" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:id="@+id/btnSetValuesCaptured"
+                        style="@style/Widget.AppCompat.Button.Colored2"
+                        android:layout_width="135dp"
+                        android:layout_height="40dp"
+                        android:layout_below="@+id/input_identificado_c"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/establecer"
+                        android:textAllCaps="false"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        app:addClickListener="@{mainView.onclickSetValuesCaptured}" />
+
+                </RelativeLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/etOCR"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/contentIngresoManual"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"
+                    app:errorTextAppearance="@style/error"
+                    app:passwordToggleEnabled="true"
+                    tools:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/editTextOCR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ocr"
+                        android:imeOptions="actionUnspecified"
+                        android:importantForAutofill="no"
+                        android:inputType="number"
+                        android:maxLength="13"
+                        android:textSize="12sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/txtCid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</layout>
