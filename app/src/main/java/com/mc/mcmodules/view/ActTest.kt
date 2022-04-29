@@ -15,7 +15,8 @@ import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
-import com.mc.mcmodules.view.scaninereverso.ActOCRINE
+import com.mc.mcmodules.view.scanine.ActOCRINE
+import com.mc.mcmodules.view.scaninereverso.ActOCRINEREVERSO
 import java.io.File
 
 
@@ -41,7 +42,7 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActOCRINE::class.java)
+        val intent = Intent(this, ActOCRINEREVERSO::class.java)
         ineLauncher.launch(intent)
 
         /*
@@ -167,7 +168,7 @@ class ActTest : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
-                ActOCRINE.CODIGO_OK_INE_DATA -> {
+                ActOCRINEREVERSO.CODIGO_OK_INE_DATA -> {
                     val info: InfoINE? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else {

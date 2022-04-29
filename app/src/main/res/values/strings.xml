@@ -35,8 +35,8 @@
     <string name="nunicipio3">Municipio</string>
     <string name="rfc2">RFC</string>
 
-    <string name="cic">CIC</string>
-    <string name="identificador_c">IDENTIFICADOR CIUDADANO</string>
+    <string name="cic">CIC:</string>
+    <string name="identificador_c">IDENTIFICADOR CIUDADANO:</string>
     <string name="fecha_nac">Fecha de nacimiento:</string>
 
     <string name="estado2">ESTADO:</string>

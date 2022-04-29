@@ -11,7 +11,7 @@
 
         <variable
             name="mainView"
-            type="com.mc.mcmodules.view.scaninereverso.ActOCRINE" />
+            type="com.mc.mcmodules.view.scaninereverso.ActOCRINEREVERSO" />
 
 
     </data>

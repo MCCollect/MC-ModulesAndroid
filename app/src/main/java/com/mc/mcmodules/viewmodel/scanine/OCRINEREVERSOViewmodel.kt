@@ -140,6 +140,6 @@ class OCRINEREVERSOViewmodel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         Utils.freeMemory()
-        println("Termino el LifeCicle del ActOCRINE")
+        println("Termino el LifeCicle del ActOCRINEREVERSO")
     }
 }

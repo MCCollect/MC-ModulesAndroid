@@ -99,7 +99,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             else -> {
                 try {
                     mCameraSource.stop()
-//                    val intent = Intent(this@ActOCRINE, ActScanCodes::class.java)
+//                    val intent = Intent(this@ActOCRINEREVERSO, ActScanCodes::class.java)
 //                    startActivityForResult(intent, CODIGO_INTENT_QR)
                     val intent = Intent(this, ActScanCodes::class.java)
                     startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)

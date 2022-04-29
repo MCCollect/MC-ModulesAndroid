@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.application'
-    //id 'com.android.library'
+    //id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
@@ -12,14 +12,14 @@ android {
 
     defaultConfig {
         minSdkVersion 21
-        applicationId "com.mc.modules"
+        //applicationId "com.mc.modules"
         versionCode 1
         //noinspection OldTargetApi
         targetSdkVersion 31
         versionName "1.0"
         multiDexEnabled true
-        //vectorDrawables.useSupportLibrary = true
-        //testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -54,7 +54,6 @@ android {
         targetCompatibility 1.8
     }
 
-    /*
     publishing {
         singleVariant('release') {
             withSourcesJar()
@@ -66,7 +65,7 @@ android {
             allVariants()
         }
     }
-   */
+
 }
 
 dependencies {
@@ -114,7 +113,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 }
 
-/*
+
 afterEvaluate {
     publishing {
         publications {
@@ -127,4 +126,3 @@ afterEvaluate {
         }
     }
 }
- */

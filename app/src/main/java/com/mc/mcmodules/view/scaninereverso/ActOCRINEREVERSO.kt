@@ -33,7 +33,7 @@ import java.io.IOException
 import java.util.*
 
 
-class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
+class ActOCRINEREVERSO : AppCompatActivity(), ActivityResultHandler {
     private val TAG = this::class.java.simpleName
 
     companion object {
@@ -171,7 +171,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                             ) != PackageManager.PERMISSION_GRANTED
                         ) {
                             ActivityCompat.requestPermissions(
-                                this@ActOCRINE, arrayOf(Manifest.permission.CAMERA),
+                                this@ActOCRINEREVERSO, arrayOf(Manifest.permission.CAMERA),
                                 1
                             )
                             return
