@@ -90,12 +90,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/redounded_corners_button"
+                android:backgroundTint="@color/colorBackgroundDayNight"
                 android:text="@string/es_correcto"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="10sp"
                 android:textStyle="bold"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:addClickListener="@{mainView.onclickScanCorrect}"
                 tools:ignore="SmallSp" />
 
@@ -311,7 +312,7 @@
                     android:layout_below="@+id/txtSexo"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/ttClaveElector"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:addClickListener="@{mainView.onclickclaveElector}" />
@@ -345,7 +346,7 @@
                     android:layout_below="@+id/txtClaveElector"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/ttCurp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     app:addClickListener="@{mainView.onclickCurp}" />
