@@ -80,7 +80,7 @@
                 android:textStyle="bold" />
 
 
-            <Button
+            <TextView
                 android:id="@+id/btnCompararInfo"
                 style="@style/Widget.AppCompat.Button.Colored3"
                 android:layout_width="80dp"
@@ -89,12 +89,14 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/redounded_corners_button"
+                android:backgroundTint="@color/colorBackgroundDayNight"
                 android:text="@string/es_correcto"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimary"
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:addClickListener="@{mainView.onclickScanCorrect}"
                 tools:ignore="SmallSp" />
 

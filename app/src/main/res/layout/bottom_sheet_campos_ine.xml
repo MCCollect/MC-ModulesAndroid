@@ -90,7 +90,7 @@
                 android:backgroundTint="@color/white"
                 android:background="@drawable/ic_firma" />
 
-            <Button
+            <TextView
                 android:id="@+id/btnCompararInfo"
                 style="@style/Widget.AppCompat.Button.Colored3"
                 android:layout_width="80dp"
@@ -106,6 +106,7 @@
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone"
+                tools:visibility="visible"
                 app:addClickListener="@{mainView.onclickScanCorrect}"
                 tools:ignore="SmallSp" />
 
