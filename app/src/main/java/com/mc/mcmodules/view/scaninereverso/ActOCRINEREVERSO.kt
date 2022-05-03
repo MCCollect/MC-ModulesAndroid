@@ -235,14 +235,12 @@ class ActOCRINEREVERSO : AppCompatActivity(), ActivityResultHandler {
                     txtCic.text = cic
                     progressCic.visibility = View.GONE
                     selfViewModel.aumentarContador()
-                    if (noDataEsMuCo) inputCic.visibility = View.GONE
+                    inputCic.visibility = View.GONE
                 } else {
                     txtCic.text = ""
                     progressCic.visibility = View.VISIBLE
-                    if (noDataEsMuCo) {
-                        inputCic.visibility = View.VISIBLE
-                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
-                    }
+                    inputCic.visibility = View.VISIBLE
+                    binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                 }
             }
         }
@@ -253,14 +251,12 @@ class ActOCRINEREVERSO : AppCompatActivity(), ActivityResultHandler {
                     txtIdentificadorC.text = identificador
                     progressIdentificadorC.visibility = View.GONE
                     selfViewModel.aumentarContador()
-                    if (noDataEsMuCo) inputIdentificadoC.visibility = View.GONE
+                    inputIdentificadoC.visibility = View.GONE
                 } else {
                     txtIdentificadorC.text = ""
                     progressIdentificadorC.visibility = View.VISIBLE
-                    if (noDataEsMuCo) {
-                        inputIdentificadoC.visibility = View.VISIBLE
-                        binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
-                    }
+                    inputIdentificadoC.visibility = View.VISIBLE
+                    binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                 }
             }
         }

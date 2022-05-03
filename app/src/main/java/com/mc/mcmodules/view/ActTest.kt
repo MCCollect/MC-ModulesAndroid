@@ -31,9 +31,9 @@ class ActTest : AppCompatActivity() {
         if (result.resultCode == Activity.RESULT_OK) {
             // There are no request codes
             result.data?.let { data ->
-                //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
-                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
-                Log.d(TAG, "DEBUG: Info = ${ineObject.printInfo()}")
+                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
+                //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
+                Log.d(TAG, "DEBUG:  ${ineObject.printInfo()}")
             }
         }
     }
@@ -42,7 +42,7 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
 
-        val intent = Intent(this, ActOCRINEREVERSO::class.java)
+        val intent = Intent(this, ActOCRINE::class.java)
         ineLauncher.launch(intent)
 
         /*

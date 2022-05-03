@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mainView"
             type="com.mc.mcmodules.view.scanine.ActOCRINE" />
@@ -80,6 +79,16 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/button_update_fields"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_below="@+id/viewSeparator"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/dimen_2"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/ic_firma" />
 
             <Button
                 android:id="@+id/btnCompararInfo"
@@ -96,7 +105,7 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="10sp"
                 android:textStyle="bold"
-                android:visibility="visible"
+                android:visibility="gone"
                 app:addClickListener="@{mainView.onclickScanCorrect}"
                 tools:ignore="SmallSp" />
 
@@ -107,8 +116,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/headerSheet"
-            android:fillViewport="true"
-            >
+            android:fillViewport="true">
 
             <RelativeLayout
                 android:id="@+id/RelFrente"
@@ -568,8 +576,8 @@
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:addClickListener="@{mainView.onclickVigencia}"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    app:addClickListener="@{mainView.onclickVigencia}" />
 
                 <ProgressBar
                     android:id="@+id/progressTipo"
@@ -684,12 +692,12 @@
                     app:addClickListener="@{mainView.listenerCodQr}" />
 
                 <RelativeLayout
-                    android:visibility="gone"
-                    tools:visibility="visible"
                     android:id="@+id/contentIngresoManual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtCodQR">
+                    android:layout_below="@+id/txtCodQR"
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputNOMBRE"
@@ -720,10 +728,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputDOMICILO"
-                        android:layout_below="@+id/inputNOMBRE"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputNOMBRE"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -748,10 +756,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputFechaNac"
-                        android:layout_below="@+id/inputDOMICILO"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputDOMICILO"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -767,9 +775,9 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
+                            android:digits="/0123456789"
                             android:hint="Fecha de nacimiento:"
                             android:inputType="date"
-                            android:digits="/0123456789"
                             android:maxLength="10"
                             android:padding="7dp"
                             android:textSize="16sp" />
@@ -777,10 +785,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputEDAD"
-                        android:layout_below="@+id/inputFechaNac"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputFechaNac"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -796,9 +804,9 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
+                            android:digits="1234567890"
                             android:hint="Edad:"
                             android:inputType="number"
-                            android:digits="1234567890"
                             android:maxLength="2"
                             android:padding="7dp"
                             android:textSize="16sp" />
@@ -806,10 +814,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputSEXO"
-                        android:layout_below="@+id/inputEDAD"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputEDAD"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -834,10 +842,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputCLAVELECTOR"
-                        android:layout_below="@+id/inputSEXO"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputSEXO"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -862,10 +870,10 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputCURP"
-                        android:layout_below="@+id/inputCLAVELECTOR"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputCLAVELECTOR"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -881,22 +889,21 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
+                            android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789"
                             android:hint="CURP:"
                             android:inputType="textCapCharacters"
-                            android:digits="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789"
                             android:maxLength="100"
                             android:padding="7dp"
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputEstado"
-                        android:layout_below="@+id/inputCURP"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/inputCURP"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
@@ -1065,9 +1072,9 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:visibility="gone"
-                    tools:visibility="gone"
                     app:errorTextAppearance="@style/error"
-                    app:passwordToggleEnabled="true">
+                    app:passwordToggleEnabled="true"
+                    tools:visibility="gone">
 
                     <EditText
                         android:id="@+id/editTextOCR"

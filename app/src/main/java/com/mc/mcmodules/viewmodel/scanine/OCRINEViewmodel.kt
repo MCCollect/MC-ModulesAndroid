@@ -525,17 +525,6 @@ class OCRINEViewmodel : ViewModel() {
 
     }
 
-    fun isEsMuCoScanned(): Boolean {
-
-        return !_liveEstado.value.equals("") &&
-                !_liveMunicipio.value.equals("") &&
-                !_liveColonia.value.equals("") &&
-                !_liveEmision.value.equals("") &&
-                !_liveVigencia.value.equals("")
-
-    }
-
-
 
     fun setValueNOMBRE(value: String) {
         if (value.isNotEmpty()) {
