@@ -115,7 +115,6 @@ class OCRINEViewmodel : ViewModel() {
 
                 FIELD_FECHA -> {
                     _liveFecha.postValue(value)
-                    _liveEdad.postValue(value)
                 }
 
                 FIELD_SEXO -> {
@@ -152,6 +151,10 @@ class OCRINEViewmodel : ViewModel() {
 
                 FIELD_VIGENCIA -> {
                     _liveVigencia.postValue(value)
+                }
+
+                FIELD_EDAD -> {
+                    _liveEdad.postValue(value)
                 }
             }
 

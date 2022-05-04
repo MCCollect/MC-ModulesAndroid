@@ -252,10 +252,10 @@
                     android:layout_below="@+id/txtFecha"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/ttEdad"
-                    android:text="@{viewModel.liveEdad}"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:addClickListener="@{mainView.onclickEdad}"/>
 
                 <ProgressBar
                     android:id="@+id/progressSexo"
@@ -834,6 +834,7 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
+                            android:digits="MH"
                             android:hint="Sexo (H / M):"
                             android:inputType="textCapCharacters"
                             android:maxLength="1"

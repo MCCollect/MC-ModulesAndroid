@@ -260,13 +260,27 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
             with(lyBottomSheet) {
                 progressFecha.visibility = View.VISIBLE
                 txtFecha.text = ""
+                progressEdad.visibility = View.VISIBLE
+                txtEdad.text = ""
             }
         }
 
+        selfViewModel.updateCampo(OCRINEViewmodel.FIELD_EDAD, "")
         selfViewModel.updateCampo(OCRINEViewmodel.FIELD_FECHA, "")
         disminurContador()
         disminurContador()
+    }
 
+    val onclickEdad = View.OnClickListener {
+        with(binding) {
+            with(lyBottomSheet) {
+                progressEdad.visibility = View.VISIBLE
+                txtEdad.text = ""
+            }
+        }
+
+        selfViewModel.updateCampo(OCRINEViewmodel.FIELD_EDAD, "")
+        disminurContador()
     }
 
     val onclickSexo = View.OnClickListener {
@@ -388,9 +402,6 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
         if (binding.lyBottomSheet.inputDOMICILO.visibility == View.VISIBLE){
             selfViewModel.setValueDOMICILO(binding.lyBottomSheet.inputDOMICILO.editText?.text.toString())
         }
-        if (binding.lyBottomSheet.inputFechaNac.visibility == View.VISIBLE){
-            selfViewModel.setValueFechaNac(binding.lyBottomSheet.inputFechaNac.editText?.text.toString())
-        }
         if (binding.lyBottomSheet.inputEDAD.visibility == View.VISIBLE){
             selfViewModel.setValueEDAD(binding.lyBottomSheet.inputEDAD.editText?.text.toString())
         }
@@ -422,6 +433,12 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
         if(binding.lyBottomSheet.inputVigencia.visibility == View.VISIBLE){
             selfViewModel.setValueVigencia(binding.lyBottomSheet.txtCapVigencia.text.toString())
+        }
+        if (binding.lyBottomSheet.inputFechaNac.visibility == View.VISIBLE){
+            val date = binding.lyBottomSheet.inputFechaNac.editText?.text.toString()
+            val regex = Regex("^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$")
+            if(!date.matches(regex)) binding.lyBottomSheet.inputFechaNac.editText?.setText("")
+            selfViewModel.setValueFechaNac(binding.lyBottomSheet.inputFechaNac.editText?.text.toString())
         }
     }
 
@@ -594,16 +611,27 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
                 if (fecha.isNotEmpty()) {
                     txtFecha.text = fecha
                     progressFecha.visibility = View.GONE
-                    progressEdad.visibility = View.GONE
                     selfViewModel.aumentarContador()
                     inputFechaNac.visibility = View.GONE
-                    inputEDAD.visibility = View.GONE
                 } else {
                     txtFecha.text = ""
-                    txtEdad.text = ""
                     progressFecha.visibility = View.VISIBLE
-                    progressEdad.visibility = View.VISIBLE
                     inputFechaNac.visibility = View.VISIBLE
+                    binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
+                }
+            }
+        }
+
+        selfViewModel.liveEdad.observe(this) { edad ->
+            with(binding.lyBottomSheet) {
+                if (edad.isNotEmpty()) {
+                    txtEdad.text = edad
+                    progressEdad.visibility = View.GONE
+                    selfViewModel.aumentarContador()
+                    inputEDAD.visibility = View.GONE
+                } else {
+                    txtEdad.text = ""
+                    progressEdad.visibility = View.VISIBLE
                     inputEDAD.visibility = View.VISIBLE
                     binding.lyBottomSheet.btnSetValuesCaptured.visibility = View.VISIBLE
                 }
@@ -757,7 +785,7 @@ class ActOCRINE : AppCompatActivity(), ActivityResultHandler {
 
         selfViewModel.liveTotalCampos.observe(this) { contador ->
             println("Contador para la transicion : $contador")
-            if (contador == 11) {
+            if (contador == 12) {
                 transition.startTransition(500)
                 binding.lyBottomSheet.progressScan.visibility = View.GONE
                 binding.lyBottomSheet.labelScan.text = getString(R.string.escaneo_listo)
