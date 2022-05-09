@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.postDelayed
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.mc.mcmodules.R
@@ -39,6 +40,13 @@ class SignatureDialogFragment(private val onSignedListener: OnSignedCaptureListe
             dismiss()
         }
         binding.signatureView.setOnSignedListener(this)
+
+        binding.buttonClear.apply {
+            postDelayed(400L) {
+                performClick()
+            }
+        }
+
     }
     override fun onStartSigning() {
     }
