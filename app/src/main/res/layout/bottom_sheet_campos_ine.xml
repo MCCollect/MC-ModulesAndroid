@@ -21,13 +21,13 @@
         android:backgroundTint="@color/colorBackgroundDayNight"
         android:orientation="vertical"
         app:behavior_hideable="true"
-        app:behavior_peekHeight="75dp"
+        app:behavior_peekHeight="90dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <RelativeLayout
             android:id="@+id/headerSheet"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="90dp"
             android:background="@drawable/transition_color_scanine"
 
             android:orientation="vertical"
@@ -106,9 +106,9 @@
                 android:textSize="10sp"
                 android:textStyle="bold"
                 android:visibility="gone"
-                tools:visibility="visible"
                 app:addClickListener="@{mainView.onclickScanCorrect}"
-                tools:ignore="SmallSp" />
+                tools:ignore="SmallSp"
+                tools:visibility="visible" />
 
 
         </RelativeLayout>
@@ -191,111 +191,11 @@
                     app:addClickListener="@{mainView.onclickDomicilio}" />
 
                 <ProgressBar
-                    android:id="@+id/progressFecha"
-                    style="@style/CircularProgress"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/txtDomicilio"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp" />
-
-                <TextView
-                    android:id="@+id/ttFecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDomicilio"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/progressFecha"
-                    android:text="@string/fecha_nac"
-                    android:textAllCaps="true"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txtFecha"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtDomicilio"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/ttFecha"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:addClickListener="@{mainView.onclickFecha}" />
-
-                <ProgressBar
-                    android:id="@+id/progressEdad"
-                    style="@style/CircularProgress"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/txtFecha"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp" />
-
-                <TextView
-                    android:id="@+id/ttEdad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtFecha"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/progressEdad"
-                    android:text="@string/edadS"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txtEdad"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtFecha"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/ttEdad"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:addClickListener="@{mainView.onclickEdad}"/>
-
-                <ProgressBar
-                    android:id="@+id/progressSexo"
-                    style="@style/CircularProgress"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_below="@+id/txtEdad"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp" />
-
-                <TextView
-                    android:id="@+id/ttSexo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtEdad"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/progressSexo"
-                    android:text="@string/sexoS"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/txtSexo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtEdad"
-                    android:layout_marginTop="8dp"
-                    android:layout_toEndOf="@+id/ttSexo"
-                    android:textColor="@color/colorPrimaryDayNight"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:addClickListener="@{mainView.onclickSexo}" />
-
-                <ProgressBar
                     android:id="@+id/progressClaveElector"
                     style="@style/CircularProgress"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_below="@+id/txtSexo"
+                    android:layout_below="@+id/txtDomicilio"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:visibility="visible" />
@@ -305,7 +205,7 @@
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtSexo"
+                    android:layout_below="@+id/txtDomicilio"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/progressClaveElector"
@@ -318,7 +218,7 @@
                     android:id="@+id/txtClaveElector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txtSexo"
+                    android:layout_below="@+id/txtDomicilio"
                     android:layout_marginTop="8dp"
                     android:layout_toEndOf="@+id/ttClaveElector"
                     android:textColor="@color/colorPrimaryDayNight"
@@ -755,99 +655,13 @@
                             android:textSize="16sp" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputFechaNac"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/inputDOMICILO"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:errorTextAppearance="@style/error">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:digits="/0123456789"
-                            android:hint="Fecha de nacimiento:"
-                            android:inputType="date"
-                            android:maxLength="10"
-                            android:padding="7dp"
-                            android:textSize="16sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputEDAD"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/inputFechaNac"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:errorTextAppearance="@style/error">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:digits="1234567890"
-                            android:hint="Edad:"
-                            android:inputType="number"
-                            android:maxLength="2"
-                            android:padding="7dp"
-                            android:textSize="16sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/inputSEXO"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/inputEDAD"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="10dp"
-                        app:boxCornerRadiusBottomEnd="8dp"
-                        app:boxCornerRadiusBottomStart="8dp"
-                        app:boxCornerRadiusTopEnd="8dp"
-                        app:boxCornerRadiusTopStart="8dp"
-                        app:errorTextAppearance="@style/error">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentEnd="true"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginBottom="10dp"
-                            android:digits="MH"
-                            android:hint="Sexo (H / M):"
-                            android:inputType="textCapCharacters"
-                            android:maxLength="1"
-                            android:padding="7dp"
-                            android:textSize="16sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/inputCLAVELECTOR"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/inputSEXO"
+                        android:layout_below="@+id/inputDOMICILO"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
