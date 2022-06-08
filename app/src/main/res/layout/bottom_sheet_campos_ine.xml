@@ -61,7 +61,6 @@
                 android:id="@+id/progressScan"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-
                 android:layout_below="@+id/viewSeparator"
                 android:layout_marginStart="10dp"
                 android:backgroundTint="@color/white"
@@ -87,6 +86,7 @@
                 android:layout_alignParentEnd="true"
                 android:padding="@dimen/dimen_2"
                 android:layout_marginEnd="10dp"
+                android:contentDescription="@null"
                 android:backgroundTint="@color/white"
                 android:background="@drawable/ic_firma" />
 
@@ -129,11 +129,11 @@
 
                 <ProgressBar
                     android:id="@+id/progressNombre"
-                    style="@style/CircularProgress"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="20dp" />
+                    android:layout_marginTop="20dp"
+                    android:indeterminateTint="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/ttNombre"
@@ -151,15 +151,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:layout_marginStart="8dp"
                     android:layout_toEndOf="@+id/ttNombre"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:addClickListener="@{mainView.onclickNombre}" />
+                    app:addClickListener="@{mainView.onclickNombre}"
+                    tools:text="Nombre de la persona X"
+                    />
 
                 <ProgressBar
                     android:id="@+id/progressDomicilio"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtNombre"
@@ -187,12 +190,14 @@
                     android:layout_toEndOf="@+id/ttDomicilio"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     app:addClickListener="@{mainView.onclickDomicilio}" />
 
                 <ProgressBar
                     android:id="@+id/progressClaveElector"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtDomicilio"
@@ -223,12 +228,14 @@
                     android:layout_toEndOf="@+id/ttClaveElector"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     app:addClickListener="@{mainView.onclickclaveElector}" />
 
                 <ProgressBar
                     android:id="@+id/progressCurp"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtClaveElector"
@@ -257,12 +264,14 @@
                     android:layout_toEndOf="@+id/ttCurp"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     app:addClickListener="@{mainView.onclickCurp}" />
 
                 <ProgressBar
                     android:id="@+id/progressEstado"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtCurp"
@@ -290,17 +299,18 @@
                     android:layout_below="@+id/txtCurp"
                     android:layout_alignTop="@+id/ttEstado"
                     android:layout_alignBottom="@+id/ttEstado"
-                    android:layout_marginStart="3dp"
                     android:layout_toEndOf="@+id/ttEstado"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     android:visibility="visible"
                     app:addClickListener="@{mainView.onclickEstado}" />
 
                 <ProgressBar
                     android:id="@+id/progressMunicipio"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtEstado"
@@ -327,18 +337,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtEstado"
-                    android:layout_marginStart="3dp"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@+id/ttMunicipio"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     android:visibility="visible"
                     app:addClickListener="@{mainView.onclickMunicipio}" />
 
                 <ProgressBar
                     android:id="@+id/progressSeccion"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_below="@+id/txtMunicipio"
@@ -372,7 +383,7 @@
 
                 <ProgressBar
                     android:id="@+id/progressLocalidad"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtMunicipio"
@@ -398,9 +409,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txtMunicipio"
-                    android:layout_marginStart="3dp"
                     android:layout_marginTop="10dp"
                     android:layout_toEndOf="@+id/ttLocalidad"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
 
@@ -410,7 +422,7 @@
 
                 <ProgressBar
                     android:id="@+id/progressEmision"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtLocalidad"
@@ -441,12 +453,14 @@
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
                     android:textStyle="bold"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:visibility="visible"
                     app:addClickListener="@{mainView.onclickEmision}" />
 
                 <ProgressBar
                     android:id="@+id/progressVigencia"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtEmision"
@@ -476,13 +490,15 @@
                     android:layout_toEndOf="@+id/ttVigencia"
                     android:textColor="@color/colorPrimaryDayNight"
                     android:textSize="12sp"
+                    android:layout_marginStart="8dp"
+                    tools:text="@string/contentdescription"
                     android:textStyle="bold"
                     android:visibility="visible"
                     app:addClickListener="@{mainView.onclickVigencia}" />
 
                 <ProgressBar
                     android:id="@+id/progressTipo"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtVigencia"
@@ -520,7 +536,7 @@
 
                 <ProgressBar
                     android:id="@+id/progressCodUni"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtTipo"
@@ -559,7 +575,7 @@
 
                 <ProgressBar
                     android:id="@+id/progressCodQR"
-                    style="@style/CircularProgress"
+                    android:indeterminateTint="@color/colorPrimary"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_below="@+id/txtCodUni"

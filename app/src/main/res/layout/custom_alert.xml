@@ -163,6 +163,8 @@
         android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginBottom="@dimen/dimen_8"
         android:elevation="@dimen/dimen_4"
-        android:theme="@style/CircularProgress"
-        android:visibility="gone" />
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        tools:visibility="visible"
+        />
 </RelativeLayout>
