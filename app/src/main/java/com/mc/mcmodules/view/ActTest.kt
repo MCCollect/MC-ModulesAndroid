@@ -7,15 +7,18 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult
 import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
+import com.mc.mcmodules.utils.GpsUtils
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
-import com.mc.mcmodules.view.scanine.ActOCRINE
 import com.mc.mcmodules.view.scaninereverso.ActOCRINEREVERSO
 import java.io.File
 
@@ -38,12 +41,31 @@ class ActTest : AppCompatActivity() {
         }
     }
 
+    private val locationSettingsLauncher = registerForActivityResult(
+        StartIntentSenderForResult()
+    ) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            Toast.makeText(this, "Se activo GPS", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "Se rechazo activar GPS", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun checkLocationSettings() {
+        val gpsUtils = GpsUtils(this, locationSettingsLauncher, null, null)
+        gpsUtils.checkLocationSettings()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
 
+        checkLocationSettings()
+
+        /*
         val intent = Intent(this, ActOCRINE::class.java)
         ineLauncher.launch(intent)
+        */
 
         /*
 
