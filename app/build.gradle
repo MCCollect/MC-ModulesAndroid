@@ -109,6 +109,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //noinspection GradleDependency
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //Location
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 }
 
 afterEvaluate {
