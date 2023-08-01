@@ -13,7 +13,5 @@ class LogcatViewModel(
 
     fun cleanLog() = dataSource.deleteAllLogs()
 
-    fun setCustomFileLogs(data: DataLogcatInput)  = dataSource.setCustomFileLogs(data)
-
     fun getCustomFileLogs(): DataLogcatInput = dataSource.getCustomFileLogs()
 }

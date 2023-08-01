@@ -43,6 +43,22 @@ class ActTest : AppCompatActivity() {
         }
     }
 
+    private val logcatLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.let { data ->
+                val typeResult = data.extras?.getParcelable(LogcatActivity.RESULT_DATA_INTENT) ?:
+                DataLogcatOutput(listLogs = emptyList())
+                if (typeResult.listLogs.isNotEmpty()) {
+                    Toast.makeText(
+                        this,
+                        "Enviando ${typeResult.listLogs.size} logs...",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
     private val locationSettingsLauncher = registerForActivityResult(
         StartIntentSenderForResult()
     ) { result: ActivityResult ->
@@ -54,16 +70,15 @@ class ActTest : AppCompatActivity() {
     }
 
     private fun testLogcat() {
-        val fileData = DataLogcatInput("log.txt", 10)
-        val dataSource = LogsDataSource(this)
-        dataSource.setCustomFileLogs(fileData)
+        val fileData = DataLogcatInput("log.txt", 10, true)
+        val dataSource = LogsDataSource(this, fileData)
         dataSource.addNewLogRequest("Prueba consulta")
         dataSource.addNewLogResponse("Prueba respuesta")
         dataSource.addNewLogError("Prueba error")
 
         val intent = Intent(this, LogcatActivity::class.java)
         intent.putExtra(LogcatActivity.DATA_INTENT, fileData)
-        startActivityForResult(intent, FirmaActivity.CODIGO_OK_FIRMA_DATA)
+        logcatLauncher.launch(intent)
     }
 
     private fun checkLocationSettings() {

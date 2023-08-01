@@ -31,6 +31,7 @@ class LogsAdapter(private val listLogs: MutableList<Log>): RecyclerView.Adapter<
 
 class ViewHolderLog(val binding: ItemLogBinding) : RecyclerView.ViewHolder(binding.root) {
     fun onBind(item: Log) {
+        binding.iconLog.setImageResource(item.image)
         binding.log = item
     }
 }
