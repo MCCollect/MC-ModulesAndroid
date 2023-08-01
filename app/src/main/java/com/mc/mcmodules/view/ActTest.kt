@@ -18,10 +18,12 @@ import com.mc.mcmodules.utils.GpsUtils
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
+import com.mc.mcmodules.view.logcat.datasource.LogsDataSource
+import com.mc.mcmodules.view.logcat.views.activities.LogcatActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scaninereverso.ActOCRINEREVERSO
 import java.io.File
-
+import java.lang.Exception
 
 @Suppress("DEPRECATION")
 class ActTest : AppCompatActivity() {
@@ -51,16 +53,33 @@ class ActTest : AppCompatActivity() {
         }
     }
 
+    private fun testLogcat() {
+        val fileData = DataLogcatInput("log.txt", 10)
+        val dataSource = LogsDataSource(this)
+        dataSource.setCustomFileLogs(fileData)
+        dataSource.addNewLogRequest("Prueba consulta")
+        dataSource.addNewLogResponse("Prueba respuesta")
+        dataSource.addNewLogError("Prueba error")
+
+        val intent = Intent(this, LogcatActivity::class.java)
+        intent.putExtra(LogcatActivity.DATA_INTENT, fileData)
+        startActivityForResult(intent, FirmaActivity.CODIGO_OK_FIRMA_DATA)
+    }
+
     private fun checkLocationSettings() {
-        val gpsUtils = GpsUtils(this, locationSettingsLauncher, null, null)
-        gpsUtils.checkLocationSettings()
+        try {
+            val gpsUtils = GpsUtils(this)
+            gpsUtils.checkLocationSettings(locationSettingsLauncher, null, null)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
-
-        checkLocationSettings()
+        testLogcat()
+        //checkLocationSettings()
 
         /*
         val intent = Intent(this, ActOCRINE::class.java)

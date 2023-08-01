@@ -109,5 +109,10 @@
     <string name="cic_descripcion">CIC:</string>
     <string name="identificador_ciudadano_desc">Identificador ciudadano:</string>
 
-
+    <!-- ACT LOGCAT -->
+    <string name="logcat">Logcat</string>
+    <string name="description_logcat">A continuación, encontrarás una lista con los diferentes eventos registrados por la aplicación, incluyendo errores, consultas y respuestas al servidor.</string>
+    <string name="logcat_type">Tipo</string>
+    <string name="logcat_date">Fecha</string>
+    <string name="logcat_description">Descripción</string>
 </resources>

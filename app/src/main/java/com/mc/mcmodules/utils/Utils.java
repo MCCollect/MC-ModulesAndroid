@@ -1,5 +1,6 @@
 package com.mc.mcmodules.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,6 +23,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -107,5 +110,10 @@ public class Utils {
         }).start();
     }
 
-
+    public static String getCurrentDate(String format) {
+        Date currentDate = new Date();
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(currentDate);
+    }
 }
