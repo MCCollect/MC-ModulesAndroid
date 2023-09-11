@@ -115,4 +115,15 @@
     <string name="logcat_type">Tipo</string>
     <string name="logcat_date">Fecha</string>
     <string name="logcat_description">Descripción</string>
+
+    <!-- PERMISSIONS -->
+    <string name="default_dinamic_permisssions_title">Permisos Del Sistema</string>
+    <string name="default_dinamic_permisssions_description">"¡Espera un momento!\n Antes de continuar, permítenos asegurarnos de que todo funcione sin problemas. El sistema necesita estos permisos para funcionar correctamente</string>
+    <string name="button_permission">Aceptar</string>
+    <string name="button_next">Continuar</string>
+    <string name="button_start">Comenzar</string>
+    <string name="label_success">Tu permiso se ha concedido con éxito.\n ¡Estas listo para seguir adelante!</string>
+    <string name="title_resume_permissions">Resumen de permisos</string>
+    <string name="button_finish">Finalizar</string>
+    <string name="description_resume_permissions">En la siguiente lista, encontrarás los permisos que necesitamos para que la aplicación funcione correctamente. Por favor, asegúrate de aceptar todos estos permisos para poder continuar utilizando la aplicación sin problemas.</string>
 </resources>

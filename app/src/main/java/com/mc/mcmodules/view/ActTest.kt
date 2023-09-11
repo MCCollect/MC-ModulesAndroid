@@ -1,5 +1,6 @@
 package com.mc.mcmodules.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
@@ -12,6 +13,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.StartIntentSenderForResult
 import androidx.appcompat.app.AppCompatActivity
+import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
 import com.mc.mcmodules.utils.GpsUtils
@@ -20,6 +22,10 @@ import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.logcat.datasource.LogsDataSource
 import com.mc.mcmodules.view.logcat.views.activities.LogcatActivity
+import com.mc.mcmodules.view.permissions.model.Permission
+import com.mc.mcmodules.view.permissions.model.PermissionsResult
+import com.mc.mcmodules.view.permissions.model.PermissionsView
+import com.mc.mcmodules.view.permissions.view.activities.DinamicPermissionsActivity
 import com.mc.mcmodules.view.pinhc.activity.ActPinHC
 import com.mc.mcmodules.view.scaninereverso.ActOCRINEREVERSO
 import java.io.File
@@ -59,6 +65,20 @@ class ActTest : AppCompatActivity() {
         }
     }
 
+    private val permisssionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            result.data?.let { data ->
+                val typeResult = data.extras?.getParcelable(DinamicPermissionsActivity.RESULT_PERMISSIONS) ?:
+                PermissionsResult(false)
+                Toast.makeText(
+                    this,
+                    "Aceptaste todos los permisos: ${typeResult.isPermissionsAccept}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
     private val locationSettingsLauncher = registerForActivityResult(
         StartIntentSenderForResult()
     ) { result: ActivityResult ->
@@ -81,6 +101,51 @@ class ActTest : AppCompatActivity() {
         logcatLauncher.launch(intent)
     }
 
+    private fun testDinamicPermisssions() {
+        val data = PermissionsView(
+            permissions = listOf(
+                Permission(
+                    Manifest.permission.CAMERA,"CAMERA", "Cámara",
+                    "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
+                    R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
+                ),
+                Permission(
+                    Manifest.permission.READ_PHONE_STATE,"READ_PHONE_STATE", "Télefono",
+                    "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
+                    R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
+                ),
+                Permission(
+                    Manifest.permission.RECORD_AUDIO,"RECORD_AUDIO", "Micrófono",
+                    "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
+                    R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
+                ),
+                Permission(
+                    Manifest.permission.ACCESS_FINE_LOCATION, "ACCESS_FINE_LOCATION","Ubicación",
+                    "Permite que la aplicación acceda a tu ubicación aproximada utilizando fuentes menos precisas, como torres de telefonía móvil o redes Wi-Fi. Esto se utiliza para mejorar la eficiencia de la ubicación y ahorrar energía de la batería.",
+                    R.raw.animation_permission_default,R.drawable.ic_flash_auto, 21, 33
+                ),
+                Permission(
+                    Manifest.permission.ACCESS_COARSE_LOCATION, "ACCESS_COARSE_LOCATION","Ubicación",
+                    "Permite que la aplicación acceda a tu ubicación precisa mediante el uso del GPS del dispositivo. Esto se utiliza para ofrecerte servicios basados en la ubicación, como encontrar tiendas cercanas.",
+                    R.raw.animation_permission_default,R.drawable.ic_flash_auto, 21, 33
+                ),
+                Permission(
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION, "ACCESS_BACKGROUND_LOCATION", "Ubicación",
+                    "Permite que la aplicación acceda a tu ubicación precisa mediante el uso del GPS del dispositivo. Esto se utiliza para ofrecerte servicios basados en la ubicación, como encontrar tiendas cercanas.",
+                    R.raw.animation_permission_default, R.drawable.ic_person, 29, 33
+                ),
+                Permission(
+                    Manifest.permission.POST_NOTIFICATIONS, "POST_NOTIFICATIONS", "Notificaciones",
+                    "Permite que la aplicación acceda a tu ubicación precisa mediante el uso del GPS del dispositivo. Esto se utiliza para ofrecerte servicios basados en la ubicación, como encontrar tiendas cercanas.",
+                    R.raw.animation_permission_default, R.drawable.ic_response, 33, 33
+                ),
+            )
+        )
+        val intent = Intent(this, DinamicPermissionsActivity::class.java)
+        intent.putExtra(DinamicPermissionsActivity.DATA_INTENT, data)
+        permisssionLauncher.launch(intent)
+    }
+
     private fun checkLocationSettings() {
         try {
             val gpsUtils = GpsUtils(this)
@@ -93,7 +158,8 @@ class ActTest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initContentView()
-        testLogcat()
+        //testLogcat()
+        testDinamicPermisssions()
         //checkLocationSettings()
 
         /*

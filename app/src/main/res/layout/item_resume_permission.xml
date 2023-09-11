@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_6"
+    android:background="@drawable/back_ronded_alert"
+    android:backgroundTint="@color/backgroud_toolbar"
+    android:padding="@dimen/dimen_6">
+
+    <include
+        android:id="@+id/permission"
+        layout="@layout/item_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/name_permission_resume"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_40"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/permission"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem[1]" />
+
+    <TextView
+        android:id="@+id/status_permission"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_40"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:textAlignment="center"
+        android:textSize="@dimen/text_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/permission"
+        app:layout_constraintTop_toBottomOf="@+id/name_permission_resume"
+        tools:text="@tools:sample/lorem[10]" />
+
+    <ImageView
+        android:id="@+id/icon_status"
+        android:layout_width="@dimen/dimen_25"
+        android:layout_height="@dimen/dimen_25"
+        android:src="@drawable/ic_done"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/status_permission"
+        app:tint="@color/colorPrimaryLight" />
+</androidx.constraintlayout.widget.ConstraintLayout>

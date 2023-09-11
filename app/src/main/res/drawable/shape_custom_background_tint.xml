@@ -1,0 +1,11 @@
+<!-- drawable/paint_splatter.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/shape_splanner"
+        android:left="5dp"
+        android:top="5dp" />
+    <item
+        android:drawable="@drawable/shape_splanner"
+        android:right="50dp"
+        android:bottom="50dp" />
+</layer-list>
