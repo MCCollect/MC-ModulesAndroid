@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -16,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mc.mcmodules.R
 import com.mc.mcmodules.databinding.ActTestBinding
 import com.mc.mcmodules.model.classes.data.*
+import com.mc.mcmodules.model.classes.library.CustomAlert
+import com.mc.mcmodules.model.classes.library.MCDeviceSecure
 import com.mc.mcmodules.utils.GpsUtils
 import com.mc.mcmodules.view.camera.activity.ActCam
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
@@ -159,8 +162,17 @@ class ActTest : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initContentView()
         //testLogcat()
-        testDinamicPermisssions()
+        //testDinamicPermisssions()
         //checkLocationSettings()
+        val mcSecureDevice = MCDeviceSecure(this)
+
+        if (mcSecureDevice.isRootedDevice) {
+            createAlertIsRootedSystem()
+        } else if (mcSecureDevice.isVirtualDevice) {
+            createForEmulatorDevice()
+        } else {
+            //initLogIn()
+        }
 
         /*
         val intent = Intent(this, ActOCRINE::class.java)
@@ -284,6 +296,32 @@ class ActTest : AppCompatActivity() {
         println("Texto descifrado : " + cipherAES.decrypt(objectAES.ciphertext, objectAES.iv))*/
 
 
+    }
+
+    private fun createForEmulatorDevice() {
+        val alert = CustomAlert(this)
+        alert.setTypeWarning(
+            "Dispositivo emulador",
+            "Tu dispositivo tiene las características de un emulador, por tu seguridad no se te permitirá ejecutar la aplicación en este dispositivo",
+            "Contacta al soporte técnico de MC Collect"
+        )
+        alert.btnLeft.setOnClickListener { view -> }
+        alert.close.visibility = View.GONE
+        alert.setCancelable(false)
+        alert.show()
+    }
+
+    private fun createAlertIsRootedSystem() {
+        val alert = CustomAlert(this)
+        alert.setTypeWarning(
+            "Privilegios de super usuario (ROOT)",
+            "Tu dispositivo permite tener privelegios de super usuario por las configuraciones de fábrica o has hecho algún procedimiento de terceros para obtener estos privilegios, debido a que ser un super usuario deja tu teléfono vulnerable a ataques de terceros, no es recomendable usar la aplicación en este ambiente, consulta con tu proovedor de telefonía como revertir o quitar los privilegios, o acude con el tercero que concedio los mismos.",
+            "Contacta al soporte técnico de MC Collect"
+        )
+        alert.btnLeft.setOnClickListener { view -> }
+        alert.close.visibility = View.GONE
+        alert.setCancelable(false)
+        alert.show()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

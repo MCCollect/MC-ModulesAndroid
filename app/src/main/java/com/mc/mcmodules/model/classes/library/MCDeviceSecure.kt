@@ -36,8 +36,8 @@ class MCDeviceSecure(private val context: Context) {
         }
         try {
             val superUserapk = File("/system/app/Superuser.apk")
-            val otacertsZip = File("/etc/security/otacerts.zip")
-            return if (superUserapk.exists() || otacertsZip.exists()) true else
+            //val otacertsZip = File("/etc/security/otacerts.zip")
+            return if (superUserapk.exists() /*|| otacertsZip.exists()*/) true else
                 checkRootMethod2() ||
                         checkRootMethod3() ||
                         existAnyAppForRoot(appsRoot, context) ||
