@@ -48,7 +48,7 @@
     <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="CircularProgress" parent="Theme.AppCompat.Light">
-        <item name="android:indeterminateTint">@color/colorPrimaryDayNight</item>
+        <item name="android:indeterminateTint">@color/white</item>
     </style>
 
     <style name="DialogTheme">
