@@ -126,4 +126,20 @@
     <string name="title_resume_permissions">Resumen de permisos</string>
     <string name="button_finish">Finalizar</string>
     <string name="description_resume_permissions">En la siguiente lista, encontrarás los permisos que necesitamos para que la aplicación funcione correctamente. Por favor, asegúrate de aceptar todos estos permisos para poder continuar utilizando la aplicación sin problemas.</string>
+
+    <!-- Huellas dactilares -->
+    <string name="escaneo_de_huellas_dactilares">Escaneo de huellas dactilares</string>
+    <string name="escanea_las_huellas_dactilares_de_los_dedos_indice_de_tus_dos_manos">Escanea las huellas dactilares de los dedos índice de tus dos manos.</string>
+    <string name="huella_dedo_ndice_derecho">Huella dedo índice derecho.</string>
+    <string name="huella_dedo_ndice_izquierdo">Huella dedo índice izquierdo.</string>
+    <string name="estatus3">Estatus:</string>
+    <string name="no_capturada">No capturada</string>
+    <string name="calidad">Calidad:</string>
+    <string name="guion">-</string>
+    <string name="comenzar_escaneo">Comenzar escaneo</string>
+    <string name="escanear_huellas_dactilares">Escanear Huellas</string>
+    <string name="capturada">Capturada</string>
+    <string name="capturar">Capturar</string>
+    <string name="finalizar_captura">Finalizar captura</string>
+
 </resources>

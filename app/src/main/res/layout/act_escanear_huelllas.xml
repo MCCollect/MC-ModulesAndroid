@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.escaneohuelladactilar.ActEscanearHuelllas">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp">
+
+            <ImageView
+                android:id="@+id/logoIne"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="10dp"
+                android:importantForAccessibility="no"
+                android:padding="10dp"
+                android:src="@drawable/ic_fingerprint"
+                app:tint="@color/tintColorPrimary" />
+
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logoIne"
+                android:layout_alignTop="@+id/logoIne"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toEndOf="@+id/logoIne"
+                android:text="@string/escaneo_de_huellas_dactilares"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/textDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textTitle"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="3dp"
+                android:layout_toEndOf="@+id/logoIne"
+                android:text="@string/escanea_las_huellas_dactilares_de_los_dedos_indice_de_tus_dos_manos"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardInfoISSTE"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cardTitle"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/indexRImage"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_finger_capture" />
+
+            <ProgressBar
+                android:id="@+id/progressRimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/indexRImage"
+                android:layout_alignTop="@+id/indexRImage"
+                android:layout_alignEnd="@+id/indexRImage"
+                android:layout_alignBottom="@+id/indexRImage"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/titleR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexRImage"
+                android:text="@string/huella_dedo_ndice_derecho"
+                android:textColor="@color/tintColorPrimary" />
+
+            <TextView
+                android:id="@+id/statusR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleR"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexRImage"
+                android:text="@string/estatus3"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStatusR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleR"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/statusR"
+                android:text="@string/no_capturada" />
+
+            <TextView
+                android:id="@+id/calidadR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtStatusR"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexRImage"
+                android:text="@string/calidad"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCalidadR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtStatusR"
+                android:layout_marginStart="3dp"
+                android:layout_marginBottom="30dp"
+                android:layout_toEndOf="@+id/calidadR"
+                android:text="@string/guion" />
+
+            <Button
+                android:id="@+id/btnCaptureFR"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/indexRImage"
+                android:layout_alignBottom="@+id/indexRImage"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/titleR"
+                android:text="@string/capturar"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textColor="@color/tintColorPrimary" />
+
+
+            <ImageView
+                android:id="@+id/indexLImage"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:layout_below="@+id/txtCalidadR"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_finger_capture" />
+
+            <ProgressBar
+                android:id="@+id/progressLimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/indexLImage"
+                android:layout_alignTop="@+id/indexLImage"
+                android:layout_alignEnd="@+id/indexLImage"
+                android:layout_alignBottom="@+id/indexLImage"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/titleL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtCalidadR"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexLImage"
+                android:text="@string/huella_dedo_ndice_izquierdo"
+                android:textColor="@color/tintColorPrimary" />
+
+            <TextView
+                android:id="@+id/statusL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleL"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexLImage"
+                android:text="@string/estatus3"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStatusL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleL"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/statusL"
+                android:text="@string/no_capturada" />
+
+            <TextView
+                android:id="@+id/calidadL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtStatusL"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@+id/indexLImage"
+                android:text="@string/calidad"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtCalidadL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtStatusL"
+                android:layout_marginStart="3dp"
+                android:layout_toEndOf="@+id/calidadL"
+                android:text="@string/guion" />
+
+            <Button
+                android:id="@+id/btnCaptureFL"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/indexLImage"
+                android:layout_alignBottom="@+id/indexLImage"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="5dp"
+                android:layout_toEndOf="@+id/titleL"
+                android:text="@string/capturar"
+                android:textAlignment="textEnd"
+                android:textAllCaps="false"
+                android:textColor="@color/tintColorPrimary" />
+
+            <ImageView
+                android:id="@+id/zoomFingerScanned"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnFinalizarCaptura"
+                android:layout_below="@+id/indexLImage"
+                android:layout_marginTop="9dp"
+                android:layout_marginBottom="10dp" />
+
+            <Button
+                android:id="@+id/btnFinalizarCaptura"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="@string/finalizar_captura"
+                android:textAllCaps="false"
+                android:textColor="@color/tintColorPrimary" />
+
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

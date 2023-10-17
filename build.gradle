@@ -16,7 +16,7 @@ buildscript {
         maven { url 'https://maven.fabric.io/public'}
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.3'
+        classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -33,6 +33,13 @@ allprojects {
         }
         mavenCentral()
         maven { url 'https://maven.fabric.io/public' }
+        maven {
+            url "https://identy.jfrog.io/identy/identy-finger-release"
+            credentials {
+                username = "mc_collect"
+                password = "td3w6c1m69vMyx"
+            }
+        }
     }
 }
 

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -21,6 +22,7 @@ import com.mc.mcmodules.model.classes.library.CustomAlert
 import com.mc.mcmodules.model.classes.library.MCDeviceSecure
 import com.mc.mcmodules.utils.GpsUtils
 import com.mc.mcmodules.view.camera.activity.ActCam
+import com.mc.mcmodules.view.escaneohuelladactilar.ActEscanearHuelllas
 import com.mc.mcmodules.view.escanergenerico.activity.ActOCRDocs
 import com.mc.mcmodules.view.firma.FirmaActivity
 import com.mc.mcmodules.view.logcat.datasource.LogsDataSource
@@ -41,46 +43,85 @@ class ActTest : AppCompatActivity() {
 
     private lateinit var binding: ActTestBinding
 
-    private val ineLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            // There are no request codes
-            result.data?.let { data ->
-                val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE("N/F", "", "", "", "", "", "", "","", "", "")
-                //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
-                Log.d(TAG, "DEBUG:  ${ineObject.printInfo()}")
+    private val ineLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // There are no request codes
+                result.data?.let { data ->
+                    val ineObject = data.extras?.getParcelable("result_object") ?: InfoINE(
+                        "N/F",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    )
+                    //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
+                    Log.d(TAG, "DEBUG:  ${ineObject.printInfo()}")
+                }
             }
         }
-    }
 
-    private val logcatLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.let { data ->
-                val typeResult = data.extras?.getParcelable(LogcatActivity.RESULT_DATA_INTENT) ?:
-                DataLogcatOutput(listLogs = emptyList())
-                if (typeResult.listLogs.isNotEmpty()) {
+    private val fingerScanLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.let { data ->
+                    val scanObjectResult =
+                        data.extras?.getParcelable(ActEscanearHuelllas.RESULT_DATA_INTENT)
+                            ?: DataFingerScanResult(
+                                ArrayList()
+                            )
+                    //val ineObject = data.extras?.getParcelable("result_object") ?: InfoINEReverso("", "")
+                    Log.d(TAG, "DEBUG Index R Scann image:  ${scanObjectResult.results[0].pathResult}")
+                    Log.d(TAG, "DEBUG Index R Scann calidad:  ${scanObjectResult.results[0].calidad}")
+                    Log.d(TAG, "DEBUG Index R Scann calidad:  ${scanObjectResult.results[0].dedo}")
+
+                    Log.d(TAG, "--------------------------------------------------------------")
+
+                    Log.d(TAG, "DEBUG Index L Scann image:  ${scanObjectResult.results[1].pathResult}")
+                    Log.d(TAG, "DEBUG Index L Scann calidad:  ${scanObjectResult.results[1].calidad}")
+                    Log.d(TAG, "DEBUG Index L Scann calidad:  ${scanObjectResult.results[1].dedo}")
+                }
+            }
+        }
+
+    private val logcatLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.let { data ->
+                    val typeResult = data.extras?.getParcelable(LogcatActivity.RESULT_DATA_INTENT)
+                        ?: DataLogcatOutput(listLogs = emptyList())
+                    if (typeResult.listLogs.isNotEmpty()) {
+                        Toast.makeText(
+                            this,
+                            "Enviando ${typeResult.listLogs.size} logs...",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+        }
+
+    private val permisssionLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.let { data ->
+                    val typeResult =
+                        data.extras?.getParcelable(DinamicPermissionsActivity.RESULT_PERMISSIONS)
+                            ?: PermissionsResult(false)
                     Toast.makeText(
                         this,
-                        "Enviando ${typeResult.listLogs.size} logs...",
+                        "Aceptaste todos los permisos: ${typeResult.isPermissionsAccept}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
-    }
-
-    private val permisssionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            result.data?.let { data ->
-                val typeResult = data.extras?.getParcelable(DinamicPermissionsActivity.RESULT_PERMISSIONS) ?:
-                PermissionsResult(false)
-                Toast.makeText(
-                    this,
-                    "Aceptaste todos los permisos: ${typeResult.isPermissionsAccept}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-    }
 
     private val locationSettingsLauncher = registerForActivityResult(
         StartIntentSenderForResult()
@@ -104,38 +145,57 @@ class ActTest : AppCompatActivity() {
         logcatLauncher.launch(intent)
     }
 
+    private fun testFingerScan() {
+        val data =
+            DataFingerScan(filesDir.path, filesDir.path, "2632-com.mc.demofimpe-27-10-2023.lic")
+
+        val intent = Intent(this, ActEscanearHuelllas::class.java)
+        intent.putExtra(ActEscanearHuelllas.DATA_INTENT, data)
+        fingerScanLauncher.launch(intent)
+    }
+
     private fun testDinamicPermisssions() {
         val data = PermissionsView(
             permissions = listOf(
                 Permission(
-                    Manifest.permission.CAMERA,"CAMERA", "Cámara",
+                    Manifest.permission.CAMERA, "CAMERA", "Cámara",
                     "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
                     R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
                 ),
                 Permission(
-                    Manifest.permission.READ_PHONE_STATE,"READ_PHONE_STATE", "Télefono",
+                    Manifest.permission.READ_PHONE_STATE, "READ_PHONE_STATE", "Télefono",
                     "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
                     R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
                 ),
                 Permission(
-                    Manifest.permission.RECORD_AUDIO,"RECORD_AUDIO", "Micrófono",
+                    Manifest.permission.RECORD_AUDIO, "RECORD_AUDIO", "Micrófono",
                     "Permite que la aplicación acceda a la cámara de tu dispositivo. Se utiliza para tomar fotos y grabar videos dentro de la aplicación.",
                     R.raw.animation_permission_default, R.drawable.ic_camera, 21, 33
                 ),
                 Permission(
-                    Manifest.permission.ACCESS_FINE_LOCATION, "ACCESS_FINE_LOCATION","Ubicación",
+                    Manifest.permission.ACCESS_FINE_LOCATION, "ACCESS_FINE_LOCATION", "Ubicación",
                     "Permite que la aplicación acceda a tu ubicación aproximada utilizando fuentes menos precisas, como torres de telefonía móvil o redes Wi-Fi. Esto se utiliza para mejorar la eficiencia de la ubicación y ahorrar energía de la batería.",
-                    R.raw.animation_permission_default,R.drawable.ic_flash_auto, 21, 33
+                    R.raw.animation_permission_default, R.drawable.ic_flash_auto, 21, 33
                 ),
                 Permission(
-                    Manifest.permission.ACCESS_COARSE_LOCATION, "ACCESS_COARSE_LOCATION","Ubicación",
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    "ACCESS_COARSE_LOCATION",
+                    "Ubicación",
                     "Permite que la aplicación acceda a tu ubicación precisa mediante el uso del GPS del dispositivo. Esto se utiliza para ofrecerte servicios basados en la ubicación, como encontrar tiendas cercanas.",
-                    R.raw.animation_permission_default,R.drawable.ic_flash_auto, 21, 33
+                    R.raw.animation_permission_default,
+                    R.drawable.ic_flash_auto,
+                    21,
+                    33
                 ),
                 Permission(
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION, "ACCESS_BACKGROUND_LOCATION", "Ubicación",
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION,
+                    "ACCESS_BACKGROUND_LOCATION",
+                    "Ubicación",
                     "Permite que la aplicación acceda a tu ubicación precisa mediante el uso del GPS del dispositivo. Esto se utiliza para ofrecerte servicios basados en la ubicación, como encontrar tiendas cercanas.",
-                    R.raw.animation_permission_default, R.drawable.ic_person, 29, 33
+                    R.raw.animation_permission_default,
+                    R.drawable.ic_person,
+                    29,
+                    33
                 ),
                 Permission(
                     Manifest.permission.POST_NOTIFICATIONS, "POST_NOTIFICATIONS", "Notificaciones",
@@ -164,7 +224,7 @@ class ActTest : AppCompatActivity() {
         //testLogcat()
         //testDinamicPermisssions()
         //checkLocationSettings()
-        val mcSecureDevice = MCDeviceSecure(this)
+        /*val mcSecureDevice = MCDeviceSecure(this)
 
         if (mcSecureDevice.isRootedDevice) {
             createAlertIsRootedSystem()
@@ -174,6 +234,21 @@ class ActTest : AppCompatActivity() {
             //initLogIn()
         }
 
+        println("CPU_ABI:" + Build.CPU_ABI)
+        println("CPU_ABI2:" + Build.CPU_ABI2)
+        println("BOARD:" + Build.BOARD)
+        println("BRAND:" + Build.BRAND)
+        println("DEVICE:" + Build.DEVICE)
+        println("FINGERPRINT:" + Build.FINGERPRINT)
+        println("Hardware:" + Build.HARDWARE)
+        println("Host:" + Build.HOST)
+        println("ID:" + Build.ID)
+        println("MANUFACTURER:" + Build.MANUFACTURER)
+        println("MODEL:" + Build.MODEL)
+        println("PRODUCT:" + Build.PRODUCT)
+        println("RADIO:" + Build.RADIO)
+        println("USER:" + Build.USER)
+*/
         /*
         val intent = Intent(this, ActOCRINE::class.java)
         ineLauncher.launch(intent)
@@ -190,9 +265,9 @@ class ActTest : AppCompatActivity() {
         */
 
 
-/*//        PRUEBA DEL ESCANNER DE QR
-        val intent = Intent(this, ActScanCodes::class.java)
-        startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
+        /*//        PRUEBA DEL ESCANNER DE QR
+                val intent = Intent(this, ActScanCodes::class.java)
+                startActivityForResult(intent, ActScanCodes.CODIGO_OK_QR)*/
         //val intent = Intent(this, ActCam::class.java)
         //val intent = Intent(this, ActOCRDocs::class.java)
 
@@ -210,81 +285,81 @@ class ActTest : AppCompatActivity() {
 
         startActivityForResult(intent, ActOCRDocs.CODIGO_OK_SCANDOCS)*/
 
-/*
+        /*
 
-        intent.putExtra(
-            "data_solicitante", DataInfoSolicitante(
-                "Erick",
-                "Ramos",
-                "Cruz",
-                "H",
-                "Soltero",
-                "RACE960730HDFMRR00",
-                "30/07/1996",
-                arrayListOf(
-                    false,
-                    false,
-                    false,
-                    true,
-                    true,
-                    true,
-                    true
-                ) //puedes poner un arreglo vacio no se bloqueara nada
-            )
-        )
+                intent.putExtra(
+                    "data_solicitante", DataInfoSolicitante(
+                        "Erick",
+                        "Ramos",
+                        "Cruz",
+                        "H",
+                        "Soltero",
+                        "RACE960730HDFMRR00",
+                        "30/07/1996",
+                        arrayListOf(
+                            false,
+                            false,
+                            false,
+                            true,
+                            true,
+                            true,
+                            true
+                        ) //puedes poner un arreglo vacio no se bloqueara nada
+                    )
+                )
 
-        intent.putExtra(
-            "data_domicilio", DataInfoDomicilio(
-                "Avenida Tlahuac",
-                "6122",
-                "No. 4",
-                "13300",
-                "5514181916",
-                "Santaana poniente",
-                "tlahuac",
-                "cdmx",
-                "CDMX",
-                arrayListOf(
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    true
-                )//puedes poner un arreglo vacio no se bloqueara nada
-            )
-        )
+                intent.putExtra(
+                    "data_domicilio", DataInfoDomicilio(
+                        "Avenida Tlahuac",
+                        "6122",
+                        "No. 4",
+                        "13300",
+                        "5514181916",
+                        "Santaana poniente",
+                        "tlahuac",
+                        "cdmx",
+                        "CDMX",
+                        arrayListOf(
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            false,
+                            true
+                        )//puedes poner un arreglo vacio no se bloqueara nada
+                    )
+                )
 
 
-        intent.putExtra(
-            "data_autorizacion", DataInfoAutorizacion(
-                getString(R.string.acepto_condiciones),
-                getString(R.string.text1_aceptocondiciones),
-                getString(R.string.text2_aceptocondiciones),
-                getString(R.string.text3_aceptocondiciones),
-                "https://www.facebook.com/",
-                "api/CirculoCredito/pin",
-                "https://dev.mcnoc.mx/WsMovilAlternativaSur/",
-                "ALTERNATIVASUR",
-                "INTEGRANTE",
-                filesDir.path+"/firma.jpg",
-                "5576897654"
+                intent.putExtra(
+                    "data_autorizacion", DataInfoAutorizacion(
+                        getString(R.string.acepto_condiciones),
+                        getString(R.string.text1_aceptocondiciones),
+                        getString(R.string.text2_aceptocondiciones),
+                        getString(R.string.text3_aceptocondiciones),
+                        "https://www.facebook.com/",
+                        "api/CirculoCredito/pin",
+                        "https://dev.mcnoc.mx/WsMovilAlternativaSur/",
+                        "ALTERNATIVASUR",
+                        "INTEGRANTE",
+                        filesDir.path+"/firma.jpg",
+                        "5576897654"
 
-            )
-        )*/
+                    )
+                )*/
 //        startActivityForResult(intent, ActCam.CODIGO_OK_CAMERA)
 
-/*
+        /*
 
-        val ocr = OCR(this)
-        //ocr.loadBitmap(BitmapFactory.decodeResource(resources, R.drawable.text_example))
-        //ocr.loadString("curp : race960730hdfmrr00")
-        ocr.loadString("xcvcxvxcv vkfhn54mndamnbasd (race960730hdfmrr00)fsdkl f ñlsdflk hfsdjklh sdf")
-        //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
-        binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)*/
+                val ocr = OCR(this)
+                //ocr.loadBitmap(BitmapFactory.decodeResource(resources, R.drawable.text_example))
+                //ocr.loadString("curp : race960730hdfmrr00")
+                ocr.loadString("xcvcxvxcv vkfhn54mndamnbasd (race960730hdfmrr00)fsdkl f ñlsdflk hfsdjklh sdf")
+                //binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*CURP.\\s*:\\s*.(\\w{18})\\s*.*"),1)
+                binding.text.text = ocr.getTextFromREGEX(Pattern.compile(".*\\s*[(](\\w{18})[)]\\s*.*"),1)*/
 
 
         /*
@@ -295,7 +370,7 @@ class ActTest : AppCompatActivity() {
         println("Texto cifrado : " + objectAES.ciphertext)
         println("Texto descifrado : " + cipherAES.decrypt(objectAES.ciphertext, objectAES.iv))*/
 
-
+        testFingerScan()
     }
 
     private fun createForEmulatorDevice() {
@@ -336,6 +411,7 @@ class ActTest : AppCompatActivity() {
                     }
                     //tarea a realizar
                 }
+
                 ActPinHC.CODIGO_OK_HC_DATA -> {
                     val pinRequest: PINRequest? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
@@ -359,6 +435,7 @@ class ActTest : AppCompatActivity() {
                         binding.imgFirmaTest.setImageBitmap(bitmap)
                     }
                 }
+
                 ActCam.CODIGO_OK_CAMERA -> {
                     val fileImage: DataCamera? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
@@ -379,6 +456,7 @@ class ActTest : AppCompatActivity() {
 
 
                 }
+
                 ActOCRDocs.CODIGO_OK_SCANDOCS -> {
                     val info: DataDocs? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
@@ -393,28 +471,32 @@ class ActTest : AppCompatActivity() {
                         println("Respuesta ${index}: " + itemScanner)
                     }
                 }
+
                 FirmaActivity.CODIGO_OK_FIRMA_DATA -> {
                     val dataResponse: DataFirmaResponse? = if (data != null) {
                         data.extras!!.getParcelable("result_object")
                     } else DataFirmaResponse()
                     if (dataResponse != null) {
-                        Log.i(" CODIGO_OK_FIRMA_DATA ", "status: ${dataResponse.isOk}, mensaje: ${dataResponse.message}")
+                        Log.i(
+                            " CODIGO_OK_FIRMA_DATA ",
+                            "status: ${dataResponse.isOk}, mensaje: ${dataResponse.message}"
+                        )
                         if (dataResponse.isOk) {
-                            val file = File(filesDir.path,"ultima.jpg")
+                            val file = File(filesDir.path, "ultima.jpg")
                             val uri = Uri.fromFile(file)
                             binding.imgFirmaTest.setImageURI(uri)
                         }
                     }
                 }
-/*                ActScanCodes.CODIGO_OK_QR -> {
-                    val info: DatoQR? = if (data != null) {
-                        data.extras!!.getParcelable("result_object")
-                    } else {
-                        DatoQR("N/F")
-                    }
-                    //tarea a realizar
-                    println("Resultado  (${info?.QR})")
-                }*/
+                /*                ActScanCodes.CODIGO_OK_QR -> {
+                                    val info: DatoQR? = if (data != null) {
+                                        data.extras!!.getParcelable("result_object")
+                                    } else {
+                                        DatoQR("N/F")
+                                    }
+                                    //tarea a realizar
+                                    println("Resultado  (${info?.QR})")
+                                }*/
             }
         }
     }

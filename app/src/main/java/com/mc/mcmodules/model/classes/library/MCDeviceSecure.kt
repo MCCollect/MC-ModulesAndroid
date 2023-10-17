@@ -176,26 +176,13 @@ class MCDeviceSecure(private val context: Context) {
 
 
     private fun isEmulatorDevice(): Boolean {
+
         if (Build.BOARD + "" == "unknown" || Build.BRAND + "" == "unknown" || Build.DEVICE + "" == "generic" || Build.FINGERPRINT + "" == "generic" || Build.HARDWARE + "" == "goldfish" || Build.ID + "" == "FRF91" || Build.MANUFACTURER + "" == "unknown" ||
             (Build.MODEL + "").contains("SDK") ||
             (Build.MODEL + "").contains("sdk") ||
             (Build.PRODUCT + "").contains("sdk") ||
             (Build.PRODUCT + "").contains("SDK") || Build.USER + "" == "android-build"
         ) {
-            println("CPU_ABI:" + Build.CPU_ABI)
-            println("CPU_ABI2:" + Build.CPU_ABI2)
-            println("BOARD:" + Build.BOARD)
-            println("BRAND:" + Build.BRAND)
-            println("DEVICE:" + Build.DEVICE)
-            println("FINGERPRINT:" + Build.FINGERPRINT)
-            println("Hardware:" + Build.HARDWARE)
-            println("Host:" + Build.HOST)
-            println("ID:" + Build.ID)
-            println("MANUFACTURER:" + Build.MANUFACTURER)
-            println("MODEL:" + Build.MODEL)
-            println("PRODUCT:" + Build.PRODUCT)
-            println("RADIO:" + Build.RADIO)
-            println("USER:" + Build.USER)
             return true
         }
         return false
